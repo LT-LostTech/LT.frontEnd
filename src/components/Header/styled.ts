@@ -26,6 +26,7 @@ export const HeaderNav = styled.nav`
     font-size: 20px;
     color: white;
 
+    
     &:hover {
         text-decoration: underline;
     }
