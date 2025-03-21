@@ -5,4 +5,5 @@ export const LayoutContainer = styled.main`
   height: 100%;
   display: flex;
   flex-direction: column;
+  z-index: 1;
 `;

@@ -5,10 +5,10 @@ import { Footer } from "../../components/Footer";
 
 export function Layout() {
   return (
-    <LayoutContainer>
-      <Header />
-      <Outlet />
-      <Footer />
-    </LayoutContainer>
+      <LayoutContainer>
+        <Header />
+        <Outlet />
+        <Footer />
+      </LayoutContainer>
   )
 }
