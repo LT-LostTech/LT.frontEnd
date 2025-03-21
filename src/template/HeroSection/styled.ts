@@ -15,11 +15,19 @@ export const HeroSectionContainer = styled.section`
     z-index: 1;
     gap: 32px;
     padding: 289px 0;
+
+    
 `
 
 export const HeroTitle = styled.h2`
     font-size: 96px;
-    color: ${props => props.theme.colors.black};
+    color: ${props => props.theme.colors.black};    
+    font-family: 'Jersey 25';
+    font-weight: 500;
+
+    @media (max-width: 430px) {
+        padding: 392px 0;
+    }
 `
 
 export const HeroDescription = styled.p`

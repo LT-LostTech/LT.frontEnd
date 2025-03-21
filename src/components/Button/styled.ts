@@ -22,6 +22,7 @@ export const ButtonContainer = styled.button<ButtonProps>`
   transition: all 0.3s ease;
   
   &:hover {
-    opacity: 0.8;
+    transform: scale(1.05);
+    opacity: 0.9;
   }
 `;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
-  width: 100vw;
+  width: 100%;
   height: 100px;
   background-color: ${(props) => props.theme.colors.gray800};
   display: flex;
