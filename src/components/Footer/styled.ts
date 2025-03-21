@@ -13,7 +13,7 @@ export const FooterLogo = styled.img`
     height: 100px;
 `
 
-export const FooterList = styled.ul`
+export const FooterNav = styled.nav`
     display: flex;
     flex-direction: column;
     gap: 36px;
@@ -22,10 +22,11 @@ export const FooterList = styled.ul`
 export const FooterTitle = styled.h3`
     font-family: 'Jersey 25';
     font-size: 48px;
+    text-decoration: underline;
     color: ${props => props.theme.colors.lightGray};
 `
 
-export const FooterItens = styled.li`
+export const FooterItem = styled.ol`
     font-size: 24px;
     font-weight: 500;
     text-decoration: underline;
@@ -42,10 +43,7 @@ export const FooterNewsletter = styled.div`
 
 export const FooterNewsletterTitle = styled(FooterTitle)``
 
-export const FooterNewsletterInput = styled.input`
-    width: 300px;
-    height: 50px;
-    border-radius: 10px;
-    border: 1px solid ${props => props.theme.colors.lightGray};
-`
+export const FooterNewsletterDescription = styled(FooterItem)``
+
+
 
