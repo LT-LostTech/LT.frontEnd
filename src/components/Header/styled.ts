@@ -1,13 +1,18 @@
 import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
-  width: 100%;
+  width: 100vw;
   height: 100px;
   background-color: ${(props) => props.theme.colors.gray800};
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 12px 135px;
+  justify-content: space-between;
+
+
+  @media (max-width: 1024px) {
+    padding: 12px 14px;
+  }
 `;
 
 export const HeaderLogo = styled.img`
@@ -31,6 +36,10 @@ export const HeaderNav = styled.nav`
         text-decoration: underline;
     }
   }
+
+  @media (max-width: 430px) {
+    display: none;
+  }
 `;
 
 export const HeaderButtons = styled.div`
@@ -40,6 +49,10 @@ export const HeaderButtons = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 430px) {
+    display: none;
+  }
 `;
 
 

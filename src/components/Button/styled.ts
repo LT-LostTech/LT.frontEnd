@@ -14,7 +14,7 @@ export const ButtonContainer = styled.button<ButtonProps>`
   height: ${(props) => props.height};
   background-color: ${(props) => props.bgColor};
   border-radius: 10px;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: ${(props) => props.fontWeight};
   color: ${(props) => props.colorText};
   border: ${(props) => props.border};
