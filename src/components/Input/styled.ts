@@ -5,7 +5,6 @@ export const InputContainer = styled.div`
     justify-content: space-between;
     gap: 8px;
     background-color: transparent;
-    width: 100%;
 `
 
 export const InputLabel = styled.label`
@@ -28,6 +27,7 @@ export const InputField = styled.input`
     color: ${props => props.theme.colors.lightGray};
     padding: 16px 24px;
     position: relative;
+
     
 
     &::placeholder{
@@ -39,6 +39,14 @@ export const InputIcon = styled.img`
     width: 24px;
     height: 24px;
     position: absolute;
-    right: 116px;
+    right: 154px;
     cursor: pointer;
+
+    @media (max-width: 430px) {
+        right: 50px;
+    }
+
+    @media (max-width: 835px) {
+        right: 50px;
+    }
 `
