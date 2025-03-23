@@ -32,8 +32,9 @@ export const FooterNav = styled.nav`
 `
 
 export const FooterTitle = styled.h3`
-    font-family: 'Jersey 25';
+    font-family: 'Chakra Petch', sans-serif;
     font-size: 48px;
+    font-weight: 700;
     text-decoration: underline;
     color: ${props => props.theme.colors.lightGray};
 `
