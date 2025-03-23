@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { Button } from "../Button";
 import { theme } from "../../theme/theme";
 
-const navItems = ["Home", "Notícias", "Desafios"];
+const navItems = ["Roadmaps", "Notícias", "Desafios"];
 
 export function Header() {
   return (

@@ -15,6 +15,7 @@ export const HeroSectionContainer = styled.section`
     z-index: 1;
     gap: 32px;
     padding: 289px 0;
+    text-align: center;
 `
 
 export const HeroTitle = styled.h2`
@@ -25,6 +26,8 @@ export const HeroTitle = styled.h2`
 
     @media (max-width: 430px) {
         padding: 392px 0;
+        font-size: 48px;
+        
     }
 `
 

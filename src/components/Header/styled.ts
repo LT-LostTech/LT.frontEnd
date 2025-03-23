@@ -11,7 +11,7 @@ export const HeaderContainer = styled.header`
 
 
   @media (max-width: 1024px) {
-    padding: 12px 14px;
+    padding: 12px 12px;
   }
 `;
 
@@ -24,6 +24,10 @@ export const HeaderNav = styled.nav`
   display: flex;
   align-items: center;
   gap: 36px;
+
+  @media (max-width: 1025px) {
+    gap: 24px;
+  }
 
   a {
     text-decoration: none;
@@ -43,15 +47,26 @@ export const HeaderNav = styled.nav`
 `;
 
 export const HeaderButtons = styled.div`
-  width: 330px;
-  height: 59px;
-  gap: 18px;
+  width: 349px;
+  height: 62px;
+  gap: 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   @media (max-width: 430px) {
     display: none;
+  }
+
+  @media (max-width: 1025px) {
+    width: 272px;
+    height: 54px;
+
+    button {
+      width: 128px;
+      height: 54px;
+      gap: 16px;
+    }
   }
 `;
 
