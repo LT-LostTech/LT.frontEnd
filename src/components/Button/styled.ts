@@ -14,7 +14,7 @@ export const ButtonContainer = styled.button<ButtonProps>`
   height: ${(props) => props.height};
   background-color: ${(props) => props.bgColor};
   border-radius: 10px;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: ${(props) => props.fontWeight};
   color: ${(props) => props.colorText};
   border: ${(props) => props.border};
@@ -22,6 +22,7 @@ export const ButtonContainer = styled.button<ButtonProps>`
   transition: all 0.3s ease;
   
   &:hover {
-    opacity: 0.8;
+    transform: scale(1.05);
+    opacity: 0.9;
   }
 `;

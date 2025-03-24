@@ -6,8 +6,13 @@ export const HeaderContainer = styled.header`
   background-color: ${(props) => props.theme.colors.gray800};
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 12px 135px;
+  justify-content: space-between;
+
+
+  @media (max-width: 1024px) {
+    padding: 12px 12px;
+  }
 `;
 
 export const HeaderLogo = styled.img`
@@ -20,6 +25,10 @@ export const HeaderNav = styled.nav`
   align-items: center;
   gap: 36px;
 
+  @media (max-width: 1025px) {
+    gap: 24px;
+  }
+
   a {
     text-decoration: none;
     color: ${(props) => props.theme['gray800']};
@@ -31,15 +40,47 @@ export const HeaderNav = styled.nav`
         text-decoration: underline;
     }
   }
+
+  @media (max-width: 430px) {
+    display: none;
+  }
 `;
 
 export const HeaderButtons = styled.div`
-  width: 330px;
-  height: 59px;
-  gap: 18px;
+  width: 349px;
+  height: 62px;
+  gap: 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 430px) {
+    display: none;
+  }
+
+  @media (max-width: 1025px) {
+    width: 272px;
+    height: 54px;
+
+    button {
+      width: 128px;
+      height: 54px;
+      gap: 16px;
+    }
+  }
+`;
+
+export const MenuButton = styled.button`
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  border: none;
+  display: none;
+  background-color: transparent;
+
+  @media (max-width: 430px) {
+    display: block;
+  }
 `;
 
 
