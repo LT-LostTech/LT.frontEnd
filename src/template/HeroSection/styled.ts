@@ -16,6 +16,14 @@ export const HeroSectionContainer = styled.section`
     gap: 32px;
     padding: 289px 0;
     text-align: center;
+
+    @media (max-width: 430px) {
+        padding: 289px 24px;
+
+        button {
+            width: 100%;
+        }
+    }
 `
 
 export const HeroTitle = styled.h2`
@@ -25,16 +33,14 @@ export const HeroTitle = styled.h2`
     font-weight: 700;
 
     @media (max-width: 430px) {
-        padding: 392px 0;
         font-size: 48px;
-        
     }
 `
 
 export const HeroDescription = styled.p`
     font-size: 24px;
     font-style: italic;
-    width: 695px;
-    height: 72px;
+    width: 100%;
+    height: 100%;
     color: ${props => props.theme.colors.black};
 `
