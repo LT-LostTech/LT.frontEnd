@@ -10,10 +10,19 @@ import { Link } from "react-router-dom";
 import { Button } from "../Button";
 import { theme } from "../../theme/theme";
 import MenuIconImage from "../../assets/icons/menu-hamburguer.svg"
+import { useState } from "react";
+import { SideMenu } from "../SideMenu";
 
 export const navItems = ["Roadmaps", "Notícias", "Desafios"];
 
 export function Header() {
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleOpenMenu = () => {
+    setIsOpen(!isOpen);
+  }
+
   return (
     <HeaderContainer>
       <HeaderLogo
@@ -32,9 +41,15 @@ export function Header() {
         <Button width="163px" height="62px" text="Cadastrar" colorText="white" bgColor="transparent" fontWeight="bold" border="1px solid white"/>
       </HeaderButtons>
 
-      <MenuButton>
+      <MenuButton onClick={handleOpenMenu}>
         <img src={MenuIconImage} alt="Ao clicar você abre um menu de opções" />
       </MenuButton>
+
+      {
+        isOpen && (
+          <SideMenu handleCLoseMenu={handleOpenMenu}/>
+        )
+      }
     </HeaderContainer>
   );
 }

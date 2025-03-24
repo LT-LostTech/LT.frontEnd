@@ -2,11 +2,15 @@ import { navItems } from "../Header";
 import { CloseIcon, MenuItem, MenuItems, SideMenuContainer } from "./styled";
 import CloseIconImage from "../../assets/icons/close.svg";
 
+interface SideMenuProps {
+    handleCLoseMenu: () => void;
+}
 
-export function SideMenu() {
+
+export function SideMenu({handleCLoseMenu}: SideMenuProps) {
     return (
         <SideMenuContainer>
-            <CloseIcon>
+            <CloseIcon onClick={handleCLoseMenu}>
                 <img src={CloseIconImage} alt="Close" />
             </CloseIcon>
             <MenuItems>

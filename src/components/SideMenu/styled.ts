@@ -6,9 +6,23 @@ export const SideMenuContainer = styled.div`
     height: 100%;
     background-color: ${theme.colors.gray800};
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     padding: 24px 12px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    animation: slide-in 0.5s forwards;
+
+    @keyframes slide-in {
+        from {
+            transform: translateX(100%);
+        }
+        to {
+            transform: translateX(0);
+        }
+    }
 `;
 
 export const CloseIcon = styled.button`
