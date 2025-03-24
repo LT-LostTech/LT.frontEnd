@@ -70,4 +70,17 @@ export const HeaderButtons = styled.div`
   }
 `;
 
+export const MenuButton = styled.button`
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  border: none;
+  display: none;
+  background-color: transparent;
+
+  @media (max-width: 430px) {
+    display: block;
+  }
+`;
+
 

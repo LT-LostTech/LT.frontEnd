@@ -3,7 +3,6 @@ import { CloseIcon, MenuItem, MenuItems, SideMenuContainer } from "./styled";
 import CloseIconImage from "../../assets/icons/close.svg";
 
 
-
 export function SideMenu() {
     return (
         <SideMenuContainer>
