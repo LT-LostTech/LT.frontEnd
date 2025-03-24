@@ -21,6 +21,23 @@ export const SectionIllustrationContainer = styled.section<SectionIllustrationPr
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
+
+    @media (max-width: 430px) {     
+        flex-direction: column-reverse;
+        
+        button {
+            width: 100%;
+        }
+    }
+
+    @media screen and (max-width: 1024px) {
+        flex-direction: column-reverse;
+
+        button {
+            width: 100%;
+        }
+    }
 `
 
 export const SectionIllustrationContent = styled.div`
@@ -31,6 +48,14 @@ export const SectionIllustrationContent = styled.div`
     gap: 32px;
     height: 100%;
     width: 50%;
+
+    @media (max-width: 430px) {
+        width: 100%;
+    }
+
+    @media screen and (max-width: 1024px) {
+        width: 100%;
+    }
 `
 
 export const SectionIllustrationTitle = styled.h2<SectionIllustrationProps>`
@@ -38,6 +63,11 @@ export const SectionIllustrationTitle = styled.h2<SectionIllustrationProps>`
     font-size: 72px;
     font-weight: 700;
     color: ${({backgroundImage}) => backgroundImage === "black" ? theme.colors.white : theme.colors.black};
+
+    @media (max-width: 430px) {
+        font-size: 24px;
+        width: 100%;
+    }
 `
 
 export const SectionIllustrationDescription = styled.p<SectionIllustrationProps>`
@@ -56,5 +86,10 @@ export const SectionIllustrationDescription = styled.p<SectionIllustrationProps>
 export const SectionIllustrationImage = styled.img`
     width: 500px;
     height: 500px;
+
+    @media (max-width: 430px) {
+        width: 100%;
+        height: 100%;
+    }
 `
 
