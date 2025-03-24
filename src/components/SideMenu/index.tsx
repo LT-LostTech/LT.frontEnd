@@ -1,4 +1,4 @@
-import { navItems } from "../Header";
+import { navItemsMobile } from "../Header/data";
 import { CloseIcon, MenuItem, MenuItems, SideMenuContainer } from "./styled";
 import CloseIconImage from "../../assets/icons/close.svg";
 
@@ -15,7 +15,7 @@ export function SideMenu({handleCLoseMenu}: SideMenuProps) {
             </CloseIcon>
             <MenuItems>
                 {
-                    navItems.map((item, key) => (
+                    navItemsMobile.map((item, key) => (
                         <MenuItem key={key}>{item}</MenuItem>
                     ))
                 }

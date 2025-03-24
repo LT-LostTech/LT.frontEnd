@@ -12,8 +12,9 @@ import { theme } from "../../theme/theme";
 import MenuIconImage from "../../assets/icons/menu-hamburguer.svg"
 import { useState } from "react";
 import { SideMenu } from "../SideMenu";
+import { navItems } from "./data";
 
-export const navItems = ["Roadmaps", "Notícias", "Desafios"];
+
 
 export function Header() {
 
