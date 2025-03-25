@@ -31,7 +31,7 @@ O front-end do LostTech foi desenvolvido com as seguintes tecnologias:
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/seu-usuario/losttech-frontend.git
+   git clone https://github.com/LT-LostTech/LT.frontEnd.git
    ```
 
 2. Navegue até a pasta do projeto:
