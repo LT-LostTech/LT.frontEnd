@@ -9,6 +9,6 @@ export const Overlay = styled.div`
   height: 100%;
   background-color: #000;
   z-index: 1000;
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
 `;
 
