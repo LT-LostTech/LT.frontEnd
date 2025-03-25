@@ -13,8 +13,7 @@ import MenuIconImage from "../../assets/icons/menu-hamburguer.svg"
 import { useState } from "react";
 import { SideMenu } from "../SideMenu";
 import { navItems } from "./data";
-
-
+import { Overlay } from "../../utils/Overlay/styled";
 
 export function Header() {
 
@@ -48,7 +47,10 @@ export function Header() {
 
       {
         isOpen && (
+          <>
+          <Overlay onClick={handleOpenMenu}/>
           <SideMenu handleCLoseMenu={handleOpenMenu}/>
+          </>
         )
       }
     </HeaderContainer>
