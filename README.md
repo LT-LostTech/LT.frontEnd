@@ -1,54 +1,63 @@
-# React + TypeScript + Vite
+# LostTech - Front-End
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Sobre o Projeto
 
-Currently, two official plugins are available:
+O **LostTech** foi desenvolvido para resolver os problemas de quem tem dificuldades em buscar e organizar conteúdos relacionados à tecnologia. A plataforma oferece um **roadmap** fácil de compreender, com etapas progressivas adaptadas ao nível de conhecimento do usuário, garantindo uma jornada de aprendizado eficiente e sem frustrações.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Além do roadmap, o **LostTech** se destaca por suas funcionalidades adicionais:
 
-## Expanding the ESLint configuration
+- **Desafios**: Teste e aprimore suas habilidades práticas com exercícios diretamente relacionados aos tópicos que você está aprendendo. Cada desafio é projetado para consolidar o conhecimento adquirido.
+- **Notícias**: Fique atualizado com as últimas tendências, tecnologias e inovações no mundo da programação e da tecnologia, mantendo-se relevante no mercado.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+O **LostTech** não é apenas um guia de estudos, mas uma plataforma completa para quem quer aprender e se aprofundar no universo da programação.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Tecnologias Utilizadas
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+O front-end do LostTech foi desenvolvido com as seguintes tecnologias:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **React.js**: Biblioteca JavaScript para construção de interfaces de usuário dinâmicas e interativas.
+- **React Router**: Biblioteca para gerenciamento de rotas e navegação entre as páginas.
+- **Styled-components**: Utilizado para estilizar os componentes de forma modular e reutilizável.
+- **Axios**: Para realizar chamadas HTTP para obter dados de backend e serviços externos.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## Funcionalidades
+
+- **Roadmap de Aprendizado**: Um guia visual e interativo para acompanhar seu progresso no aprendizado de tecnologia.
+- **Desafios Práticos**: Exercícios de programação relacionados aos tópicos do roadmap para reforçar o aprendizado.
+- **Seção de Notícias**: Acesso a artigos e notícias atualizadas sobre as últimas inovações e tendências no mundo da tecnologia.
+
+## Como Rodar o Projeto Localmente
+
+1. Clone o repositório:
+
+   ```bash
+   git clone https://github.com/seu-usuario/losttech-frontend.git
+   ```
+
+2. Navegue até a pasta do projeto:
+
+   ```bash
+   cd losttech-frontend
+   ```
+
+3. Instale as dependências:
+
+   ```bash
+   npm install
+   ```
+
+4. Inicie o servidor de desenvolvimento:
+
+   ```bash
+   npm start
+   ```
+
+   O aplicativo estará disponível em [http://localhost:3000](http://localhost:3000).
+
+## Contribuindo
+
+Se você quiser contribuir para o desenvolvimento do LostTech, fique à vontade para abrir um pull request. Sinta-se à vontade para sugerir melhorias, corrigir bugs ou adicionar novas funcionalidades!
+
+## Licença
+
+Este projeto está licenciado sob a [Licença MIT](LICENSE).
