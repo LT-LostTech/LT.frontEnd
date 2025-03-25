@@ -35,19 +35,3 @@ export const InputField = styled.input`
         color: ${props => props.theme.colors.lightGray};
     }
 `
-
-export const InputIcon = styled.img`
-    width: 24px;
-    height: 24px;
-    position: absolute;
-    right: 154px;
-    cursor: pointer;
-
-    @media (max-width: 430px) {
-        right: 50px;
-    }
-
-    @media (max-width: 835px) {
-        right: 50px;
-    }
-`

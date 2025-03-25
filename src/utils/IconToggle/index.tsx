@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { IconToggleContainer } from "./styled"
+import { IconToggleContainer, IconToggleImage } from "./styled"
 
 interface IconToggleProps {
     IconOpen: string
@@ -15,7 +15,7 @@ export function IconToggle({ IconOpen, IconClose }: IconToggleProps) {
 
     return (
         <IconToggleContainer onClick={handleIcon}>
-            <img src={isOpen ? IconOpen : IconClose} alt="Icone de toggle" />
+            <IconToggleImage src={isOpen ? IconOpen : IconClose} alt="Icone de que ao clicar abre ou fecha o mesmo icone" />
         </IconToggleContainer>
     )
 }

@@ -1,6 +1,6 @@
 import React from "react";
-import { Button } from "../../components/Button";
-import { theme } from "../../theme/theme";
+import { Button } from "../../../components/Button";
+import { theme } from "../../../theme/theme";
 import {
   SectionIllustrationContainer,
   SectionIllustrationContent,

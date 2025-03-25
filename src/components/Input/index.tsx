@@ -1,14 +1,16 @@
-import { InputContainer, InputField, InputFieldWithContainer, InputIcon, InputLabel } from "./styled";
+import { IconToggle } from "../../utils/IconToggle";
+import { InputContainer, InputField, InputFieldWithContainer, InputLabel } from "./styled";
 
-interface InputProps {
+export interface InputProps {
     placeholder: string;
     label: string;
-    icon: string;
     showIcon: boolean;
     showLabel: boolean;
+    IconOpen: string;
+    IconClose: string;
 }
 
-export function Input({ placeholder, label, icon, showIcon, showLabel }: InputProps) {
+export function Input({ placeholder, label,  showIcon, showLabel, IconOpen, IconClose }: InputProps) {
     return (
         <InputContainer>
             {
@@ -21,7 +23,7 @@ export function Input({ placeholder, label, icon, showIcon, showLabel }: InputPr
                 <InputField placeholder={placeholder} />
                 {
                     showIcon && (
-                        <InputIcon src={icon} />
+                        <IconToggle IconOpen={IconOpen} IconClose={IconClose} />
                     )
                 }
             </InputFieldWithContainer>

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import heroBackground from "../../assets/backgrounds/white-background.svg"
+import heroBackground from "../../../assets/backgrounds/white-background.svg"
 
 export const HeroSectionContainer = styled.section`
     display: flex;
