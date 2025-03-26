@@ -18,8 +18,8 @@ interface ModalProps {
   title: string;
   inputs: InputProps[];
   textButton: string;
-  textChangeOption: string;
-  textChangeOptionHighlight: string;
+  textChangeOption?: string;
+  textChangeOptionHighlight?: string;
   displayForgotPassword: string;
 }
 
