@@ -6,6 +6,8 @@ export const IconToggleContainer = styled.button`
     background-color: transparent;
     border: none;
     cursor: pointer;
+    position: absolute;
+    right: 80px;
 `
 
 export const IconToggleImage = styled.img`

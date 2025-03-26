@@ -8,9 +8,10 @@ interface ButtonProps {
     fontWeight: string;
     text: string;
     border: string;
+    onClick?: () => void;
 }
 
-export function Button({text, width, height, colorText, bgColor, fontWeight, border}: ButtonProps) {
+export function Button({text, width, height, colorText, bgColor, fontWeight, border, onClick}: ButtonProps) {
     return (
         <ButtonContainer
             width={width}
@@ -19,6 +20,7 @@ export function Button({text, width, height, colorText, bgColor, fontWeight, bor
             bgColor={bgColor}
             fontWeight={fontWeight}
             border={border}
+            onClick={onClick}
         >
             {text}
         </ButtonContainer>

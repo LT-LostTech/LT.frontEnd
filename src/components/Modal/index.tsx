@@ -4,11 +4,12 @@ import {
   ModalChangeOptionText,
   ModalContainer,
   ModalContent,
+  ModalForgotPassword,
   ModalForm,
   ModalPhoto,
   ModalTitle,
 } from "./styled";
-import modalPhoto from "../../assets/logo-lost-tech.svg";
+import modalPhoto from "../../assets/modal/image.svg";
 import { Input, InputProps } from "../Input";
 import { Button } from "../Button";
 import { theme } from "../../theme/theme";
@@ -19,9 +20,10 @@ interface ModalProps {
   textButton: string;
   textChangeOption: string;
   textChangeOptionHighlight: string;
+  displayForgotPassword: string;
 }
 
-export function Modal({ title, inputs, textButton, textChangeOption, textChangeOptionHighlight}: ModalProps) {
+export function Modal({ title, inputs, textButton, textChangeOption, textChangeOptionHighlight, displayForgotPassword}: ModalProps) {
   return (
     <ModalContainer>
       <ModalPhoto src={modalPhoto} />
@@ -33,6 +35,7 @@ export function Modal({ title, inputs, textButton, textChangeOption, textChangeO
               key={key}
               placeholder={input.placeholder}
               label={input.label}
+              type={input.type}
               showIcon={input.showIcon}
               showLabel={input.showLabel}
               IconOpen={input.IconOpen}
@@ -40,6 +43,9 @@ export function Modal({ title, inputs, textButton, textChangeOption, textChangeO
             />
           ))}
         </ModalForm>
+        <ModalForgotPassword display={displayForgotPassword}>
+            Esqueceu sua senha?
+        </ModalForgotPassword>
         <Button width="100%" height="50px" colorText="white" bgColor={theme.colors.gray800} border="transparent" fontWeight="600" text={textButton} />
         <ModalChangeOption>
             <ModalChangeLine />
@@ -47,7 +53,7 @@ export function Modal({ title, inputs, textButton, textChangeOption, textChangeO
             <ModalChangeLine />
         </ModalChangeOption>
         <ModalChangeOptionText>
-            <p>{textChangeOption}<span className="highlight">{textChangeOptionHighlight}</span></p>
+            {textChangeOption}<span className="highlight">{textChangeOptionHighlight}</span>
         </ModalChangeOptionText>
       </ModalContent>
     </ModalContainer>

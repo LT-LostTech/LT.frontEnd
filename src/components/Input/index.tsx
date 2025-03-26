@@ -1,16 +1,25 @@
+import { useState } from "react";
 import { IconToggle } from "../../utils/IconToggle";
 import { InputContainer, InputField, InputFieldWithContainer, InputLabel } from "./styled";
 
 export interface InputProps {
     placeholder: string;
-    label: string;
+    label?: string;
     showIcon: boolean;
     showLabel: boolean;
     IconOpen: string;
     IconClose: string;
+    type?: string;
 }
 
-export function Input({ placeholder, label,  showIcon, showLabel, IconOpen, IconClose }: InputProps) {
+export function Input({ placeholder, label, type = "text", showIcon, showLabel, IconOpen, IconClose }: InputProps) {
+
+    const [isPassword, setIsPassword] = useState(false);
+
+    const handlePassword = () => {
+        setIsPassword(!isPassword)
+    }
+
     return (
         <InputContainer>
             {
@@ -20,10 +29,10 @@ export function Input({ placeholder, label,  showIcon, showLabel, IconOpen, Icon
             }
             <InputLabel />
             <InputFieldWithContainer>
-                <InputField placeholder={placeholder} />
+                <InputField type={isPassword ? "text" : type} placeholder={placeholder} />
                 {
                     showIcon && (
-                        <IconToggle IconOpen={IconOpen} IconClose={IconClose} />
+                        <IconToggle IconOpen={IconOpen} IconClose={IconClose} onClick={() => {handlePassword()}} />
                     )
                 }
             </InputFieldWithContainer>
