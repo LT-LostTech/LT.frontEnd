@@ -1,16 +1,15 @@
 import { Modal } from "../../../../components/Modal";
-import EyeOpen from "../../../../assets/icons/eyeOpen.svg";
-import EyeClose from "../../../../assets/icons/eyeClosed.svg";
+import EyeOpen from "../../../assets/icons/eyeOpen.svg";
+import EyeClose from "../../../assets/icons/eyeClosed.svg";
 
-
-export function NewPassword() {
+export function TypeCode() {
     return (
         <Modal
             title="Nova senha"
             inputs={[
                 {
+                    label: "Digite a senha",
                     placeholder: "Digite a senha",
-                    label: "Senha",
                     showIcon: true,
                     showLabel: true,
                     IconOpen: EyeOpen,
@@ -18,19 +17,17 @@ export function NewPassword() {
                     type: "password",
                 },
                 {
-                    placeholder: "Digite a senha novamente",
-                    label: "Senha",
+                    label: "Confirme a senha",
+                    placeholder: "Confirme a senha",
                     showIcon: true,
                     showLabel: true,
                     IconOpen: EyeOpen,
                     IconClose: EyeClose,
                     type: "password",
-                }   
-                
+                },
             ]}
             textButton="Confirmar"
             displayInformationExtra="none"
-            
         />
     )
 }
