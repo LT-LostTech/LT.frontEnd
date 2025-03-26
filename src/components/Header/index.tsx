@@ -28,6 +28,7 @@ export function Header() {
   const handleOpenModal = (type: "sign in" | "sign up" | "forgot password") => {
     setModalType(type);
     setIsOpenModal(!isOpenModal);
+    setIsOpen(false);
   };
 
   const handleOpenMenu = () => {
@@ -77,7 +78,7 @@ export function Header() {
       {isOpen && (
         <>
           <Overlay onClick={handleOpenMenu} />
-          <SideMenu handleCLoseMenu={handleOpenMenu} />
+          <SideMenu handleCloseMenu={handleOpenMenu} />
         </>
       )}
 
