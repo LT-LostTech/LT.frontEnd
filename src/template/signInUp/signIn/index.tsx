@@ -28,7 +28,8 @@ export function SignIn() {
             textButton="Entrar"
             textChangeOption="Não tem uma conta? Se "
             textChangeOptionHighlight="Cadastre"
-            displayForgotPassword="flex"
+            displayInformationExtra="flex"
+            textInformationExtra="Esqueceu sua senha?"
         />
     )
 }

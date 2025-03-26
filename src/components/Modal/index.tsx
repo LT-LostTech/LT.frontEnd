@@ -20,10 +20,11 @@ interface ModalProps {
   textButton: string;
   textChangeOption?: string;
   textChangeOptionHighlight?: string;
-  displayForgotPassword: string;
+  displayInformationExtra: string;
+  textInformationExtra?: string;
 }
 
-export function Modal({ title, inputs, textButton, textChangeOption, textChangeOptionHighlight, displayForgotPassword}: ModalProps) {
+export function Modal({ title, inputs, textButton, textChangeOption, textChangeOptionHighlight, displayInformationExtra, textInformationExtra}: ModalProps) {
   return (
     <ModalContainer>
       <ModalPhoto src={modalPhoto} />
@@ -43,8 +44,8 @@ export function Modal({ title, inputs, textButton, textChangeOption, textChangeO
             />
           ))}
         </ModalForm>
-        <ModalForgotPassword display={displayForgotPassword}>
-            Esqueceu sua senha?
+        <ModalForgotPassword display={displayInformationExtra}>
+            {textInformationExtra}
         </ModalForgotPassword>
         <Button width="100%" height="50px" colorText="white" bgColor={theme.colors.gray800} border="transparent" fontWeight="600" text={textButton} />
         <ModalChangeOption>

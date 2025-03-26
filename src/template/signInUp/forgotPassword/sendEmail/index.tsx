@@ -12,11 +12,11 @@ export function SendEmail() {
                     showIcon: false,
                     showLabel: true,
                     IconOpen: "",
-                    IconClose: "",
+                    IconClose: "",  
                 }
             ]}
             textButton="Próximo"
-            displayForgotPassword="none"
+            displayInformationExtra="none"
         />
     )
 }

@@ -38,7 +38,7 @@ export function SignUp() {
             textButton="Cadastrar"
             textChangeOption="Já tem uma conta? Faça "
             textChangeOptionHighlight="Login"
-            displayForgotPassword="none"
+            displayInformationExtra="none"
         />
     )
 }
