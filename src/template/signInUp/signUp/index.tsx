@@ -2,14 +2,24 @@ import { Modal } from "../../../components/Modal";
 import EyeOpen from "../../../assets/icons/eyeOpen.svg";
 import EyeClose from "../../../assets/icons/eyeClosed.svg";
 
-export function SignIn() {
+export function SignUp() {
     return (
         <Modal
-            title="Entrar"
+            title="Cadastro"
             inputs={[
+                {
+                    placeholder: "Digite o seu nome",
+                    label: "Nome",
+                    type: "text",
+                    showIcon: false,
+                    showLabel: true,
+                    IconOpen: "",
+                    IconClose: "",
+                },
                 {
                     placeholder: "Digite o seu e-mail",
                     label: "E-mail",
+                    type: "email",
                     showIcon: false,
                     showLabel: true,
                     IconOpen: "",
@@ -18,17 +28,17 @@ export function SignIn() {
                 {
                     placeholder: "Digite a sua senha",
                     label: "Senha",
+                    type: "password",
                     showIcon: true,
                     showLabel: true,
                     IconOpen: EyeOpen,
                     IconClose: EyeClose,
-                    type: "password",
                 }
             ]}
-            textButton="Entrar"
-            textChangeOption="Não tem uma conta? Se "
-            textChangeOptionHighlight="Cadastre"
-            displayForgotPassword="flex"
+            textButton="Cadastrar"
+            textChangeOption="Já tem uma conta? Faça "
+            textChangeOptionHighlight="Login"
+            displayForgotPassword="none"
         />
     )
 }

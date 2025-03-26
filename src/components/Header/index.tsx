@@ -15,6 +15,7 @@ import { SideMenu } from "../SideMenu";
 import { navItems } from "./data";
 import { Overlay } from "../../utils/Overlay/styled";
 import { SignIn } from "../../template/signInUp/signIn";
+import { SignUp } from "../../template/signInUp/signUp";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -64,6 +65,7 @@ export function Header() {
           bgColor="transparent"
           fontWeight="bold"
           border="1px solid white"
+          onClick={() => handleOpenModal("sign up")}
         />
       </HeaderButtons>
 
@@ -84,6 +86,15 @@ export function Header() {
           <SignIn />
         </>
       )}
+
+      {
+        isOpenModal && modalType === "sign up" && (
+          <>
+            <Overlay onClick={() => setIsOpenModal(false)}/>
+            <SignUp />
+          </>
+        )
+      }
     </HeaderContainer>
   );
 }
