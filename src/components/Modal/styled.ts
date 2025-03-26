@@ -14,9 +14,31 @@ export const ModalContainer = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1000;
+
+    @media (max-width: 1024px) {
+        width: 650px;
+        height: 435px;
+    }
+
+    @media (max-width: 430px) {
+        width: 325px;
+        height: 435px;
+    }
 `
 export const ModalPhoto = styled.img`
     box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @media (max-width: 1024px) {
+        width: 100%;
+        height: 100%;
+    }
+
+    @media (max-width: 430px) {
+        display: none;
+    }
 `
 
 export const ModalContent = styled.div`
@@ -27,6 +49,29 @@ export const ModalContent = styled.div`
     padding: 24px 55px;
     height: 100%;
     width: 100%;
+
+    button {
+        height: 56px;
+        font-size: 20px;
+    }
+
+    @media (max-width: 1024px) {
+        padding: 24px 30px;
+
+        button {
+            height: 40px;
+            font-size: 14px;
+        }
+    }
+
+        @media (max-width: 430px) {
+            padding: 24px 20px;
+
+            button {
+                height: 32px;
+                font-size: 12px;
+            }
+        }
 `
 
 export const ModalTitle = styled.h2`
@@ -43,6 +88,10 @@ export const ModalForm = styled.form`
     justify-content: center;
     gap: 22px;
     width: 100%;
+
+    @media (max-width: 1024px) {
+        gap: 14px;
+    }
 `
 
 export const ModalForgotPassword = styled.p<{ display: string }>`
@@ -54,6 +103,10 @@ export const ModalForgotPassword = styled.p<{ display: string }>`
     text-decoration: underline;
     display: ${props => props.display};
     margin-left: auto;
+    
+    @media (max-width: 1024px) {
+        font-size: 12px;
+    }
 `
 
 export const ModalChangeOption = styled.div<{ display: string }>`
@@ -63,20 +116,30 @@ export const ModalChangeOption = styled.div<{ display: string }>`
     gap: 15px;
     width: 100%;
     height: 21px;
+
+    @media (max-width: 1024px) {
+        height: 16px;
+    }
 `
 
 export const ModalChangeLine = styled.hr`
     width: 120px;
     height: 1px;
     background-color: ${theme.colors.black};
-    
+
+    @media (max-width: 1024px) {
+        width: 80px;
+    }
 `
 export const ModalChangeOptionText = styled.p`
     font-size: 14px;
     font-weight: 600;
     color: ${theme.colors.black};
     border: none;
-    
+
+    @media (max-width: 1024px) {
+        font-size: 12px;
+    }
 
     .highlight {
         color: ${theme.colors.blue400};

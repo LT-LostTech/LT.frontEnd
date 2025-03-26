@@ -8,6 +8,10 @@ export const IconToggleContainer = styled.button`
     cursor: pointer;
     position: absolute;
     right: 80px;
+
+    @media (max-width: 1024px) {
+        right: 30px;
+    }
 `
 
 export const IconToggleImage = styled.img`
