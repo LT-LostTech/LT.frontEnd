@@ -1,9 +1,13 @@
-import { Modal } from "../../../../components/Modal";
-import EyeOpen from "../../../../assets/icons/eyeOpen.svg";
-import EyeClose from "../../../../assets/icons/eyeClosed.svg";
+import { Modal } from "../../../../../components/Modal";
+import EyeOpen from "../../../../../assets/icons/eyeOpen.svg";
+import EyeClose from "../../../../../assets/icons/eyeClosed.svg";
+
+interface NewPasswordProps {
+    onClick: () => void;
+}
 
 
-export function NewPassword() {
+export function NewPassword({ onClick }: NewPasswordProps) {
     return (
         <Modal
             title="Nova senha"
@@ -30,7 +34,10 @@ export function NewPassword() {
             ]}
             textButton="Confirmar"
             displayInformationExtra="none"
-            
+            displayChangeOption="none"
+            onClick={() => {
+               onClick()
+            }}
         />
     )
 }

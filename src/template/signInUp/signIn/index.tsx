@@ -2,7 +2,13 @@ import { Modal } from "../../../components/Modal";
 import EyeOpen from "../../../assets/icons/eyeOpen.svg";
 import EyeClose from "../../../assets/icons/eyeClosed.svg";
 
-export function SignIn() {
+interface SignInProps {
+    onHighlightClick: () => void;
+    onInformationExtraClick: () => void;
+    onComplete: () => void;
+}
+
+export function SignIn({ onHighlightClick, onInformationExtraClick, onComplete }: SignInProps) {
     return (
         <Modal
             title="Entrar"
@@ -30,6 +36,16 @@ export function SignIn() {
             textChangeOptionHighlight="Cadastre"
             displayInformationExtra="flex"
             textInformationExtra="Esqueceu sua senha?"
+            onHighlightClick={() => {
+                onHighlightClick();
+            }}
+            onInformationExtraClick={() => {
+                onInformationExtraClick();
+            }}
+            displayChangeOption="flex"
+            onClick={() => {
+                onComplete();
+            }}
         />
     )
 }

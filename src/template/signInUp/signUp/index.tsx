@@ -2,8 +2,15 @@ import { Modal } from "../../../components/Modal";
 import EyeOpen from "../../../assets/icons/eyeOpen.svg";
 import EyeClose from "../../../assets/icons/eyeClosed.svg";
 
-export function SignUp() {
-    return (
+interface SignUpProps {
+    onHighlightClick: () => void;
+    onInformationExtraClick: () => void;
+    onComplete: () => void;
+}
+
+export function SignUp({ onHighlightClick, onInformationExtraClick, onComplete }: SignUpProps) {
+
+    return(
         <Modal
             title="Cadastro"
             inputs={[
@@ -35,10 +42,20 @@ export function SignUp() {
                     IconClose: EyeClose,
                 }
             ]}
-            textButton="Cadastrar"
+            textButton="Confirmar"
             textChangeOption="Já tem uma conta? Faça "
             textChangeOptionHighlight="Login"
             displayInformationExtra="none"
+            onHighlightClick={() => {
+                onHighlightClick();
+            }}
+            onInformationExtraClick={() => {
+                onInformationExtraClick();
+            }}
+            displayChangeOption="flex"
+            onClick={() => {
+                onComplete();
+            }}
         />
     )
 }

@@ -1,8 +1,12 @@
-import { Modal } from "../../../../components/Modal";
-import EyeOpen from "../../../assets/icons/eyeOpen.svg";
-import EyeClose from "../../../assets/icons/eyeClosed.svg";
+import { Modal } from "../../../../../components/Modal";
+import EyeOpen from "../../../../../assets/icons/eyeOpen.svg";
+import EyeClose from "../../../../../assets/icons/eyeClosed.svg";
 
-export function TypeCode() {
+interface TypeCodeProps {
+    onClick: () => void;
+}
+
+export function TypeCode({ onClick }: TypeCodeProps) {
     return (
         <Modal
             title="Nova senha"
@@ -28,6 +32,10 @@ export function TypeCode() {
             ]}
             textButton="Confirmar"
             displayInformationExtra="none"
+            displayChangeOption="none"
+            onClick={() => {
+                onClick()
+            }}
         />
     )
 }

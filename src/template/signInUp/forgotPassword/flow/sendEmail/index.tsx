@@ -1,9 +1,14 @@
-import { Modal } from "../../../../components/Modal";
+import { Modal } from "../../../../../components/Modal";
 
-export function SendEmail() {
+interface SendEmailProps {
+    onHighlightClick?: () => void;
+    onClick: () => void;
+}
+
+export function SendEmail({ onHighlightClick, onClick }: SendEmailProps) {
     return (
         <Modal
-            title="Esqueceu sua senha?"
+            title="Recuperar senha"
             inputs={[
                 {
                     placeholder: "Digite o seu e-mail",
@@ -17,6 +22,9 @@ export function SendEmail() {
             ]}
             textButton="Próximo"
             displayInformationExtra="none"
+            onHighlightClick={onHighlightClick}
+            displayChangeOption="none"
+            onClick={onClick}
         />
     )
 }

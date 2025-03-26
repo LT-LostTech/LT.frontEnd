@@ -26,12 +26,14 @@ export const ModalContent = styled.div`
     justify-content: space-between;
     padding: 24px 55px;
     height: 100%;
+    width: 100%;
 `
 
 export const ModalTitle = styled.h2`
     font-size: 42px;
     font-weight: 600;
     color: ${theme.colors.black};
+    text-align: center;
 `
 
 export const ModalForm = styled.form`
@@ -54,8 +56,8 @@ export const ModalForgotPassword = styled.p<{ display: string }>`
     margin-left: auto;
 `
 
-export const ModalChangeOption = styled.div`
-    display: flex;
+export const ModalChangeOption = styled.div<{ display: string }>`
+    display: ${props => props.display};
     align-items: center;
     justify-content: center;
     gap: 15px;
@@ -67,6 +69,7 @@ export const ModalChangeLine = styled.hr`
     width: 120px;
     height: 1px;
     background-color: ${theme.colors.black};
+    
 `
 export const ModalChangeOptionText = styled.p`
     font-size: 14px;
