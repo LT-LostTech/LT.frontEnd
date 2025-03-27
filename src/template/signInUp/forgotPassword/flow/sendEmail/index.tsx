@@ -3,12 +3,13 @@ import { Modal } from "../../../../../components/Modal";
 interface SendEmailProps {
     onHighlightClick?: () => void;
     onClick: () => void;
+    position: string;
 }
 
-export function SendEmail({ onHighlightClick, onClick }: SendEmailProps) {
+export function SendEmail({ onHighlightClick, onClick, position }: SendEmailProps) {
     return (
         <Modal
-            position="fixed"
+            position={position}
             title="Recuperar senha"
             inputs={[
                 {

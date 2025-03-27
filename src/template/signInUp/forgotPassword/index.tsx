@@ -5,9 +5,10 @@ import { NewPassword } from "./flow/newPassword";
 
 interface PasswordFlowProps {
     onComplete: () => void;
+    position: string;
 }
 
-export function PasswordFlow({ onComplete }: PasswordFlowProps) {
+export function PasswordFlow({ onComplete, position }: PasswordFlowProps) {
     const [step, setStep] = useState<"sendEmail" | "typecode" | "newPassword" | "landpage">("sendEmail");
 
     const handleChangeStep = (step: "sendEmail" | "typecode" | "newPassword" | "landpage") => {
@@ -20,9 +21,9 @@ export function PasswordFlow({ onComplete }: PasswordFlowProps) {
 
     return (
         <>
-            {step === "sendEmail" && <SendEmail onClick={() => handleChangeStep("typecode")} />}
-            {step === "typecode" && <TypeCode onClick={() => handleChangeStep("newPassword")} />}
-            {step === "newPassword" && <NewPassword onClick={() => handleChangeStep("landpage")} />}
+            {step === "sendEmail" && <SendEmail onClick={() => handleChangeStep("typecode")} position={position} />}
+            {step === "typecode" && <TypeCode onClick={() => handleChangeStep("newPassword")} position={position} />}
+            {step === "newPassword" && <NewPassword onClick={() => handleChangeStep("landpage")} position={position} />}
         </>
     );
 }

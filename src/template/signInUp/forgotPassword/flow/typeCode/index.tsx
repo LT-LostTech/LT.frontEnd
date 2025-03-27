@@ -4,12 +4,13 @@ import EyeClose from "../../../../../assets/icons/eyeClosed.svg";
 
 interface TypeCodeProps {
     onClick: () => void;
+    position: string;
 }
 
-export function TypeCode({ onClick }: TypeCodeProps) {
+export function TypeCode({ onClick, position }: TypeCodeProps) {
     return (
         <Modal
-            position="fixed"
+            position={position}
             title="Nova senha"
             inputs={[
                 {

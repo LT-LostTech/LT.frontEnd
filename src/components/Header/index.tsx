@@ -119,7 +119,7 @@ export function Header({display}: HeaderProps) {
       {isOpenModal && modalType === "forgot password" && (
         <>
           <Overlay onClick={() => setIsOpenModal(false)} />
-          <PasswordFlow onComplete={() => setIsOpenModal(false)} />
+          <PasswordFlow position="fixed" onComplete={() => setIsOpenModal(false)} />
         </>
       )}
     </HeaderContainer>

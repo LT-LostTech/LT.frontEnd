@@ -4,13 +4,14 @@ import EyeClose from "../../../../../assets/icons/eyeClosed.svg";
 
 interface NewPasswordProps {
     onClick: () => void;
+    position: string;
 }
 
 
-export function NewPassword({ onClick }: NewPasswordProps) {
+export function NewPassword({ onClick, position }: NewPasswordProps) {
     return (
         <Modal
-            position="fixed"
+            position={position}
             title="Nova senha"
             inputs={[
                 {
