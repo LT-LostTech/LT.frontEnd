@@ -12,7 +12,7 @@ export const SideMenuContainer = styled.div`
     position: fixed;
     top: 0;
     right: 0;
-    z-index: 2;
+    z-index: 1001;
     animation: slide-in 0.5s forwards;
 
     @keyframes slide-in {

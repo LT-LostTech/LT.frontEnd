@@ -1,5 +1,5 @@
-import { HeroSection } from "../../template/HeroSection";
-import { SectionIllustration } from "../../template/SectionIllustration";
+import { HeroSection } from "../../template/landpage/HeroSection";
+import { SectionIllustration } from "../../template/landpage/SectionIllustration";
 import { sections } from "./data";
 
 export function Landpage() {

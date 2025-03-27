@@ -25,7 +25,7 @@ export const HeaderNav = styled.nav`
   align-items: center;
   gap: 36px;
 
-  @media (max-width: 1025px) {
+  @media (max-width: 1024px) {
     gap: 24px;
   }
 

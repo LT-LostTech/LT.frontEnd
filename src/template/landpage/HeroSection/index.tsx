@@ -1,6 +1,6 @@
 import { HeroDescription, HeroSectionContainer, HeroTitle} from "./styled";
-import { Button } from "../../components/Button";
-import { theme } from "../../theme/theme";
+import { Button } from "../../../components/Button";
+import { theme } from "../../../theme/theme";
 
 export function HeroSection() {
     return (

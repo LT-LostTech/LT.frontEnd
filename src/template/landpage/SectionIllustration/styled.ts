@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { theme } from "../../theme/theme";
-import blackBackground from "../../assets/backgrounds/black-background.svg"
-import whiteBackground from "../../assets/backgrounds/white-background.svg"
+import { theme } from "../../../theme/theme";
+import blackBackground from "../../../assets/backgrounds/black-background.svg"
+import whiteBackground from "../../../assets/backgrounds/white-background.svg"
 
 interface SectionIllustrationProps {
     layout: "left" | "right";

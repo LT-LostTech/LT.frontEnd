@@ -1,6 +1,5 @@
 import { FooterContainer, FooterItem, FooterNav, FooterLogo, FooterNewsletter, FooterNewsletterDescription, FooterNewsletterTitle, FooterTitle } from "./styled";
 import logo from "../../assets/logo-lost-tech.svg"
-import send from "../../assets/icons/send.svg"
 import { Input } from "../Input";
 
 
@@ -26,8 +25,9 @@ export function Footer() {
                 <Input 
                     label=""
                     placeholder="Digite seu e-mail"
-                    icon={send}
-                    showIcon={true}
+                    IconOpen=""
+                    IconClose=""
+                    showIcon={false}
                     showLabel={false}
                 />
             </FooterNewsletter>

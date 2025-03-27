@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { theme } from "../../theme/theme";
 
 
 export const InputContainer = styled.div`
@@ -6,11 +7,14 @@ export const InputContainer = styled.div`
     justify-content: space-between;
     gap: 8px;
     background-color: transparent;
+    flex-direction: column;
+    width: 100%;
 `
 
 export const InputLabel = styled.label`
     font-size: 16px;
     font-weight: 700;
+    height: fit-content;
 `
 export const InputFieldWithContainer = styled.div`
     display: flex;
@@ -21,33 +25,17 @@ export const InputFieldWithContainer = styled.div`
 export const InputField = styled.input`
     width: 100%;
     border: 0;
-    border-bottom: 1px solid ${props => props.theme.colors.lightGray};
+    border-bottom: 1px solid ${theme.colors.gray400};
     height: 55px;
     background-color: transparent;
     outline: none;
-    color: ${props => props.theme.colors.lightGray};
+    color: ${theme.colors.black};
     padding: 16px 24px;
     position: relative;
 
     
 
     &::placeholder{
-        color: ${props => props.theme.colors.lightGray};
-    }
-`
-
-export const InputIcon = styled.img`
-    width: 24px;
-    height: 24px;
-    position: absolute;
-    right: 154px;
-    cursor: pointer;
-
-    @media (max-width: 430px) {
-        right: 50px;
-    }
-
-    @media (max-width: 835px) {
-        right: 50px;
+        color: ${theme.colors.gray400};
     }
 `
