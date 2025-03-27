@@ -26,11 +26,12 @@ interface ModalProps {
   onHighlightClick?: () => void;
   onInformationExtraClick?: () => void;
   onClick?: () => void;
+  position: string;
 }
 
-export function Modal({ onClick, title, inputs, textButton, textChangeOption, textChangeOptionHighlight, displayInformationExtra, displayChangeOption, textInformationExtra, onHighlightClick, onInformationExtraClick }: ModalProps) {
+export function Modal({ onClick, title, inputs, textButton, textChangeOption, textChangeOptionHighlight, displayInformationExtra, displayChangeOption, textInformationExtra, onHighlightClick, onInformationExtraClick, position }: ModalProps) {
   return (
-    <ModalContainer>
+    <ModalContainer position={position}>
       <ModalPhoto src={modalPhoto} />
       <ModalContent>
         <ModalTitle>{title}</ModalTitle>

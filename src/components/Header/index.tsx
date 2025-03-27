@@ -79,7 +79,7 @@ export function Header({display}: HeaderProps) {
         />
       </HeaderButtons>
 
-      <MenuButton onClick={handleOpenMenu}>
+      <MenuButton onClick={handleOpenMenu} display={display}>
         <img src={MenuIconImage} alt="Ao clicar você abre um menu de opções" />
       </MenuButton>
 

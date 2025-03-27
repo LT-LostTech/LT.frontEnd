@@ -74,7 +74,7 @@ export const HeaderButtons = styled.div<HeaderProps>`
   }
 `;
 
-export const MenuButton = styled.button`
+export const MenuButton = styled.button<HeaderProps>`
   width: 48px;
   height: 48px;
   border-radius: 8px;
@@ -82,8 +82,9 @@ export const MenuButton = styled.button`
   display: none;
   background-color: transparent;
 
+
   @media (max-width: 430px) {
-    display: block;
+    display: ${(props) => props.display};
   }
 `;
 
