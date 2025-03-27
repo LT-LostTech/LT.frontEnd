@@ -1,13 +1,17 @@
 import styled from "styled-components";
 
-export const HeaderContainer = styled.header`
+interface HeaderProps {
+  display: string;
+}
+
+export const HeaderContainer = styled.header<HeaderProps>`
   width: 100%;
   height: 100px;
   background-color: ${(props) => props.theme.colors.gray800};
   display: flex;
   align-items: center;
   padding: 12px 135px;
-  justify-content: space-between;
+  justify-content: ${(props) => props.display === "none" ? "center" : "space-between"};
 
 
   @media (max-width: 1024px) {
@@ -20,8 +24,8 @@ export const HeaderLogo = styled.img`
   height: 100px;
 `;
 
-export const HeaderNav = styled.nav`
-  display: flex;
+export const HeaderNav = styled.nav<HeaderProps>`
+  display: ${(props) => props.display};
   align-items: center;
   gap: 36px;
 
@@ -46,11 +50,11 @@ export const HeaderNav = styled.nav`
   }
 `;
 
-export const HeaderButtons = styled.div`
+export const HeaderButtons = styled.div<HeaderProps>`
   width: 349px;
   height: 62px;
   gap: 16px;
-  display: flex;
+  display: ${(props) => props.display};
   align-items: center;
   justify-content: space-between;
 

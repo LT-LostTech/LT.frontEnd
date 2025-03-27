@@ -18,7 +18,11 @@ import { SignIn } from "../../template/signInUp/signIn";
 import { SignUp } from "../../template/signInUp/signUp";
 import { PasswordFlow } from "../../template/signInUp/forgotPassword";
 
-export function Header() {
+interface HeaderProps {
+  display: string;
+}
+
+export function Header({display}: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [modalType, setModalType] = useState<
@@ -40,19 +44,19 @@ export function Header() {
   };
 
   return (
-    <HeaderContainer>
+    <HeaderContainer display={display}>
       <HeaderLogo
         src={Logo}
         alt="Logo que tenha a palavra Tech e a palavra Lost para lembrar que a LostTech tem objetivo de ajudar aqueles que estão perdidos em T.I"
       />
-      <HeaderNav>
+      <HeaderNav display={display}>
         {navItems.map((item, key) => (
           <Link key={key} to={`/${item}`}>
             {item}
           </Link>
         ))}
       </HeaderNav>
-      <HeaderButtons>
+      <HeaderButtons display={display}>
         <Button
           width="163px"
           height="62px"
