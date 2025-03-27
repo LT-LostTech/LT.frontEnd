@@ -12,6 +12,7 @@ export function SignUp({ onHighlightClick, onInformationExtraClick, onComplete }
 
     return(
         <Modal
+            position="fixed"
             title="Cadastro"
             inputs={[
                 {

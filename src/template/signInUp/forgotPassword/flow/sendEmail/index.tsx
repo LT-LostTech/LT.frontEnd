@@ -8,6 +8,7 @@ interface SendEmailProps {
 export function SendEmail({ onHighlightClick, onClick }: SendEmailProps) {
     return (
         <Modal
+            position="fixed"
             title="Recuperar senha"
             inputs={[
                 {

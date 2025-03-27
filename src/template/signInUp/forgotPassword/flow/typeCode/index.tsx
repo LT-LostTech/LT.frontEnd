@@ -9,6 +9,7 @@ interface TypeCodeProps {
 export function TypeCode({ onClick }: TypeCodeProps) {
     return (
         <Modal
+            position="fixed"
             title="Nova senha"
             inputs={[
                 {

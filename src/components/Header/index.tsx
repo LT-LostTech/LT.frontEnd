@@ -94,6 +94,10 @@ export function Header({display}: HeaderProps) {
         <>
           <Overlay onClick={() => setIsOpenModal(false)} />
           <SignIn
+            position="fixed"
+            displayChangeOption="flex"
+            textChangeOption="Não tem uma conta? Se "
+            textChangeOptionHighlight="Cadastre"
             onHighlightClick={() => setModalType("sign up")}
             onInformationExtraClick={() => setModalType("forgot password")}
             onComplete={() => setIsOpenModal(false)}

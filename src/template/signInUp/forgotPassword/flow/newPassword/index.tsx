@@ -10,6 +10,7 @@ interface NewPasswordProps {
 export function NewPassword({ onClick }: NewPasswordProps) {
     return (
         <Modal
+            position="fixed"
             title="Nova senha"
             inputs={[
                 {
