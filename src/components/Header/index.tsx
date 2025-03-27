@@ -35,6 +35,10 @@ export function Header() {
     setIsOpen(!isOpen);
   };
 
+  const handleCloseMenu = () => {
+    setIsOpen(false);
+  };
+
   return (
     <HeaderContainer>
       <HeaderLogo
@@ -78,7 +82,7 @@ export function Header() {
       {isOpen && (
         <>
           <Overlay onClick={handleOpenMenu} />
-          <SideMenu handleCloseMenu={handleOpenMenu} />
+          <SideMenu handleCloseMenu={handleCloseMenu} handleOpenModal={handleOpenModal} />
         </>
       )}
 
