@@ -17,20 +17,22 @@ export function SideMenu({ handleCloseMenu, handleOpenModal }: SideMenuProps) {
       <MenuItems>
         {navItemsMobile.map((item, key) => (
           <MenuItem key={key}>
-            {(item === "Entrar") ? (
+            {(item.includes("Entrar")) ? (
             <a onClick={() => {
               handleCloseMenu();
               handleOpenModal("sign in");
             }}>
                 {item}
               </a>
-            ) : (
+            ) : (item.includes("Cadastrar")) ? (
               <a onClick={() => {
                 handleCloseMenu();
                 handleOpenModal("sign up");
               }}>
                 {item}
               </a>
+            ) : (
+              item
             )}
           </MenuItem>
         ))}
