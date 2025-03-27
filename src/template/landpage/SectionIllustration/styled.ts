@@ -59,7 +59,7 @@ export const SectionIllustrationContent = styled.div`
 `
 
 export const SectionIllustrationTitle = styled.h2<SectionIllustrationProps>`
-    font-family: 'Chakra Petch', sans-serif;
+    font-family: ${theme.font.chackra};
     font-size: 72px;
     font-weight: 700;
     color: ${({backgroundImage}) => backgroundImage === "black" ? theme.colors.white : theme.colors.black};

@@ -9,6 +9,10 @@ export const theme = {
 
     blue400: "#29C5FF",
   },
+  font: {
+    poppins: "'Poppins', sans-serif",
+    chackra:"'Chakra Petch', sans-serif",
+  }
 };
 
 export type ThemeProps = typeof theme;
