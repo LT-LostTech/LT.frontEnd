@@ -34,13 +34,11 @@ export const DashboardLabelText = styled.h2`
 export const DashboardTable = styled.table`
   width: 100%;
   height: 100%;
+  border-spacing: 8px;
   border-collapse: collapse;
-
-  table-layout: auto;
 `;
 
 export const DashboardTableHeader = styled.thead`
-  border-bottom: 1px solid ${theme.colors.gray400};
   width: 100%;
   height: 76px;
 `;
@@ -48,7 +46,7 @@ export const DashboardTableHeader = styled.thead`
 export const DashboardTableHeaderRow = styled.tr`
   height: auto;
   width: 100%;
-  
+  border-bottom: 1px solid ${theme.colors.gray400};
 `;
 
 export const DashboardTableHeaderCell = styled.th`
@@ -58,16 +56,19 @@ export const DashboardTableHeaderCell = styled.th`
   text-align: left;
   padding: 0 20px;
   height: auto;
+  
 `;
 
 export const DashboardTableBody = styled.tbody`
-  height: 51px;
-  width: 100%;
+  width: auto;
+  height: 100%;
 `;
 
 export const DashboardTableBodyRow = styled.tr`
-  height: auto;
+  height: 51px;
   width: 100%;
+  border-top: 1px solid ${theme.colors.gray400};
+  padding: 8px;
 `;
 
 export const DashboardTableBodyCell = styled.td`

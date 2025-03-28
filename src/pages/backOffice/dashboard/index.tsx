@@ -39,30 +39,6 @@ const tableData = [
     status: "teste",
     actions: "teste",
   },
-  {
-    name: "teste",
-    description: "teste",
-    status: "teste",
-    actions: "teste",
-  },
-  {
-    name: "teste",
-    description: "teste",
-    status: "teste",
-    actions: "teste",
-  },
-  {
-    name: "teste",
-    description: "teste",
-    status: "teste",
-    actions: "teste",
-  },
-  {
-    name: "teste",
-    description: "teste",
-    status: "teste",
-    actions: "teste",
-  },
 ];
 
 export function Dashboard({ title, tableHeaders }: DashboardProps) {
@@ -108,11 +84,11 @@ export function Dashboard({ title, tableHeaders }: DashboardProps) {
                 </DashboardTableBodyCell>
                 <DashboardTableBodyCell>
                   <Button
-                    width="244px"
-                    height="55px"
+                    width="128px"
+                    height="35px"
                     colorText={theme.colors.white}
                     bgColor={theme.colors.gray800}
-                    fontWeight="600"
+                    fontWeight="500"
                     text="Editar"
                     border="none"
                   />
