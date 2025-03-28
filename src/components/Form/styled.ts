@@ -27,4 +27,11 @@ export const FormContainer = styled.form`
   gap: 24px;
 `;
 
+export const ButtonsContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+
 
