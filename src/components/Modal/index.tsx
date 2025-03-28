@@ -38,14 +38,8 @@ export function Modal({ onClick, title, inputs, textButton, textChangeOption, te
         <ModalForm>
           {inputs.map((input, key) => (
             <Input
+              {...input}
               key={key}
-              placeholder={input.placeholder}
-              label={input.label}
-              type={input.type}
-              showIcon={input.showIcon}
-              showLabel={input.showLabel}
-              IconOpen={input.IconOpen}
-              IconClose={input.IconClose}
             />
           ))}
         </ModalForm>

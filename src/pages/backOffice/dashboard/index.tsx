@@ -38,7 +38,7 @@ const tableData = [
     description: "teste",
     status: "teste",
     actions: "teste",
-  },
+  },  
 ];
 
 export function Dashboard({ title, tableHeaders }: DashboardProps) {

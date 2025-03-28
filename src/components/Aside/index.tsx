@@ -21,7 +21,7 @@ export function Aside() {
         text="Sair"
         border="none"
         onClick={() => {
-          navigate("backoffice/");
+          navigate("/backoffice");
         }}
       />
     </AsideContainer>

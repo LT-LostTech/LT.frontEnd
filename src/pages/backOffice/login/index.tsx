@@ -19,7 +19,7 @@ export function BackOfficeLogin() {
                     navigate("/backoffice/forgot-password");
                 }}
                 onComplete={() => {
-                    navigate("/backoffice/dashboard");
+                    navigate("/backoffice/dashboard/roadmaps");
                 }}
             />
         </LoginContainer>
