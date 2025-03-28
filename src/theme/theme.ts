@@ -12,6 +12,7 @@ export const theme = {
   font: {
     poppins: "'Poppins', sans-serif",
     chackra:"'Chakra Petch', sans-serif",
+    jersey:"'Jersey 25', sans-serif",
   }
 };
 

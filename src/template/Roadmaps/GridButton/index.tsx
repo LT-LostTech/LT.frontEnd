@@ -7,5 +7,5 @@
     'Inovação e Gestão',
     'DevOps',
     'Cybersecurity',
-    'AI',
+    'AI'
  ]
