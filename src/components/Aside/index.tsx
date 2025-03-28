@@ -1,7 +1,7 @@
-import { NavLink } from "react-router-dom";
+
 import { AsideContainer, AsideContent } from "./styled";
 import { Button } from "../Button";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { theme } from "../../theme/theme";
 
 export function Aside() {
@@ -9,8 +9,8 @@ export function Aside() {
   return (
     <AsideContainer>
       <AsideContent>
-        <NavLink to="backoffice/dashboard/roadmaps">Roadmaps</NavLink>
-        <NavLink to="backoffice/dashboard/challenges">Challenges</NavLink>
+        <NavLink to="/backoffice/dashboard/roadmaps">Roadmaps</NavLink>
+        <NavLink to="/backoffice/dashboard/challenges">Challenges</NavLink>
       </AsideContent>
       <Button
         width="100%"

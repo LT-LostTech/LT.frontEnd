@@ -16,6 +16,7 @@ export function Router() {
         <Route path="/backoffice" element={<BackOfficeLogin/>}/>
         <Route path="/backoffice/forgot-password" element={<ForgotPassword/>}/>
         <Route path="/backoffice/dashboard/roadmaps" element={<Dashboard title="Roadmaps" tableHeaders={["Nome do roadmap", "Categoria", "Linguagem de programação", "Ações"]}/>}/>
+        <Route path="/backoffice/dashboard/challenges" element={<Dashboard title="Challenges" tableHeaders={["Nome do desafio", "Categoria", "Linguagem de programação", "Ações"]}/>}/>
       </Route>
     </Routes>
   );
