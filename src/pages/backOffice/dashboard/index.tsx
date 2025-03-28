@@ -17,6 +17,7 @@ import {
 } from "./styled";
 import { CreateFormRoadmap } from "./roadmap/create";
 import { Overlay } from "../../../utils/Overlay/styled";
+import { EditFormRoadmap } from "./roadmap/edit";
 
 interface DashboardProps {
   title: string;
@@ -124,6 +125,16 @@ export function Dashboard({ title, tableHeaders }: DashboardProps) {
             }}
           />
           <CreateFormRoadmap />
+        </>
+      )}
+      {isOpenModal && modalType === "edit" && (
+        <>
+          <Overlay
+            onClick={() => {
+              setIsOpenModal(false);
+            }}
+          />
+          <EditFormRoadmap />
         </>
       )}
     </DashboardPage>
