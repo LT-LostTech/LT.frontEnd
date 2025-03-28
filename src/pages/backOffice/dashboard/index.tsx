@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Aside } from "../../../components/Aside";
 import { Button } from "../../../components/Button";
 import { theme } from "../../../theme/theme";
@@ -14,6 +15,8 @@ import {
   DashboardTableBodyRow,
   DashboardTableBodyCell,
 } from "./styled";
+import { CreateFormRoadmap } from "./roadmap/create";
+import { Overlay } from "../../../utils/Overlay/styled";
 
 interface DashboardProps {
   title: string;
@@ -38,10 +41,19 @@ const tableData = [
     description: "teste",
     status: "teste",
     actions: "teste",
-  },  
+  },
 ];
 
 export function Dashboard({ title, tableHeaders }: DashboardProps) {
+  const [modalType, setModalType] = useState<"create" | "edit" | null>(
+    "create"
+  );
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
+  const handleOpenModal = (type: "create" | "edit") => {
+    setModalType(type);
+    setIsOpenModal(!isOpenModal);
+  };
   return (
     <DashboardPage>
       <Aside />
@@ -56,6 +68,9 @@ export function Dashboard({ title, tableHeaders }: DashboardProps) {
             fontWeight="600"
             text="Criar"
             border="none"
+            onClick={() => {
+              handleOpenModal("create");
+            }}
           />
         </DashboardLabelContainer>
 
@@ -91,6 +106,9 @@ export function Dashboard({ title, tableHeaders }: DashboardProps) {
                     fontWeight="500"
                     text="Editar"
                     border="none"
+                    onClick={() => {
+                      handleOpenModal("edit");
+                    }}
                   />
                 </DashboardTableBodyCell>
               </DashboardTableBodyRow>
@@ -98,6 +116,16 @@ export function Dashboard({ title, tableHeaders }: DashboardProps) {
           </DashboardTableBody>
         </DashboardTable>
       </DashboardContainer>
+      {isOpenModal && modalType === "create" && (
+        <>
+          <Overlay
+            onClick={() => {
+              setIsOpenModal(false);
+            }}
+          />
+          <CreateFormRoadmap />
+        </>
+      )}
     </DashboardPage>
   );
 }

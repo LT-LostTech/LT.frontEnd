@@ -18,12 +18,12 @@ export function Form({ title, InputProps, buttons }: FormProps) {
         {InputProps.map((input, key) => (
           <Input {...input} key={key} />
         ))}
+      </FormContainer>
         <ButtonsContainer>
           {buttons.map((button, key) => (
             <Button {...button} key={key} />
           ))}
         </ButtonsContainer>
-      </FormContainer>
     </Container>
   );
 }
