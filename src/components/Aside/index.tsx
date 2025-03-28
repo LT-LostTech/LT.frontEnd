@@ -9,8 +9,8 @@ export function Aside() {
   return (
     <AsideContainer>
       <AsideContent>
-        <NavLink to="backoffice/roadmaps">Roadmaps</NavLink>
-        <NavLink to="backoffice/challenges">Challenges</NavLink>
+        <NavLink to="backoffice/dashboard/roadmaps">Roadmaps</NavLink>
+        <NavLink to="backoffice/dashboard/challenges">Challenges</NavLink>
       </AsideContent>
       <Button
         width="100%"
