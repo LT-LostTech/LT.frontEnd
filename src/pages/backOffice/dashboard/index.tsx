@@ -15,13 +15,14 @@ import {
   DashboardTableBodyRow,
   DashboardTableBodyCell,
 } from "./styled";
-import { CreateFormRoadmap } from "./roadmap/create";
 import { Overlay } from "../../../utils/Overlay/styled";
-import { EditFormRoadmap } from "./roadmap/edit";
+
 
 interface DashboardProps {
   title: string;
   tableHeaders: string[];
+  ComponentFormCreate: React.ComponentType;
+  ComponentFormEdit: React.ComponentType;
 }
 
 const tableData = [
@@ -45,7 +46,7 @@ const tableData = [
   },
 ];
 
-export function Dashboard({ title, tableHeaders }: DashboardProps) {
+export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentFormEdit }: DashboardProps) {
   const [modalType, setModalType] = useState<"create" | "edit" | null>(
     "create"
   );
@@ -124,7 +125,7 @@ export function Dashboard({ title, tableHeaders }: DashboardProps) {
               setIsOpenModal(false);
             }}
           />
-          <CreateFormRoadmap />
+          <ComponentFormCreate />
         </>
       )}
       {isOpenModal && modalType === "edit" && (
@@ -134,7 +135,7 @@ export function Dashboard({ title, tableHeaders }: DashboardProps) {
               setIsOpenModal(false);
             }}
           />
-          <EditFormRoadmap />
+          <ComponentFormEdit />
         </>
       )}
     </DashboardPage>
