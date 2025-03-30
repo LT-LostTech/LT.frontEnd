@@ -1,22 +1,27 @@
 import styled from "styled-components";
+import { theme } from "../../../theme/theme";
 
 export const Grid =styled.section`
     display: grid;
     grid-template-columns: repeat(3,1fr);
+    text-align: center;
     justify-content: center;
     align-items: center;
     width: 100%;
-    grid-gap:32px;
-    padding: 86px 102.5px;
+    padding:86px  102.5px;
+    gap: 32px;
+   
+    border-bottom: 1px solid ${theme.colors.white};
     
     @media (max-width:884px) {
         grid-template-columns: repeat(2, 1fr);
-
+        padding: 86px 59px;
     }
 
     @media (max-width:500px) {
         grid-template-columns: 1fr;
-
+        padding: 86px 30px;
+        
     }
 `
 

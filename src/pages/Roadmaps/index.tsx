@@ -1,13 +1,15 @@
 import { HeroRoadmaps } from "../../template/Roadmaps/heroRoadmap/index"
-import { WaitingSection, TitleSectionWaiting, SubTitleSection, MainRoadmapsContainer, RoadmapWaitImage } from "./styled"
+import { WaitingSection, TitleSectionWaiting, SubTitleSection, RoadmapWaitImage, RoadmapsContainer } from "./styled"
 
-// import {WaitingImage} from "../../assets/Roadmaps/waiting.svg"
+import WaitingImage from '../../assets/Roadmaps/waiting.svg'
+
+
 
 
 export function Roadmaps() {
 
     return(
-        <MainRoadmapsContainer>
+        <RoadmapsContainer>
             <HeroRoadmaps/> 
         
            <WaitingSection>
@@ -20,11 +22,11 @@ export function Roadmaps() {
                     Isso é seu futuro, escolha com sabedoria! 
                 </SubTitleSection>
 
+                <RoadmapWaitImage src={WaitingImage} alt="Desenho de uma pessoa sentada olhando para o relogio, relacionado ao tema desta seção"/>
+
             </WaitingSection>
 
-            {/* <RoadmapWaitImage src={WaitingImage} alt="Desenho de uma pessoa sentada olhando para o relogio, relacionado ao tema desta seção"/> */}
-
-        </MainRoadmapsContainer>
+        </RoadmapsContainer>
        
     )
 }
