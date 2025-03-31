@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import blackBackground from "../../../assets/backgrounds/black-background.svg"
+import backgroundLandpage from "../../../assets/backgrounds/landing-page-background.png"
 
 export const LoginContainer = styled.div`
     width: 100%;
@@ -8,7 +8,7 @@ export const LoginContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url(${blackBackground});
+    background-image: url(${backgroundLandpage});
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
