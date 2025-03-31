@@ -1,4 +1,7 @@
+import { ReactNode } from "react";
 import { ButtonContainer } from "./styled";
+
+
 
 interface ButtonProps {
     width: string;
@@ -6,10 +9,11 @@ interface ButtonProps {
     colorText: string;
     bgColor: string;
     fontWeight: string;
-    text: string;
+    text: ReactNode;
     border: string;
     onClick?: () => void;
 }
+
 
 export function Button({text, width, height, colorText, bgColor, fontWeight, border, onClick}: ButtonProps) {
     return (
@@ -22,7 +26,6 @@ export function Button({text, width, height, colorText, bgColor, fontWeight, bor
             border={border}
             onClick={onClick}
         >
-            {text}
-        </ButtonContainer>
+            {text}       </ButtonContainer>
     )
 }

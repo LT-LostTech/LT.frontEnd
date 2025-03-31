@@ -10,8 +10,8 @@ export const Grid =styled.section`
     width: 100%;
     padding:86px  102.5px;
     gap: 32px;
-   
     border-bottom: 1px solid ${theme.colors.white};
+
     
     @media (max-width:884px) {
         grid-template-columns: repeat(2, 1fr);
@@ -21,6 +21,7 @@ export const Grid =styled.section`
     @media (max-width:500px) {
         grid-template-columns: 1fr;
         padding: 86px 30px;
+        border-bottom: none;
         
     }
 `
@@ -38,3 +39,19 @@ export const ButtonsStyledRoadmaps = styled.div`
 }
 `
 
+export const GridDropdown = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+`
+
+
+export const DropdownButtonStyled = styled.div`
+  text-align: center;
+  width: 100%;
+  @media (max-width: 768px) {
+    display: block;
+    border-bottom: 1px solid ${theme.colors.white};
+  }
+`

@@ -23,6 +23,9 @@ export const HeroTitleRoadmaps = styled.h2`
     }
 `
 
+
+
 export const HeroStrongTitleRoadmaps = styled.strong`
     color: ${theme.colors.blue400};
 `
+
