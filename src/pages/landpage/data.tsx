@@ -29,7 +29,7 @@ export const sections = [
       image: IllustrationNews,
       textButton: "Notícias",
       backgroundImage: "white",
-      colorButton: "black",
+      colorButton: "white",
     },
     {
       layout: "left",

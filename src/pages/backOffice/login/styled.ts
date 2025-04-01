@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import backgroundLandpage from "../../../assets/backgrounds/landing-page-background.png"
 
+
 export const LoginContainer = styled.div`
     width: 100%;
     height: 100%;

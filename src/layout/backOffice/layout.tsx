@@ -5,7 +5,7 @@ import { BackOfficeContainer } from "./styled";
 export function BackOfficeLayout() {
     return (
         <BackOfficeContainer>
-            <Header display="none"/>
+            <Header position="" display="none"/>
             <Outlet/>
         </BackOfficeContainer>
     )

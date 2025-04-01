@@ -10,4 +10,6 @@ export const LayoutContainer = styled.main`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  align-items: center;
+  padding-top: 20px;
 `;

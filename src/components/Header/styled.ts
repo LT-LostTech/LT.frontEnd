@@ -1,17 +1,26 @@
 import styled from "styled-components";
+import { theme } from "../../theme/theme";
 
-interface HeaderProps {
+interface HeaderContainerProps {
+  position: string;
   display: string;
 }
 
-export const HeaderContainer = styled.header<HeaderProps>`
-  width: 100%;
+interface DisplayProps {
+  display: string;
+}
+
+export const HeaderContainer = styled.header<HeaderContainerProps>`
+  width: 90%;
   height: 100px;
-  background-color: ${(props) => props.theme.colors.gray800};
+  background-color: ${theme.colors.gray800};
   display: flex;
   align-items: center;
   padding: 12px 135px;
   justify-content: ${(props) => props.display === "none" ? "center" : "space-between"};
+  position: ${(props) => props.position};
+  border-radius: 16px;
+  z-index: 1000;
 
 
   @media (max-width: 1024px) {
@@ -24,7 +33,7 @@ export const HeaderLogo = styled.img`
   height: 100px;
 `;
 
-export const HeaderNav = styled.nav<HeaderProps>`
+export const HeaderNav = styled.nav<DisplayProps>`
   display: ${(props) => props.display};
   align-items: center;
   gap: 36px;
@@ -50,7 +59,7 @@ export const HeaderNav = styled.nav<HeaderProps>`
   }
 `;
 
-export const HeaderButtons = styled.div<HeaderProps>`
+export const HeaderButtons = styled.div<DisplayProps>`
   width: 349px;
   height: 62px;
   gap: 16px;
@@ -74,7 +83,7 @@ export const HeaderButtons = styled.div<HeaderProps>`
   }
 `;
 
-export const MenuButton = styled.button<HeaderProps>`
+export const MenuButton = styled.button<DisplayProps>`
   width: 48px;
   height: 48px;
   border-radius: 8px;

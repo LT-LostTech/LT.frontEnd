@@ -6,4 +6,5 @@ export const BackOfficeContainer = styled.main`
   display: flex;
   flex-direction: column;
   z-index: 1;
+  align-items: center;
 `;
