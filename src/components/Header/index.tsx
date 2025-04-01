@@ -21,9 +21,10 @@ import { PasswordFlow } from "../../template/signInUp/forgotPassword";
 interface HeaderProps {
   display: string;
   position: string;
+  borderRadius: string
 }
 
-export function Header({display, position}: HeaderProps) {
+export function Header({display, position, borderRadius}: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [modalType, setModalType] = useState<
@@ -45,7 +46,7 @@ export function Header({display, position}: HeaderProps) {
   };
 
   return (
-    <HeaderContainer position={position} display={display}>
+    <HeaderContainer borderRadius={borderRadius} position={position || ''} display={display}>
       <HeaderLogo
         src={Logo}
         alt="Logo que tenha a palavra Tech e a palavra Lost para lembrar que a LostTech tem objetivo de ajudar aqueles que estão perdidos em T.I"

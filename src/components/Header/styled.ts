@@ -4,6 +4,7 @@ import { theme } from "../../theme/theme";
 interface HeaderContainerProps {
   position: string;
   display: string;
+  borderRadius: string;
 }
 
 interface DisplayProps {
@@ -11,7 +12,7 @@ interface DisplayProps {
 }
 
 export const HeaderContainer = styled.header<HeaderContainerProps>`
-  width: 90%;
+  width: ${(props) => props.borderRadius == "16px" ? '90%' : '100%'};
   height: 100px;
   background-color: ${theme.colors.gray800};
   display: flex;
@@ -19,7 +20,7 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
   padding: 12px 135px;
   justify-content: ${(props) => props.display === "none" ? "center" : "space-between"};
   position: ${(props) => props.position};
-  border-radius: 16px;
+  border-radius: ${(props) => props.borderRadius};;
   z-index: 1000;
 
 
