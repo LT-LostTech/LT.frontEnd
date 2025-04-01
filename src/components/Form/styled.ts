@@ -17,6 +17,10 @@ export const Container = styled.div`
   right: 0;
   overflow-y: auto;
   gap: 24px;
+
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
 `;
 
 export const Title = styled.h3`
