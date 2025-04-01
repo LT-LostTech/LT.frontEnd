@@ -3,13 +3,17 @@ import { ForgotPasswordContainer } from "./styled";
 import { useNavigate } from "react-router-dom";
 
 export function ForgotPassword() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    return (
-        <ForgotPasswordContainer>
-            <PasswordFlow position="" onComplete={() => {
-                navigate("/backoffice/");
-            }} />
-        </ForgotPasswordContainer>
-    )
+  return (
+    <ForgotPasswordContainer>
+      <PasswordFlow
+        displayPhoto="none"
+        position=""
+        onComplete={() => {
+          navigate("/backoffice/");
+        }}
+      />
+    </ForgotPasswordContainer>
+  );
 }

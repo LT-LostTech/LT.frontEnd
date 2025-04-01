@@ -5,6 +5,10 @@ interface ModalContainerProps {
   position: string;
 }
 
+interface ModalPhotoProps {
+  display: string
+}
+
 export const ModalContainer = styled.div<ModalContainerProps>`
   width: 906px;
   height: 605px;
@@ -30,11 +34,12 @@ export const ModalContainer = styled.div<ModalContainerProps>`
     
   }
 `;
-export const ModalPhoto = styled.img`
+export const ModalPhoto = styled.img<ModalPhotoProps>`
   box-sizing: border-box;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: ${(props) => props.display};
 
   @media (max-width: 1024px) {
     width: 100%;

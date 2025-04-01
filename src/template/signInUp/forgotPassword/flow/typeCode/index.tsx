@@ -5,11 +5,13 @@ import EyeClose from "../../../../../assets/icons/eyeClosed.svg";
 interface TypeCodeProps {
     onClick: () => void;
     position: string;
+    displayPhoto: string;
 }
 
-export function TypeCode({ onClick, position }: TypeCodeProps) {
+export function TypeCode({ displayPhoto, onClick, position }: TypeCodeProps) {
     return (
         <Modal
+        display={displayPhoto}
             position={position}
             title="Nova senha"
             inputs={[

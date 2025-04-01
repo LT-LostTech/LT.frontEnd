@@ -94,6 +94,7 @@ export function Header({display}: HeaderProps) {
         <>
           <Overlay onClick={() => setIsOpenModal(false)} />
           <SignIn
+            displayPhoto="block"
             position="fixed"
             displayChangeOption="flex"
             textChangeOption="Não tem uma conta? Se "
@@ -109,6 +110,7 @@ export function Header({display}: HeaderProps) {
         <>
           <Overlay onClick={() => setIsOpenModal(false)} />
           <SignUp
+            displayPhoto="block"
             onHighlightClick={() => setModalType("sign in")}
             onInformationExtraClick={() => setModalType("forgot password")}
             onComplete={() => setIsOpenModal(false)}
@@ -119,7 +121,7 @@ export function Header({display}: HeaderProps) {
       {isOpenModal && modalType === "forgot password" && (
         <>
           <Overlay onClick={() => setIsOpenModal(false)} />
-          <PasswordFlow position="fixed" onComplete={() => setIsOpenModal(false)} />
+          <PasswordFlow displayPhoto="block" position="fixed" onComplete={() => setIsOpenModal(false)} />
         </>
       )}
     </HeaderContainer>

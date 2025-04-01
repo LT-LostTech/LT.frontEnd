@@ -10,11 +10,13 @@ interface SignInProps {
     position: string;
     textChangeOption: string;
     textChangeOptionHighlight: string;
+    displayPhoto: string;
 }
 
-export function SignIn({ onHighlightClick, onInformationExtraClick, onComplete, displayChangeOption, position, textChangeOption, textChangeOptionHighlight }: SignInProps) {
+export function SignIn({ displayPhoto, onHighlightClick, onInformationExtraClick, onComplete, displayChangeOption, position, textChangeOption, textChangeOptionHighlight }: SignInProps) {
     return (
         <Modal
+            display={displayPhoto}
             position={position}
             title="Entrar"
             inputs={[
