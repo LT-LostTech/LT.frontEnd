@@ -1,7 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import { Form } from "../../../../../components/Form";
 import { theme } from "../../../../../theme/theme";
 
+
+
 export function EditFormRoadmap() {
+    const navigate = useNavigate()
+
     return <Form
         title="Informações do roadmap"
         InputProps={[
@@ -60,6 +65,9 @@ export function EditFormRoadmap() {
                 bgColor: theme.colors.gray800,
                 fontWeight: "500",
                 border: "none",
+                onClick() {
+                    navigate('/backoffice/dashboard/roadmaps/steps')
+                },
             }
         ]}
     />

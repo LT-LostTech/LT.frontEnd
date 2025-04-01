@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Aside } from "../../../components/Aside";
 import { Button } from "../../../components/Button";
 import { theme } from "../../../theme/theme";
@@ -16,6 +16,7 @@ import {
   DashboardTableBodyCell,
 } from "./styled";
 import { Overlay } from "../../../utils/Overlay/styled";
+import { Outlet, useLocation } from "react-router-dom";
 
 
 interface DashboardProps {
@@ -51,11 +52,17 @@ export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentF
     "create"
   );
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const location = useLocation()
 
   const handleOpenModal = (type: "create" | "edit") => {
     setModalType(type);
     setIsOpenModal(!isOpenModal);
-  };
+  };  
+
+  useEffect(() => {
+    setIsOpenModal(false)
+  },[location.pathname])
+
   return (
     <DashboardPage>
       <Aside />
@@ -117,6 +124,8 @@ export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentF
             ))}
           </DashboardTableBody>
         </DashboardTable>
+
+        <Outlet />
       </DashboardContainer>
       {isOpenModal && modalType === "create" && (
         <>
