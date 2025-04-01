@@ -15,6 +15,11 @@ export const DashboardContainer = styled.main`
   gap: 32px;
   display: flex;
   flex-direction: column;
+
+
+  @media (max-width: 430px) {
+    padding: 30px;
+  }
 `;
 
 export const DashboardLabelContainer = styled.div`
@@ -23,6 +28,12 @@ export const DashboardLabelContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 430px) {
+    button {
+      width: 152px;
+    }
+  }
 `;
 
 export const DashboardLabelText = styled.h2`
@@ -36,6 +47,10 @@ export const DashboardTable = styled.table`
   height: 100%;
   border-spacing: 8px;
   border-collapse: collapse;
+
+  @media (max-width: 1024px) {
+    border-spacing: 2px;
+  }
 `;
 
 export const DashboardTableHeader = styled.thead`
@@ -56,7 +71,13 @@ export const DashboardTableHeaderCell = styled.th`
   text-align: left;
   padding: 0 20px;
   height: auto;
-  
+
+  @media (max-width: 430px) {
+    &:nth-child(2),
+    &:nth-child(3) {
+      display: none;
+    }
+  }
 `;
 
 export const DashboardTableBody = styled.tbody`
@@ -69,6 +90,7 @@ export const DashboardTableBodyRow = styled.tr`
   width: 100%;
   border-top: 1px solid ${theme.colors.gray400};
   padding: 8px;
+  
 `;
 
 export const DashboardTableBodyCell = styled.td`
@@ -78,14 +100,11 @@ export const DashboardTableBodyCell = styled.td`
   padding: 0 20px;
   height: auto;
   text-align: left;
+
+  @media (max-width: 430px) {
+    &:nth-child(2),
+    &:nth-child(3) {
+      display: none;
+    }
+  }
 `;
-
-
-
-
-
-
-
-
-
-

@@ -9,6 +9,10 @@ export const AsideContainer = styled.aside`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
 `;
 
 export const AsideContent = styled.div`
