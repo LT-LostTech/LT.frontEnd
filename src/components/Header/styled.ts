@@ -11,14 +11,19 @@ interface DisplayProps {
   display: string;
 }
 
+interface DisplayHamburguerProps {
+  displayMenu: string;
+  displayMenuTablet: string
+}
+
 export const HeaderContainer = styled.header<HeaderContainerProps>`
-  width: ${(props) => props.borderRadius == "16px" ? '90%' : '100%'};
+  width: ${(props) => props.borderRadius === "16px" ? '90%' : '100%'};
   height: 100px;
   background-color: ${theme.colors.gray800};
   display: flex;
   align-items: center;
   padding: 12px 135px;
-  justify-content: ${(props) => props.display === "none" ? "center" : "space-between"};
+  justify-content: space-between;
   position: ${(props) => props.position};
   border-radius: ${(props) => props.borderRadius};;
   z-index: 1000;
@@ -84,7 +89,7 @@ export const HeaderButtons = styled.div<DisplayProps>`
   }
 `;
 
-export const MenuButton = styled.button<DisplayProps>`
+export const MenuButton = styled.button<DisplayHamburguerProps>`
   width: 48px;
   height: 48px;
   border-radius: 8px;
@@ -94,7 +99,11 @@ export const MenuButton = styled.button<DisplayProps>`
 
 
   @media (max-width: 430px) {
-    display: ${(props) => props.display};
+    display: ${(props) => props.displayMenu};
+  }
+
+  @media (max-width: 1024px) {
+    display: ${(props) => props.displayMenuTablet};
   }
 `;
 

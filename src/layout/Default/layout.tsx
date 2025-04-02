@@ -6,7 +6,7 @@ import { Footer } from "../../components/Footer";
 export function Layout() {
   return (
       <LayoutContainer>
-        <Header borderRadius="16px" position="fixed" display="flex" />
+        <Header displayMenu="block" borderRadius="16px" position="fixed" display="flex" />
         <Outlet />
         <Footer />
       </LayoutContainer>

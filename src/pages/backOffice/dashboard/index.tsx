@@ -65,7 +65,7 @@ export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentF
 
   return (
     <DashboardPage>
-      <Aside />
+      <Aside handleCloseAside={() => {}}/>
       <DashboardContainer>
         <DashboardLabelContainer>
           <DashboardLabelText>{title}</DashboardLabelText>
