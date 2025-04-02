@@ -26,7 +26,7 @@ export const HeaderNav = styled.nav`
   gap: 36px;
 
   @media (max-width: 1024px) {
-    gap: 24px;
+    display: none;
   }
 
   a {
@@ -54,20 +54,16 @@ export const HeaderButtons = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  @media (max-width: 430px) {
+  @media (max-width: 1024px) {
     display: none;
   }
-
-  @media (max-width: 1025px) {
-    width: 272px;
-    height: 54px;
 
     button {
       width: 128px;
       height: 54px;
       gap: 16px;
     }
-  }
+  
 `;
 
 export const MenuButton = styled.button`
@@ -78,7 +74,7 @@ export const MenuButton = styled.button`
   display: none;
   background-color: transparent;
 
-  @media (max-width: 430px) {
+  @media (max-width: 1024px) {
     display: block;
   }
 `;
