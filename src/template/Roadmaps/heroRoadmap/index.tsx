@@ -5,18 +5,22 @@ import { buttons } from "../GridButton";
 import arrowDown from "../../../assets/Roadmaps/arrowDown.svg"
 import { ButtonsStyledRoadmaps, Grid, DropdownButtonStyled, GridDropdown } from "../GridButton/styled";
 import { HeroStrongTitleRoadmaps, HeroTitleRoadmaps } from "./styled";
-import image from "../../../assets/icons/close.svg"
+import close from "../../../assets/Roadmaps/arrowUp.svg"
 
 export function HeroRoadmaps() {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const [visibleItems, setVisibleItems] = useState<number>(6); 
+  const [closeDropDown,setCloseDropdown] = useState(false)
 
   const isMobile = window.innerWidth <= 768; 
 
 
   const showMoreItems = () => {
     setVisibleItems((prev) => prev + 3); 
+    setCloseDropdown(true)
   };
+
+
 
 
   useEffect(() => {
@@ -26,6 +30,14 @@ export function HeroRoadmaps() {
       setIsDropdownVisible(false); 
     }
   }, [visibleItems, isMobile]);
+
+  const returnStateDropdown = () => {
+      setVisibleItems((close)=> close - 3)
+      setCloseDropdown(false)
+    
+    }
+    
+  
 
   return (
     <>
@@ -62,9 +74,27 @@ export function HeroRoadmaps() {
               text={<img src={arrowDown} alt="botao de dropdown,assim que for clicado mostra os itens restantes"/>}
               border={`none`}
               onClick={showMoreItems} 
+              
             />
-          </DropdownButtonStyled>
+            </DropdownButtonStyled>
         )}
+         
+          {closeDropDown&& (
+            <DropdownButtonStyled>
+             <Button
+             width={`365px`}
+             height={`81px`}
+             colorText={`${theme.colors.white}`}
+             bgColor={"transparent"}
+             fontWeight={"600"}
+             text={<img src={close} alt="botao de dropdown,assim que for clicado mostra os itens restantes"/>}
+             border={`none`}
+             onClick={returnStateDropdown} 
+ 
+             />
+             </DropdownButtonStyled>
+          )}
+
       </GridDropdown>
     </>
   );

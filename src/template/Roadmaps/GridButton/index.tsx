@@ -1,5 +1,4 @@
-import { Button } from "../../../components/Button"
-import { theme } from "../../../theme/theme"
+
 
 export const buttons = [
    'Front End',

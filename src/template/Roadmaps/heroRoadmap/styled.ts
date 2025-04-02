@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import RoadmapsBackground from '../../../assets/backgrounds/black-background.svg'
 import { theme } from "../../../theme/theme";
 
 
