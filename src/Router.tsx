@@ -14,8 +14,8 @@ import { Steps } from "./pages/backOffice/dashboard/steps";
 export function Router() {
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route path="/" element={<Landpage />} />
+      <Route path="/landpage" element={<Layout />}>
+        <Route index element={<Landpage />} />
       </Route>
       <Route path="/backoffice" element={<BackOfficeLayout />}>
         <Route path="/backoffice" element={<BackOfficeLogin />} />

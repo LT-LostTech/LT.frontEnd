@@ -109,7 +109,7 @@ export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentF
                 <DashboardTableBodyCell>
                   <Button
                     width="128px"
-                    height="35px"
+                    height="40px"
                     colorText={theme.colors.white}
                     bgColor={theme.colors.gray800}
                     fontWeight="500"
