@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import heroBackground from "../../../assets/backgrounds/white-background.svg"
+import { theme } from "../../../theme/theme";
+
 
 export const HeroSectionContainer = styled.section`
     display: flex;
@@ -8,14 +9,10 @@ export const HeroSectionContainer = styled.section`
     justify-content: center;
     width: 100%;
     height: 100%;
-    background-image: url(${heroBackground});
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: 1;
     gap: 32px;
     padding: 289px 0;
     text-align: center;
+    border-bottom: 4px solid ${theme.colors.white};
 
     @media (max-width: 430px) {
         padding: 289px 24px;
@@ -28,7 +25,7 @@ export const HeroSectionContainer = styled.section`
 
 export const HeroTitle = styled.h2`
     font-size: 72px;
-    color: ${props => props.theme.colors.black};    
+    color: ${theme.colors.white};    
     font-family: 'Chakra Petch', sans-serif;
     font-weight: 700;
 
@@ -42,5 +39,5 @@ export const HeroDescription = styled.p`
     font-style: italic;
     width: 100%;
     height: 100%;
-    color: ${props => props.theme.colors.black};
+    color: ${theme.colors.white};
 `

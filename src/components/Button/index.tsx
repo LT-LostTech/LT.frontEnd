@@ -1,6 +1,6 @@
 import { ButtonContainer } from "./styled";
 
-interface ButtonProps {
+export interface ButtonProps {
     width: string;
     height: string;
     colorText: string;

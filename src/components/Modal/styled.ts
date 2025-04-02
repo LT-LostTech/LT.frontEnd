@@ -1,7 +1,15 @@
 import styled from "styled-components";
 import { theme } from "../../theme/theme";
 
-export const ModalContainer = styled.div`
+interface ModalContainerProps {
+  position: string;
+}
+
+interface ModalPhotoProps {
+  display: string
+}
+
+export const ModalContainer = styled.div<ModalContainerProps>`
   width: 906px;
   height: 605px;
   background-color: ${(props) => props.theme.colors.white};
@@ -9,10 +17,10 @@ export const ModalContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: ${props => props.position};
+  top: ${props => props.position === "fixed" ? "50%" : "0"};
+  left: ${props => props.position === "fixed" ? "50%" : "0"};
+  transform: ${props => props.position === "fixed" ? "translate(-50%, -50%)" : "translate(0, 0)"};
   z-index: 1000;
 
   @media (max-width: 1024px) {
@@ -26,11 +34,12 @@ export const ModalContainer = styled.div`
     
   }
 `;
-export const ModalPhoto = styled.img`
+export const ModalPhoto = styled.img<ModalPhotoProps>`
   box-sizing: border-box;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: ${(props) => props.display};
 
   @media (max-width: 1024px) {
     width: 100%;

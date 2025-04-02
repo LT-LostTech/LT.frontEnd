@@ -1,6 +1,6 @@
 import {
-    ModalChangeLine,
-    ModalChangeOption,
+  ModalChangeLine,
+  ModalChangeOption,
   ModalChangeOptionText,
   ModalContainer,
   ModalContent,
@@ -26,39 +26,35 @@ interface ModalProps {
   onHighlightClick?: () => void;
   onInformationExtraClick?: () => void;
   onClick?: () => void;
+  position: string;
+  display: string;
 }
 
-export function Modal({ onClick, title, inputs, textButton, textChangeOption, textChangeOptionHighlight, displayInformationExtra, displayChangeOption, textInformationExtra, onHighlightClick, onInformationExtraClick }: ModalProps) {
+export function Modal({ onClick, title, inputs, textButton, textChangeOption, textChangeOptionHighlight, displayInformationExtra, displayChangeOption, textInformationExtra, onHighlightClick, onInformationExtraClick, position, display }: ModalProps) {
   return (
-    <ModalContainer>
-      <ModalPhoto src={modalPhoto} />
+    <ModalContainer position={position} >
+      <ModalPhoto src={modalPhoto} display={display}/>
       <ModalContent>
         <ModalTitle>{title}</ModalTitle>
         <ModalForm>
           {inputs.map((input, key) => (
             <Input
+              {...input}
               key={key}
-              placeholder={input.placeholder}
-              label={input.label}
-              type={input.type}
-              showIcon={input.showIcon}
-              showLabel={input.showLabel}
-              IconOpen={input.IconOpen}
-              IconClose={input.IconClose}
             />
           ))}
         </ModalForm>
         <ModalForgotPassword display={displayInformationExtra} onClick={onInformationExtraClick}>
-            {textInformationExtra}
+          {textInformationExtra}
         </ModalForgotPassword>
         <Button onClick={onClick} width="100%" height="50px" colorText="white" bgColor={theme.colors.gray800} border="transparent" fontWeight="600" text={textButton} />
         <ModalChangeOption display={displayChangeOption}>
-            <ModalChangeLine />
-            <p>ou</p>
-            <ModalChangeLine />
+          <ModalChangeLine />
+          <p>ou</p>
+          <ModalChangeLine />
         </ModalChangeOption>
         <ModalChangeOptionText>
-            {textChangeOption}<span onClick={onHighlightClick} className="highlight">{textChangeOptionHighlight}</span>
+          {textChangeOption}<span onClick={onHighlightClick} className="highlight">{textChangeOptionHighlight}</span>
         </ModalChangeOptionText>
       </ModalContent>
     </ModalContainer>

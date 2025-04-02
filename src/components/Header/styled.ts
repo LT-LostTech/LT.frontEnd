@@ -1,13 +1,32 @@
 import styled from "styled-components";
+import { theme } from "../../theme/theme";
 
-export const HeaderContainer = styled.header`
-  width: 100%;
+interface HeaderContainerProps {
+  position: string;
+  display: string;
+  borderRadius: string;
+}
+
+interface DisplayProps {
+  display: string;
+}
+
+interface DisplayHamburguerProps {
+  displayMenu: string;
+  displayMenuTablet: string
+}
+
+export const HeaderContainer = styled.header<HeaderContainerProps>`
+  width: ${(props) => props.borderRadius === "16px" ? '90%' : '100%'};
   height: 100px;
-  background-color: ${(props) => props.theme.colors.gray800};
+  background-color: ${theme.colors.gray800};
   display: flex;
   align-items: center;
   padding: 12px 135px;
   justify-content: space-between;
+  position: ${(props) => props.position};
+  border-radius: ${(props) => props.borderRadius};;
+  z-index: 1000;
 
 
   @media (max-width: 1024px) {
@@ -20,8 +39,8 @@ export const HeaderLogo = styled.img`
   height: 100px;
 `;
 
-export const HeaderNav = styled.nav`
-  display: flex;
+export const HeaderNav = styled.nav<DisplayProps>`
+  display: ${(props) => props.display};
   align-items: center;
   gap: 36px;
 
@@ -46,11 +65,11 @@ export const HeaderNav = styled.nav`
   }
 `;
 
-export const HeaderButtons = styled.div`
+export const HeaderButtons = styled.div<DisplayProps>`
   width: 349px;
   height: 62px;
   gap: 16px;
-  display: flex;
+  display: ${(props) => props.display};
   align-items: center;
   justify-content: space-between;
 
@@ -70,7 +89,7 @@ export const HeaderButtons = styled.div`
   }
 `;
 
-export const MenuButton = styled.button`
+export const MenuButton = styled.button<DisplayHamburguerProps>`
   width: 48px;
   height: 48px;
   border-radius: 8px;
@@ -78,8 +97,13 @@ export const MenuButton = styled.button`
   display: none;
   background-color: transparent;
 
+
   @media (max-width: 430px) {
-    display: block;
+    display: ${(props) => props.displayMenu};
+  }
+
+  @media (max-width: 1024px) {
+    display: ${(props) => props.displayMenuTablet};
   }
 `;
 
