@@ -10,6 +10,7 @@ import { CreateFormChallenges } from "./pages/backOffice/dashboard/challenges/cr
 import { EditFormRoadmap } from "./pages/backOffice/dashboard/roadmap/edit";
 import { EditFormChallenges } from "./pages/backOffice/dashboard/challenges/edit";
 import { Steps } from "./pages/backOffice/dashboard/steps";
+import { NotFound } from "./pages/notFound";
 
 export function Router() {
   return (
@@ -19,12 +20,49 @@ export function Router() {
       </Route>
       <Route path="/backoffice" element={<BackOfficeLayout />}>
         <Route path="/backoffice" element={<BackOfficeLogin />} />
-        <Route path="/backoffice/forgot-password" element={<ForgotPassword />} />
-        <Route path="/backoffice/dashboard/roadmaps" element={<Dashboard title="Roadmaps" tableHeaders={["Nome do roadmap", "Categoria", "Linguagem de programação", "Ações"]} ComponentFormCreate={CreateFormRoadmap} ComponentFormEdit={EditFormRoadmap} />}>
-          <Route path="/backoffice/dashboard/roadmaps/steps" element={<Steps />} />
+        <Route
+          path="/backoffice/forgot-password"
+          element={<ForgotPassword />}
+        />
+        <Route
+          path="/backoffice/dashboard/roadmaps"
+          element={
+            <Dashboard
+              title="Roadmaps"
+              tableHeaders={[
+                "Nome do roadmap",
+                "Categoria",
+                "Linguagem de programação",
+                "Ações",
+              ]}
+              ComponentFormCreate={CreateFormRoadmap}
+              ComponentFormEdit={EditFormRoadmap}
+            />
+          }
+        >
+          <Route
+            path="/backoffice/dashboard/roadmaps/steps"
+            element={<Steps />}
+          />
         </Route>
-        <Route path="/backoffice/dashboard/challenges" element={<Dashboard title="Challenges" tableHeaders={["Nome do desafio", "Categoria", "Linguagem de programação", "Ações"]} ComponentFormCreate={CreateFormChallenges} ComponentFormEdit={EditFormChallenges} />} />
+        <Route
+          path="/backoffice/dashboard/challenges"
+          element={
+            <Dashboard
+              title="Challenges"
+              tableHeaders={[
+                "Nome do desafio",
+                "Categoria",
+                "Linguagem de programação",
+                "Ações",
+              ]}
+              ComponentFormCreate={CreateFormChallenges}
+              ComponentFormEdit={EditFormChallenges}
+            />
+          }
+        />
       </Route>
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
