@@ -28,11 +28,9 @@ export const NotFoundTitle = styled.h1`
   color: ${theme.colors.white};
   font-family: "Chakra Petch", sans-serif;
   text-align: center;
-  margin: 0;
 
   @media (max-width: 430px) {
-   
-    font-size: 64px;
+    font-size: 48px;
   }
 `;
 
