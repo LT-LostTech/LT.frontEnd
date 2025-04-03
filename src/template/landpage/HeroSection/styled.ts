@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { theme } from "../../../theme/theme";
 
 
+
 export const HeroSectionContainer = styled.section`
     display: flex;
     flex-direction: column;
