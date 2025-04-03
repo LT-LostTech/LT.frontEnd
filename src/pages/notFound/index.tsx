@@ -11,7 +11,7 @@ export function NotFound() {
       <NotFoundTitle>Página não encontrada</NotFoundTitle>
       <NotFoundImage src={notFoundImage} />
       <Button
-        bgColor={theme.colors.black}
+        bgColor={theme.colors.gray800}
         border="0"
         colorText={theme.colors.white}
         fontWeight="600"
@@ -19,7 +19,7 @@ export function NotFound() {
         text="Voltar para home"
         width="500px"
         onClick={() => {
-          navigate("/landpage");
+          navigate("/");
         }}
       />
     </NotFoundContainer>
