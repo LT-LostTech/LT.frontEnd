@@ -15,10 +15,11 @@ export const SectionIllustrationContainer = styled.section<SectionIllustrationPr
     width: 100%;
     height: 100%;
     padding: 262px 56px;
-    border-top: 4px solid ${theme.colors.white};
+    gap: 24px;
 
     @media (max-width: 430px) {     
         flex-direction: column-reverse;
+        padding: 100px 56px;
         
         button {
             width: 100%;
