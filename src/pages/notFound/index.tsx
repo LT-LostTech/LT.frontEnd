@@ -17,7 +17,7 @@ export function NotFound() {
         fontWeight="600"
         height="84px"
         text="Voltar para home"
-        width="500px"
+        width="90%"
         onClick={() => {
           navigate("/");
         }}
