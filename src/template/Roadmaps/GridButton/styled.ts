@@ -20,7 +20,7 @@ export const Grid =styled.section`
 
     @media (max-width:500px) {
         grid-template-columns: 1fr;
-        padding: 86px 30px;
+        padding: 86px 30px 32px 30px;
         border-bottom: none;
         
     }
