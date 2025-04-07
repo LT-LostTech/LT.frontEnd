@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { theme } from "../../theme/theme"
-import RoadmapsBackground from '../../assets/backgrounds/black-background.svg'
+import RoadmapsBackground from '../../assets/backgrounds/landing-page-background.png'
 
 export const RoadmapsContainer = styled.div`
     display: flex;

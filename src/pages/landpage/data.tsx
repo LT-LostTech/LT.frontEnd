@@ -1,4 +1,4 @@
-import IllustrationRoadmap from "../../assets/landingPage/illustrations/study-ilustration 1.svg";
+import IllustrationRoadmap from "../../assets/landingPage/illustrations/study-illustration.svg";
 import IllustrationChallenge from "../../assets/landingPage/illustrations/challenges-illustration.svg";
 import IllustrationNews from "../../assets/landingPage/illustrations/news-illustration.svg";
 
@@ -29,7 +29,7 @@ export const sections = [
       image: IllustrationNews,
       textButton: "Notícias",
       backgroundImage: "white",
-      colorButton: "black",
+      colorButton: "white",
     },
     {
       layout: "left",

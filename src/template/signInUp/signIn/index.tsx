@@ -6,11 +6,18 @@ interface SignInProps {
     onHighlightClick: () => void;
     onInformationExtraClick: () => void;
     onComplete: () => void;
+    displayChangeOption: string;
+    position: string;
+    textChangeOption: string;
+    textChangeOptionHighlight: string;
+    displayPhoto: string;
 }
 
-export function SignIn({ onHighlightClick, onInformationExtraClick, onComplete }: SignInProps) {
+export function SignIn({ displayPhoto, onHighlightClick, onInformationExtraClick, onComplete, displayChangeOption, position, textChangeOption, textChangeOptionHighlight }: SignInProps) {
     return (
         <Modal
+            display={displayPhoto}
+            position={position}
             title="Entrar"
             inputs={[
                 {
@@ -32,17 +39,17 @@ export function SignIn({ onHighlightClick, onInformationExtraClick, onComplete }
                 }
             ]}
             textButton="Entrar"
-            textChangeOption="Não tem uma conta? Se "
-            textChangeOptionHighlight="Cadastre"
             displayInformationExtra="flex"
             textInformationExtra="Esqueceu sua senha?"
+            textChangeOption={textChangeOption}
+            textChangeOptionHighlight={textChangeOptionHighlight}
             onHighlightClick={() => {
                 onHighlightClick();
             }}
             onInformationExtraClick={() => {
                 onInformationExtraClick();
             }}
-            displayChangeOption="flex"
+            displayChangeOption={displayChangeOption}
             onClick={() => {
                 onComplete();
             }}

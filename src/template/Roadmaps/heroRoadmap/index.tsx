@@ -12,7 +12,7 @@ export function HeroRoadmaps() {
   const [visibleItems, setVisibleItems] = useState<number>(6); 
   const [closeDropDown,setCloseDropdown] = useState(false)
 
-  const isMobile = window.innerWidth <= 768; 
+  const isMobile = window.innerWidth <= 500; 
 
 
   const showMoreItems = () => {
@@ -21,15 +21,19 @@ export function HeroRoadmaps() {
   };
 
 
-
-
   useEffect(() => {
     if (isMobile && visibleItems < buttons.length) {
       setIsDropdownVisible(true);
-    } else {
-      setIsDropdownVisible(false); 
+    } else if(isMobile === false){
+      setIsDropdownVisible(false);
+      setVisibleItems((prev) => prev + 3);  
+      
+    }else{
+      setIsDropdownVisible(false);
     }
   }, [visibleItems, isMobile]);
+
+
 
   const returnStateDropdown = () => {
       setVisibleItems((close)=> close - 3)

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { theme } from "../../../theme/theme";
 
 
+
 export const HeroTitleRoadmaps = styled.h2`
     font-size: 96px;
     font-weight: 600;
@@ -27,4 +28,3 @@ export const HeroTitleRoadmaps = styled.h2`
 export const HeroStrongTitleRoadmaps = styled.strong`
     color: ${theme.colors.blue400};
 `
-

@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import { theme } from "../../../theme/theme";
-import blackBackground from "../../../assets/backgrounds/black-background.svg"
-import whiteBackground from "../../../assets/backgrounds/white-background.svg"
 
 interface SectionIllustrationProps {
     layout: "left" | "right";
@@ -17,14 +15,11 @@ export const SectionIllustrationContainer = styled.section<SectionIllustrationPr
     width: 100%;
     height: 100%;
     padding: 262px 56px;
-    background-image: ${({backgroundImage}) => backgroundImage === "black" ? `url(${blackBackground})` : `url(${whiteBackground})`};
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
+    gap: 24px;
 
     @media (max-width: 430px) {     
         flex-direction: column-reverse;
+        padding: 100px 56px;
         
         button {
             width: 100%;
@@ -62,7 +57,7 @@ export const SectionIllustrationTitle = styled.h2<SectionIllustrationProps>`
     font-family: ${theme.font.chackra};
     font-size: 72px;
     font-weight: 700;
-    color: ${({backgroundImage}) => backgroundImage === "black" ? theme.colors.white : theme.colors.black};
+    color: ${theme.colors.white};
 
     @media (max-width: 430px) {
         font-size: 24px;
@@ -74,7 +69,7 @@ export const SectionIllustrationDescription = styled.p<SectionIllustrationProps>
     font-size: 24px;
     font-weight: 400;
     font-style: italic;
-    color: ${({backgroundImage}) => backgroundImage === "black" ? theme.colors.white : theme.colors.black};
+    color: ${theme.colors.white};
     
 
     .highlight {
