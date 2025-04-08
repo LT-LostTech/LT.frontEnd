@@ -1,5 +1,6 @@
 import { Button } from "../../components/Button";
-import { Grid } from "../../template/Roadmaps/GridButton/styled";
+import { Grid } from "../../components/Grid";
+import { GridContainer } from "../../components/Grid/styled";
 import { HeroPageBackEnd } from "../../template/Roadmaps/Pages/HeroPages";
 import { theme } from "../../theme/theme";
 import { Linguages } from "./Linguages";
@@ -15,12 +16,7 @@ export function RoadmapPages() {
             <TitleOfSection>
             Linguagens de programação
             </TitleOfSection>
-            <Grid>
-                {
-                    Linguages.map((Linguages,index)=>(
-                        <Button key={index} width={"369px"} height={"81px"} colorText={`${theme.colors.white}`} bgColor={"transparent"} fontWeight={"600"} text={Linguages} border={`1px solid ${theme.colors.white}`}/>
-                    ))
-                }
+            <Grid columns={3} gap={"32px"} children={Linguages}>
             </Grid>
         </SectionPage>
     </>
