@@ -1,13 +1,17 @@
 import styled from "styled-components";
-import BackgroundBackEnd from '../../assets/backgrounds/landing-page-background.png'
-import { theme } from "../../theme/theme";
+import BackgroundBackEnd from '../../../assets/backgrounds/landing-page-background.png'
+import { theme } from "../../../theme/theme";
 
 export const SectionGroup = styled.section`
     display: flex;
     align-items: center;
     justify-content: center;
     background-image:url(${BackgroundBackEnd});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     width: 100%;
+    height: 100vh;
     border-bottom: 2px solid ${theme.colors.white};
     
     @media (max-width:884px) {

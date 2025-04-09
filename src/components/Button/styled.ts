@@ -7,6 +7,8 @@ interface ButtonProps {
   bgColor: string;
   fontWeight: string;
   border: string;
+  hoverBg?:string;
+  hoverColor?:string;
 }
 
 export const ButtonContainer = styled.button<ButtonProps>`
@@ -23,5 +25,8 @@ export const ButtonContainer = styled.button<ButtonProps>`
   
   &:hover {
     transform: scale(1.05);
+    background-color: ${props => props.hoverBg};
+    color: ${props => props.hoverColor};
   }
+
 `;

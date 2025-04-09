@@ -1,6 +1,6 @@
 import { HeroStrongTitleRoadmaps, HeroTitleRoadmaps } from "./styled";
 import { Grid } from "../../../components/Grid";
-import { buttons } from "../GridButton";
+import { buttons } from "../GridButton/data";
 
 export function HeroRoadmaps() {
 

@@ -11,5 +11,4 @@ export const LayoutContainer = styled.main`
   background-size: cover;
   background-position: center;
   align-items: center;
-  padding-top: 20px;
 `;

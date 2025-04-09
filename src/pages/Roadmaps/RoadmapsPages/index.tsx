@@ -1,9 +1,6 @@
-import { Button } from "../../components/Button";
-import { Grid } from "../../components/Grid";
-import { GridContainer } from "../../components/Grid/styled";
-import { HeroPageBackEnd } from "../../template/Roadmaps/Pages/HeroPages";
-import { theme } from "../../theme/theme";
-import { Linguages } from "./Linguages";
+import { Grid } from "../../../components/Grid";
+import { HeroPageBackEnd } from "../../../template/Roadmaps/Pages/HeroPages";
+import { Linguages } from "./data";
 import { SectionGroup, SectionPage, TitleOfSection } from "./styled";
 
 export function RoadmapPages() {

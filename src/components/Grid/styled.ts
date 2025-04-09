@@ -17,6 +17,8 @@ export const GridContainer = styled.section<GridProps>`
   gap: ${(props) => props.gap};
   border-bottom: 1px solid ${theme.colors.white};
 
+  
+
   @media (max-width: 884px) {
     grid-template-columns: repeat(2, 1fr);
     padding: 86px 59px;
@@ -35,6 +37,8 @@ export const ButtonsStyledRoadmaps = styled.div`
     justify-self: center;
     align-items: center;
     text-align: center;
+
+    
 
     &:nth-child(9) {
       grid-column: 1 / -1;

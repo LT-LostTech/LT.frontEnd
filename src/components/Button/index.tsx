@@ -9,11 +9,13 @@ export interface ButtonProps {
     fontWeight: string;
     text: ReactNode;
     border: string;
+    hoverBg?:string;
+    hoverColor?:string;
     onClick?: () => void;
 }
 
 
-export function Button({text, width, height, colorText, bgColor, fontWeight, border, onClick}: ButtonProps) {
+export function Button({text, width, height, colorText, bgColor, fontWeight, border,hoverBg,hoverColor, onClick}: ButtonProps) {
     return (
         <ButtonContainer
             width={width}
@@ -23,6 +25,8 @@ export function Button({text, width, height, colorText, bgColor, fontWeight, bor
             fontWeight={fontWeight}
             border={border}
             onClick={onClick}
+            hoverBg={hoverBg}
+            hoverColor={hoverColor}
         >
             {text}       </ButtonContainer>
     )

@@ -12,7 +12,8 @@ import { EditFormChallenges } from "./pages/backOffice/dashboard/challenges/edit
 import { Steps } from "./pages/backOffice/dashboard/steps";
 import { NotFound } from "./pages/notFound";
 import { Roadmaps } from "./pages/Roadmaps";
-import { RoadmapPages } from "./pages/RoadmapsPages";
+import { RoadmapPages } from "./pages/Roadmaps/RoadmapsPages";
+
 
 export function Router() {
   return (

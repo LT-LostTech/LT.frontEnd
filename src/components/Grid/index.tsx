@@ -54,6 +54,8 @@ export function Grid({ columns, gap, children }: GridProps) {
             fontWeight={"600"}
             text={childrenArray}
             border={`1px solid ${theme.colors.white}`}
+            hoverBg={`${theme.colors.white}`}
+            hoverColor={`${theme.colors.black}`}
           />
           </ButtonsStyledRoadmaps>
         ))}
