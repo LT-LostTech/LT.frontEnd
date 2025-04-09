@@ -28,7 +28,7 @@ export const WaitingSection = styled.section`
 
 export const TitleSectionWaiting = styled.h2`
   
-    font-family: ${theme.font.jersey};
+    font-family: ${theme.font.chackra};
     font-size: 96px;
     font-weight: 400;
     padding: 0 71px;
