@@ -10,11 +10,11 @@ export const SectionGroup = styled.section`
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    width: 100%;
-    height: 100vh;
+    width: 100vw;
+    height: 100%;
     border-bottom: 2px solid ${theme.colors.white};
     
-    @media (max-width:884px) {
+    @media (max-width:1024px) {
         flex-direction: column;
     }
 `
@@ -34,7 +34,7 @@ export const TitleOfSection = styled.h2`
     color: ${theme.colors.white};
     font-family: ${theme.font.lexend};
 
-    @media (max-width:375px) {
+    @media (max-width:428px) {
         font-size: 40px ;
         
     }

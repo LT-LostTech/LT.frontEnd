@@ -18,7 +18,17 @@ export function Grid({ columns, gap, children }: GridProps) {
   const [visibleItems, setVisibleItems] = useState<number>(6);
   const [closeDropDown, setCloseDropdown] = useState(false);
 
-  const isMobile = window.innerWidth <= 500;
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 500);
+
+useEffect(() => {
+  const handleResize = () => {
+    setIsMobile(window.innerWidth <= 500);
+  };
+
+  window.addEventListener("resize", handleResize);
+
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
 
   const showMoreItems = () => {
     setVisibleItems((prev) => prev + 3);
@@ -26,15 +36,17 @@ export function Grid({ columns, gap, children }: GridProps) {
   };
 
   useEffect(() => {
-    if (isMobile && visibleItems < childrenArray.length) {
-      setIsDropdownVisible(true);
-    } else if (isMobile === false) {
-      setIsDropdownVisible(false);
-      setVisibleItems((prev) => prev + 3);
+    if (isMobile) {
+      setIsDropdownVisible(visibleItems < childrenArray.length);
     } else {
       setIsDropdownVisible(false);
+      if (visibleItems < childrenArray.length) {
+        setVisibleItems(childrenArray.length);
+      }
     }
-  }, [visibleItems, isMobile]);
+  }, [isMobile, visibleItems, childrenArray.length]);
+
+ 
 
   const returnStateDropdown = () => {
     setVisibleItems((close) => close - 3);

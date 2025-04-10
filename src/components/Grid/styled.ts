@@ -17,14 +17,12 @@ export const GridContainer = styled.section<GridProps>`
   gap: ${(props) => props.gap};
   border-bottom: 1px solid ${theme.colors.white};
 
-  
-
-  @media (max-width: 884px) {
+  @media (max-width: 1084px) {
     grid-template-columns: repeat(2, 1fr);
     padding: 86px 59px;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 780px) {
     grid-template-columns: 1fr;
     padding: 86px 30px 32px 30px;
     border-bottom: none;
