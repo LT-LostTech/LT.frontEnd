@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import BackgroundBackEnd from '../../../assets/backgrounds/landing-page-background.png'
+import BackgroundBackEnd from '../../../assets/backgrounds/sectionsWithIllustration.png'
 import { theme } from "../../../theme/theme";
 
 export const SectionGroup = styled.section`
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
     background-image:url(${BackgroundBackEnd});
     background-position: center;
@@ -12,6 +12,7 @@ export const SectionGroup = styled.section`
     background-size: cover;
     width: 100vw;
     height: 100%;
+    margin-bottom: 64px;
     border-bottom: 2px solid ${theme.colors.white};
     
     @media (max-width:1024px) {
@@ -25,7 +26,6 @@ export const SectionPage = styled.section`
     justify-content: center;
     text-align: center;
     align-items: center;
-    margin-top: 64px;
 `
 
 export const TitleOfSection = styled.h2`

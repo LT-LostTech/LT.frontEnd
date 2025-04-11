@@ -12,11 +12,11 @@ export const ImageContainer = styled.div`
   background-image: url(${backgroundWhite});
   align-items: center;
   
+
   @media (max-width:428px) {
     padding-top:100px;
     height: auto;
   }
-
 `
 
 export const ImageIllustration = styled.img`
@@ -34,12 +34,17 @@ export const InformationsContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  justify-content: center;
+  height: 100%;
+  justify-content: start;
   color: ${theme.colors.white};
   font-weight: 600;
-  gap: 96px;
+  gap: 56px;
   padding-left: 32px;
-  padding-top: 110px;
+  padding-top: 60px;
+  
+  @media (max-width:884px) {
+    gap: 96px;
+    }
   
 `
 
