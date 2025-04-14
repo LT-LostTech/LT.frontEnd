@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { theme } from "../../theme/theme";
 
 export const FooterContainer = styled.footer`
     display: flex;
@@ -32,7 +33,7 @@ export const FooterNav = styled.nav`
 `
 
 export const FooterTitle = styled.h3`
-    font-family: 'Chakra Petch', sans-serif;
+    font-family: ${theme.font.chackra};
     font-size: 48px;
     font-weight: 700;
     text-decoration: underline;

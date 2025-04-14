@@ -22,15 +22,18 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
   background-color: ${theme.colors.gray800};
   display: flex;
   align-items: center;
-  padding: 12px 135px;
+  padding: 12px 0;
   justify-content: space-between;
   position: ${(props) => props.position};
   border-radius: ${(props) => props.borderRadius};;
   z-index: 1000;
+  margin-top: 20px;
+  justify-content: space-around;
 
 
   @media (max-width: 1024px) {
     padding: 12px 12px;
+    justify-content: space-between;
   }
 `;
 
@@ -45,12 +48,12 @@ export const HeaderNav = styled.nav<DisplayProps>`
   gap: 36px;
 
   @media (max-width: 1024px) {
-    gap: 24px;
+    display: none;
   }
 
   a {
     text-decoration: none;
-    color: ${(props) => props.theme['gray800']};
+    color: ${theme.colors.gray800};
     font-size: 20px;
     color: white;
 
@@ -66,27 +69,23 @@ export const HeaderNav = styled.nav<DisplayProps>`
 `;
 
 export const HeaderButtons = styled.div<DisplayProps>`
-  width: 349px;
+  width: auto;
   height: 62px;
   gap: 16px;
   display: ${(props) => props.display};
   align-items: center;
-  justify-content: space-between;
+  gap: 18px;
 
-  @media (max-width: 430px) {
+  @media (max-width: 1024px) {
     display: none;
   }
-
-  @media (max-width: 1025px) {
-    width: 272px;
-    height: 54px;
 
     button {
       width: 128px;
       height: 54px;
       gap: 16px;
     }
-  }
+  
 `;
 
 export const MenuButton = styled.button<DisplayHamburguerProps>`
@@ -97,13 +96,8 @@ export const MenuButton = styled.button<DisplayHamburguerProps>`
   display: none;
   background-color: transparent;
 
-
-  @media (max-width: 430px) {
-    display: ${(props) => props.displayMenu};
-  }
-
   @media (max-width: 1024px) {
-    display: ${(props) => props.displayMenuTablet};
+    display: flex;
   }
 `;
 

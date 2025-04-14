@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../../theme/theme";
 
-
-
 export const HeroSectionContainer = styled.section`
     display: flex;
     flex-direction: column;
@@ -17,7 +15,7 @@ export const HeroSectionContainer = styled.section`
 
     @media (max-width: 430px) {
         padding: 289px 24px;
-
+        
         button {
             width: 100%;
         }
@@ -27,7 +25,8 @@ export const HeroSectionContainer = styled.section`
 export const HeroTitle = styled.h2`
     font-size: 72px;
     color: ${theme.colors.white};    
-    font-family: 'Chakra Petch', sans-serif;
+    font-family: 'Chakra Petch', sans-serif;  
+    font-family:${theme.font.chackra} ;
     font-weight: 700;
 
     @media (max-width: 430px) {

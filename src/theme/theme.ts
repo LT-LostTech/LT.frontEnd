@@ -11,6 +11,12 @@ export const theme = {
 
     red400: "#EB5757",
   },
+  font: {
+    poppins: "'Poppins', sans-serif",
+    chackra:"'Chakra Petch', sans-serif",
+    jersey:"'Jersey 25', sans-serif",
+    lexend: "'Lexend Deca', sans-serif",
+  }
 };
 
 export type ThemeProps = typeof theme;
