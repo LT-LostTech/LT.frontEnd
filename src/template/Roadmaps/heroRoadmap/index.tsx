@@ -6,11 +6,14 @@ import arrowDown from "../../../assets/Roadmaps/arrowDown.svg"
 import { ButtonsStyledRoadmaps, Grid, DropdownButtonStyled, GridDropdown } from "../GridButton/styled";
 import { HeroStrongTitleRoadmaps, HeroTitleRoadmaps } from "./styled";
 import close from "../../../assets/Roadmaps/arrowUp.svg"
+import { useNavigate } from "react-router-dom";
 
 export function HeroRoadmaps() {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const [visibleItems, setVisibleItems] = useState<number>(6); 
   const [closeDropDown,setCloseDropdown] = useState(false)
+
+  const navigate = useNavigate()
 
   const isMobile = window.innerWidth <= 500; 
 
@@ -59,8 +62,9 @@ export function HeroRoadmaps() {
                 colorText={`${theme.colors.white}`}
                 bgColor={"transparent"}
                 fontWeight={"600"}
-                text={button}
+                text={button.name}
                 border={`1px solid ${theme.colors.white}`}
+                onClick={() => navigate(button.path)}
               />
             </ButtonsStyledRoadmaps>
           ))}

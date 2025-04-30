@@ -13,15 +13,18 @@ import { Steps } from "./pages/backOffice/dashboard/steps";
 import { NotFound } from "./pages/notFound";
 import { Roadmaps } from "./pages/Roadmaps";
 import { RoadmapPages } from "./pages/RoadmapsPages";
+import {ChallengesBackEnd } from "./pages/BackEnd";
 
 export function Router() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Landpage />} />
-        <Route path="/roadmaps" element={<Roadmaps/>} />
-        <Route path="/roadmaps/pages" element ={<RoadmapPages/>}/>
+        <Route path="roadmaps" element={<Roadmaps/>} />
+        <Route path="roadmaps/pages" element ={<RoadmapPages/>}/>
+        <Route path="challenges/back-end" element={<ChallengesBackEnd/>}/>   
       </Route>
+      
       <Route path="/backoffice" element={<BackOfficeLayout />}>
         <Route path="/backoffice" element={<BackOfficeLogin />} />
         <Route
