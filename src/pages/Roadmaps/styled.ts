@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { theme } from "../../theme/theme"
-import RoadmapsBackground from '../../assets/backgrounds/landing-page-background.png'
+import RoadmapsBackground from '../../assets/backgrounds/sectionsWithIllustration.png'
 
 export const RoadmapsContainer = styled.div`
     display: flex;
@@ -28,7 +28,7 @@ export const WaitingSection = styled.section`
 
 export const TitleSectionWaiting = styled.h2`
   
-    font-family: ${theme.font.jersey};
+    font-family: ${theme.font.chackra};
     font-size: 96px;
     font-weight: 400;
     padding: 0 71px;
