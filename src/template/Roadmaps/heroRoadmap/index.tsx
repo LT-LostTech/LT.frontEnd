@@ -4,19 +4,27 @@ import { theme } from "../../../theme/theme";
 import { buttons } from "../GridButton";
 import arrowDown from "../../../assets/Roadmaps/arrowDown.svg"
 import { ButtonsStyledRoadmaps, Grid, DropdownButtonStyled, GridDropdown } from "../GridButton/styled";
-import { HeroStrongTitleRoadmaps, HeroTitleRoadmaps } from "./styled";
+import { StrongTitle, HeroTitleRoadmaps } from "./styled";
 import close from "../../../assets/Roadmaps/arrowUp.svg"
 import { useNavigate } from "react-router-dom";
 
 export function HeroRoadmaps() {
+  const[isMobile,setIsMobile] = useState(window.innerWidth <= 500)
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const [visibleItems, setVisibleItems] = useState<number>(6); 
   const [closeDropDown,setCloseDropdown] = useState(false)
 
   const navigate = useNavigate()
 
-  const isMobile = window.innerWidth <= 500; 
-
+  useEffect(()=>{
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 500)
+    }
+    addEventListener('resize',handleResize)
+    
+  return () => removeEventListener('resize',handleResize)
+  }
+  ,[])
 
   const showMoreItems = () => {
     setVisibleItems((prev) => prev + 3); 
@@ -27,11 +35,7 @@ export function HeroRoadmaps() {
   useEffect(() => {
     if (isMobile && visibleItems < buttons.length) {
       setIsDropdownVisible(true);
-    } else if(isMobile === false){
-      setIsDropdownVisible(false);
-      setVisibleItems((prev) => prev + 3);  
-      
-    }else{
+    } else{
       setIsDropdownVisible(false);
     }
   }, [visibleItems, isMobile]);
@@ -39,17 +43,16 @@ export function HeroRoadmaps() {
 
 
   const returnStateDropdown = () => {
-      setVisibleItems((close)=> close - 3)
-      setCloseDropdown(false)
-    
-    }
+    setVisibleItems((prev) => prev - 3);
+    setCloseDropdown(false);
+  };
     
   
 
   return (
     <>
       <HeroTitleRoadmaps>
-        Encontre o seu caminho na <HeroStrongTitleRoadmaps>{'</tecnologia>'}</HeroStrongTitleRoadmaps>!
+        Encontre o seu caminho na <StrongTitle>{'</tecnologia>'}</StrongTitle>!
       </HeroTitleRoadmaps>
 
       <GridDropdown>

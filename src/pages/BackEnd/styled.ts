@@ -16,7 +16,7 @@ export const BackEndContainer = styled.div`
     color: ${theme.colors.white};
 `
 
-export const SectionBackEnd = styled.section`
+export const SectionHero = styled.section`
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -39,3 +39,12 @@ export const SubTitle = styled.p`
     padding: 0 138.5px;
     text-align: center;
 `
+
+export const SectionLinguages = styled.section`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 192.5px;
+`
+

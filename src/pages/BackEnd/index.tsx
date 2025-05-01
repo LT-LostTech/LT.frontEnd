@@ -1,14 +1,20 @@
-import { BackEndContainer, BackEndTitle, SectionBackEnd, SubTitle } from "./styled";
+import { Grid } from "../../template/Roadmaps/GridButton/styled";
+import { StrongTitle } from "../../template/Roadmaps/heroRoadmap/styled";
+import { BackEndContainer, BackEndTitle,SubTitle, SectionHero, SectionLinguages } from "./styled";
 
 
 
 export function ChallengesBackEnd(){
     return(
         <BackEndContainer>
-            <SectionBackEnd>
+            <SectionHero>
                 <BackEndTitle>BACK-END</BackEndTitle>
                 <SubTitle>Prepare-se para Superar os Desafios Mais Empolgantes e Avançar na Sua Jornada na Programação!</SubTitle>
-            </SectionBackEnd>
+            </SectionHero>
+            <SectionLinguages>
+                <BackEndTitle>Nível <StrongTitle>Básico</StrongTitle></BackEndTitle>
+                <Grid/>
+            </SectionLinguages>
         </BackEndContainer>
 
     )
