@@ -13,6 +13,7 @@ import { Steps } from "./pages/backOffice/dashboard/steps";
 import { NotFound } from "./pages/notFound";
 import { Roadmaps } from "./pages/Roadmaps";
 import { RoadmapPages } from "./pages/Roadmaps/RoadmapsPages";
+import News from "./pages/news";
 
 
 export function Router() {
@@ -22,6 +23,7 @@ export function Router() {
         <Route index element={<Landpage />} />
         <Route path="/roadmaps" element={<Roadmaps/>} />
         <Route path="/roadmaps/pages" element ={<RoadmapPages/>}/>
+        <Route path="/noticias" element ={<News />} />
       </Route>
       <Route path="/backoffice" element={<BackOfficeLayout />}>
         <Route path="/backoffice" element={<BackOfficeLogin />} />

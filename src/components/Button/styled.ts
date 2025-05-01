@@ -21,7 +21,7 @@ export const ButtonContainer = styled.button<ButtonProps>`
   color: ${(props) => props.colorText};
   border: ${(props) => props.border};
   cursor: pointer;
-  transition: scale 0.3s ease-out, background-color 0.3s ease-out;
+  transition: transform 0.3s ease-out, background-color 0.3s ease-out;
   
   &:hover {
     transform: scale(1.05);

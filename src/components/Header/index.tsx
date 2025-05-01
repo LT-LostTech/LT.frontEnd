@@ -74,7 +74,7 @@ export function Header({
       />
       <HeaderNav display={display}>
         {navItems.map((item, key) => (
-          <Link key={key} to={`/${item}`}>
+          <Link key={key} to={`/${item.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`}>
             {item}
           </Link>
         ))}
