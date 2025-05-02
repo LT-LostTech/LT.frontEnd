@@ -16,7 +16,7 @@ export interface GridProps {
 export function Grid({ columns, gap, children,navigate}: GridProps) {
   const childrenArray = React.Children.toArray(children);
 
-  const[isMobile,setIsMobile] = useState(window.innerWidth <= 500)
+  const [isMobile,setIsMobile] = useState(window.innerWidth <= 500)
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const [visibleItems, setVisibleItems] = useState<number>(6); 
   const [closeDropDown,setCloseDropdown] = useState(false)
@@ -77,7 +77,6 @@ export function Grid({ columns, gap, children,navigate}: GridProps) {
             // navigate?.(index)
             // Aqui só chama a função navigate se ela estiver definida.
             onClick ={() => navigate?.(index)}
-            
           />
           </ButtonsStyledRoadmaps>
         ))}

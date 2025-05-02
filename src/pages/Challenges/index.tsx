@@ -7,12 +7,17 @@ import { ChallengesContainer, ChallengesTitle, ChallengesWaitImage, SectionHero,
 import WaitingImage from "../../assets/Roadmaps/waiting.svg";
 
 export function Challenges() {
+   
     const navigate = useNavigate()
     return(
         <ChallengesContainer>
             <SectionHero>
                 <ChallengesTitle>Coloque em prática o que aprendeu com nossos <StrongTitle> {'</roadmaps>'}</StrongTitle></ChallengesTitle>
-                <Grid columns={3} gap={"32px"} children={buttonsChallenges.map((buttons) => buttons.name)} navigate={(index) => navigate(buttonsChallenges[index].path)}/>
+                <Grid 
+                columns={3} 
+                gap={"32px"} 
+                children={buttonsChallenges.map((buttons) => buttons.name)} 
+                navigate={(index) => navigate(buttonsChallenges[index].path)}/>
             </SectionHero>
             <SectionWait>
                 <TitleSectionWaiting>

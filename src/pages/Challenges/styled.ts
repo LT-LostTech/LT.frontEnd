@@ -22,10 +22,21 @@ export const SectionHero = styled.section`
     justify-content: center;
     align-items: center;
     margin: 197px 0 0 0;
-    gap: 56px;
-    padding-bottom: 197px;
+    gap: 96px; 
+    padding-bottom: 96px;
     border-bottom: 2px solid ${theme.colors.white};
     width: 100%;
+
+    @media (max-width:884px) {
+       gap:  30px ;
+       margin: 188px 0 0 0;
+       padding-bottom: 32px;
+   }
+
+   @media (max-width:428px) {
+      gap: 32px;
+      margin: 156px 0 0 0;
+   }
 `
 
 export const ChallengesTitle = styled.h2`
@@ -34,6 +45,17 @@ export const ChallengesTitle = styled.h2`
     font-family: ${theme.font.chackra};
     text-align: center;
     width: 1163px;
+
+    @media (max-width:884px) {
+       font-size: 50px;
+       width: 606px;
+   }
+
+   @media (max-width:428px) {
+       font-size: 29px;
+       width: 336px;
+   }
+
 `
 export const SectionWait = styled.section`
   display: flex;
@@ -49,18 +71,18 @@ export const TitleSectionWaiting = styled.h2`
   
     font-family: ${theme.font.chackra};
     font-size: 76.6px;
-    font-weight: 400;
+    font-weight: 700;
     padding: 72px 73px 0 73px;
 
 
     @media (max-width:884px) {
-        padding: 0 37px;
+        padding: 71px 37px 0 37px;
         font-size: 56px;
     }
 
     @media (max-width:428px) {
-        padding: 0 12.5px;
-        font-size: 26px;
+        padding: 71px 13px 0 13px;
+        font-size: 22px;
     }
 `
 
