@@ -23,6 +23,7 @@ export const SectionHero = styled.section`
     align-items: center;
     margin: 197px 0 0 0;
     gap: 56px;
+    width: 100%;
     padding-bottom: 197px;
     
     border-bottom: 2px solid ${theme.colors.white};
@@ -56,14 +57,16 @@ export const SubTitle = styled.p`
     font-size: 36px;
     font-weight: 600;
     text-align: center;
-    padding: 0 20px;
+    width: 1163px;
 
     @media (max-width: 884px) {
         font-size: 24.42px;
+        width: 788.88px;
     }
 
     @media (max-width: 470px) {
         font-size: 20.82px;
+        width: 349.64px;
     }
 `
 
@@ -227,7 +230,7 @@ export const SectionChallenges =styled.section`
     align-items: center;
     margin-top: 192.5px;
     text-align: center;
-    gap: 567px;
+    gap: 96px;
     width: 100%;
     border-bottom: 2px solid ${theme.colors.white};
     padding-bottom: 137px;

@@ -26,7 +26,7 @@ export const GridContainer = styled.section<GridProps>`
     padding: 86px 59px;
   }
 
-  @media (max-width: 780px) {
+  @media (max-width: 470px) {
     grid-template-columns: 1fr;
     padding: 86px 30px 32px 30px;
     border-bottom: none;

@@ -25,13 +25,18 @@ export function ChallengesBackEnd() {
   const [levelTitle, setLevelTitle] = useState<string>('básico');
   //o estado pode ser uma string ex: "JavaScript" ou null (quando nada foi selecionado ainda).
   const [selectedLevel, setSelectedLevel] = useState<string | null>(null);
+  const [challengesSelect, setChallengesSelect] = useState<string | undefined>("Titulo do desafio")
 
-  // const [closeModal,setCloseModal] = useState(false)
   const handleModal = (index:number) => {
     //passo um index para cada objeto
     setSelectedLevel(Linguages[index].name)
     setOpenModal(!openModal);
   };
+
+  const handleChallengesSelect = (index:number) => {
+    const teste = () => LevelChallenges.find((levels) => levels.title?.toLowerCase() === levelTitle?.toLocaleLowerCase())?.challenges[index].name
+    setChallengesSelect(teste)
+  }
   return (
     <BackEndContainer>
       <SectionHero>
@@ -98,14 +103,14 @@ export function ChallengesBackEnd() {
         {/* find procura o objeto que tenha o title igual ao level title */}
         <Grid columns={3} gap={"32px"} children={
           LevelChallenges.find((levels) => levels.title?.toLowerCase() === levelTitle?.toLocaleLowerCase())?.challenges.map(challenge => challenge.name)
-          
           }
+          navigate={handleChallengesSelect}
           childMaxWidth ={'min-width: 1180px'}
           childType = {'last-child'}/>
       </SectionNivel>
 
       <SectionChallenges>
-          <BackEndTitle>Título do Desafio</BackEndTitle>
+          <BackEndTitle>{challengesSelect}</BackEndTitle>
           <SubTitle>Enunciado descrevendo o passo a passo de como o desafio deve ser cumprido e com os dados caso seja necessário.</SubTitle>
       </SectionChallenges>
     </BackEndContainer>
