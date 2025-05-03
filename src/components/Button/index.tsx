@@ -12,10 +12,16 @@ export interface ButtonProps {
     hoverBg?:string;
     hoverColor?:string;
     onClick?: () => void;
+    widthTablet?:string;
+    widthMobile?:string;
+    heightTablet?:string;
+    heightMobile?:string;
+    fontTablet?:string;
+    fontMobile?:string;
 }
 
 
-export function Button({text, width, height, colorText, bgColor, fontWeight, border,hoverBg,hoverColor, onClick}: ButtonProps) {
+export function Button({text, width, height, colorText, bgColor, fontWeight, border,hoverBg,hoverColor, onClick,widthTablet,widthMobile,heightMobile,heightTablet,fontTablet,fontMobile}: ButtonProps) {
     return (
         <ButtonContainer
             width={width}
@@ -27,6 +33,12 @@ export function Button({text, width, height, colorText, bgColor, fontWeight, bor
             onClick={onClick}
             hoverBg={hoverBg}
             hoverColor={hoverColor}
+            widthMobile={widthMobile}
+            widthTablet={widthTablet}
+            heightMobile={heightMobile}
+            heightTablet={heightTablet}
+            fontMobile={fontMobile}
+            fontTablet={fontTablet}
         >
             {text}       </ButtonContainer>
     )

@@ -28,6 +28,8 @@ export const SectionPage = styled.section`
     background-repeat: no-repeat;
     background-size: cover;
     text-align: center;
+    width: 100%;
+    height: 100%;
     align-items: center;
 `
 

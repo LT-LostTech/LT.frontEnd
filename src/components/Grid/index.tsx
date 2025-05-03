@@ -9,11 +9,13 @@ export interface GridProps {
   columns: number;
   gap: string;
   children: ReactNode;
+  childMaxWidth?: string;
+  childType?: string;
   //passa um index especifico para os meus objetos para n ter conflitos de informações e diz que vai disparar algo se for clicado
   navigate?: (index: number) => void;
 }
 
-export function Grid({ columns, gap, children,navigate}: GridProps) {
+export function Grid({ columns, gap, children,navigate,childMaxWidth,childType}: GridProps) {
   const childrenArray = React.Children.toArray(children);
 
   const [isMobile,setIsMobile] = useState(window.innerWidth <= 500)
@@ -34,7 +36,8 @@ export function Grid({ columns, gap, children,navigate}: GridProps) {
   ,[])
 
   const showMoreItems = () => {
-    setVisibleItems((prev) => prev + 3); 
+    const totalItens = childrenArray.length - 6
+    setVisibleItems((prev) => prev + totalItens); 
     setCloseDropdown(true)
   };
 
@@ -60,9 +63,9 @@ export function Grid({ columns, gap, children,navigate}: GridProps) {
 
   return (
     <GridDropdown>
-      <GridContainer columns={columns} gap={gap}>
+      <GridContainer columns={columns} gap={gap} >
         {childrenArray.slice(0, visibleItems).map((childrenArray, index) => (
-            <ButtonsStyledRoadmaps key={index}>
+            <ButtonsStyledRoadmaps key={index} childMaxWidth={childMaxWidth} childType={childType}>
           <Button
             width={`365px`}
             height={`81px`}
@@ -81,7 +84,7 @@ export function Grid({ columns, gap, children,navigate}: GridProps) {
           </ButtonsStyledRoadmaps>
         ))}
       </GridContainer>
-      {isDropdownVisible && (
+      {isDropdownVisible && !closeDropDown &&  (
         <DropdownButtonStyled>
           <Button
             width={`365px`}
