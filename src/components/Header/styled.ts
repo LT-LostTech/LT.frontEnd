@@ -13,11 +13,11 @@ interface DisplayProps {
 
 interface DisplayHamburguerProps {
   displayMenu: string;
-  displayMenuTablet: string
+  displayMenuTablet: string;
 }
 
 export const HeaderContainer = styled.header<HeaderContainerProps>`
-  width: ${(props) => props.borderRadius === "16px" ? '90%' : '100%'};
+  width: ${(props) => (props.borderRadius === "16px" ? "90%" : "100%")};
   height: 100px;
   background-color: ${theme.colors.gray800};
   display: flex;
@@ -25,11 +25,10 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
   padding: 12px 0;
   justify-content: space-between;
   position: ${(props) => props.position};
-  border-radius: ${(props) => props.borderRadius};;
+  border-radius: ${(props) => props.borderRadius};
   z-index: 1000;
   margin-top: 20px;
   justify-content: space-around;
-
 
   @media (max-width: 1024px) {
     padding: 12px 12px;
@@ -40,6 +39,7 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
 export const HeaderLogo = styled.img`
   width: 130px;
   height: 100px;
+  cursor: pointer;
 `;
 
 export const HeaderNav = styled.nav<DisplayProps>`
@@ -57,9 +57,8 @@ export const HeaderNav = styled.nav<DisplayProps>`
     font-size: 20px;
     color: white;
 
-    
     &:hover {
-        text-decoration: underline;
+      text-decoration: underline;
     }
   }
 
@@ -80,12 +79,11 @@ export const HeaderButtons = styled.div<DisplayProps>`
     display: none;
   }
 
-    button {
-      width: 128px;
-      height: 54px;
-      gap: 16px;
-    }
-  
+  button {
+    width: 128px;
+    height: 54px;
+    gap: 16px;
+  }
 `;
 
 export const MenuButton = styled.button<DisplayHamburguerProps>`
@@ -100,5 +98,3 @@ export const MenuButton = styled.button<DisplayHamburguerProps>`
     display: flex;
   }
 `;
-
-

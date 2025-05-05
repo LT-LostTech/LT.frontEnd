@@ -6,7 +6,7 @@ import {
   MenuButton,
 } from "./styled";
 import Logo from "../../assets/logo-lost-tech.svg";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "../Button";
 import { theme } from "../../theme/theme";
 import MenuIconImage from "../../assets/icons/menu-hamburguer.svg";
@@ -35,6 +35,7 @@ export function Header({
   displayMenuTablet
 }: HeaderProps) {
   const location = useLocation();
+  const navigate = useNavigate()
   const isDashBoard = location.pathname.startsWith("/backoffice/dashboard");
   const isSignInUp = location.pathname === "/";
 
@@ -71,6 +72,13 @@ export function Header({
       <HeaderLogo
         src={Logo}
         alt="Logo que tenha a palavra Tech e a palavra Lost para lembrar que a LostTech tem objetivo de ajudar aqueles que estão perdidos em T.I"
+        onClick={() => {
+          if (isDashBoard) {
+            navigate("/backoffice/dashboard");
+          } else {
+            navigate("/");
+          }
+        }}
       />
       <HeaderNav display={display}>
         {navItems.map((item, key) => (
