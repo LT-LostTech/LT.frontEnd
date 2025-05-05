@@ -1,14 +1,11 @@
-import { Button, ButtonProps } from "../Button";
-import { Input, InputProps } from "../Input";
+import { FormProps } from "../../interfaces/interfaces.web";
+import { Button } from "../Button";
+import { Input } from "../Input";
 import { ButtonsContainer, FormContainer } from "./styled";
 import { Title } from "./styled";
 import { Container } from "./styled";
 
-interface FormProps {
-  title: string;
-  InputProps: InputProps[];
-  buttons: ButtonProps[];
-}
+
 
 export function Form({ title, InputProps, buttons }: FormProps) {
   return (

@@ -1,13 +1,8 @@
 import { Modal } from "../../../components/Modal";
 import EyeOpen from "../../../assets/icons/eyeOpen.svg";
 import EyeClose from "../../../assets/icons/eyeClosed.svg";
+import { SignUpProps } from "../../../interfaces/interfaces.web";
 
-interface SignUpProps {
-  onHighlightClick: () => void;
-  onInformationExtraClick: () => void;
-  onComplete: () => void;
-  displayPhoto: string;
-}
 
 export function SignUp({
   displayPhoto,

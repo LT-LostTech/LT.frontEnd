@@ -1,11 +1,6 @@
 import { Modal } from "../../../../../components/Modal";
+import { SendEmailProps } from "../../../../../interfaces/interfaces.web";
 
-interface SendEmailProps {
-    onHighlightClick?: () => void;
-    onClick: () => void;
-    position: string;
-    displayPhoto: string
-}
 
 export function SendEmail({ displayPhoto, onHighlightClick, onClick, position }: SendEmailProps) {
     return (

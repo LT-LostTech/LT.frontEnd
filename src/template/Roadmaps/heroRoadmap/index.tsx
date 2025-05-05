@@ -3,15 +3,14 @@ import { Grid } from "../../../components/Grid";
 import { buttons } from "../GridButton/data";
 
 export function HeroRoadmaps() {
-
-
   return (
     <>
       <HeroTitleRoadmaps>
-        Encontre o seu caminho na <HeroStrongTitleRoadmaps>{'</tecnologia>'}</HeroStrongTitleRoadmaps>!
+        Encontre o seu caminho na{" "}
+        <HeroStrongTitleRoadmaps>{"</tecnologia>"}</HeroStrongTitleRoadmaps>!
       </HeroTitleRoadmaps>
 
-      <Grid columns={3} gap={"32px"} children={buttons}/>
+      <Grid columns={3} gap={"32px"} children={buttons} />
     </>
   );
 }

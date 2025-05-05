@@ -3,13 +3,9 @@ import { Button } from "../Button";
 import { NavLink, useNavigate } from "react-router-dom";
 import { theme } from "../../theme/theme";
 import CloseIconImage from "../../assets/icons/close.svg";
+import { asideProps } from "../../interfaces/interfaces.web";
 
-interface asideProps {
-  handleCloseAside: () => void;
-  className?: string;
-}
-
-export function Aside({ className,handleCloseAside }: asideProps) {
+export function Aside({ className, handleCloseAside }: asideProps) {
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -20,7 +16,7 @@ export function Aside({ className,handleCloseAside }: asideProps) {
   return (
     <AsideContainer className={className}>
       <CloseIcon>
-        <img src={CloseIconImage} alt="Close" onClick={handleCloseAside}/>
+        <img src={CloseIconImage} alt="Close" onClick={handleCloseAside} />
       </CloseIcon>
       <AsideContent>
         <NavLink to="/backoffice/dashboard/roadmaps">Roadmaps</NavLink>
@@ -38,7 +34,6 @@ export function Aside({ className,handleCloseAside }: asideProps) {
           handleLogout();
         }}
       />
-
     </AsideContainer>
   );
 }

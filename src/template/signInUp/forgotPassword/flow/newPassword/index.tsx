@@ -1,12 +1,9 @@
 import { Modal } from "../../../../../components/Modal";
 import EyeOpen from "../../../../../assets/icons/eyeOpen.svg";
 import EyeClose from "../../../../../assets/icons/eyeClosed.svg";
+import { NewPasswordProps } from "../../../../../interfaces/interfaces.web";
 
-interface NewPasswordProps {
-  onClick: () => void;
-  position: string;
-  displayPhoto: string;
-}
+
 
 export function NewPassword({
   displayPhoto,

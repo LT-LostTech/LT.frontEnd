@@ -1,15 +1,12 @@
-import React, { ReactNode, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ButtonsStyledRoadmaps, DropdownButtonStyled, GridContainer, GridDropdown } from "./styled";
 import { Button } from "../Button";
 import { theme } from "../../theme/theme";
 import close from "../../assets/Roadmaps/arrowUp.svg"
 import arrowDown from "../../assets/Roadmaps/arrowDown.svg"
+import { GridProps } from "../../interfaces/interfaces.web";
+import React from "react";
 
-export interface GridProps {
-  columns: number;
-  gap: string;
-  children: ReactNode;
-}
 
 export function Grid({ columns, gap, children }: GridProps) {
   const childrenArray = React.Children.toArray(children);

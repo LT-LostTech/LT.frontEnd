@@ -1,41 +1,47 @@
 import { useState } from "react";
 import { IconToggle } from "../../utils/IconToggle";
-import { InputContainer, InputField, InputFieldWithContainer, InputLabel } from "./styled";
+import {
+  InputContainer,
+  InputField,
+  InputFieldWithContainer,
+  InputLabel,
+} from "./styled";
+import { InputProps } from "../../interfaces/interfaces.web";
 
-export interface InputProps {
-    placeholder: string;
-    label?: string;
-    showIcon: boolean;
-    showLabel: boolean;
-    IconOpen: string;
-    IconClose: string;
-    type?: string;
-}
+export function Input({
+  placeholder,
+  label,
+  type = "text",
+  showIcon,
+  showLabel,
+  IconOpen,
+  IconClose,
+}: InputProps) {
+  const [isPassword, setIsPassword] = useState(false);
 
-export function Input({ placeholder, label, type = "text", showIcon, showLabel, IconOpen, IconClose }: InputProps) {
+  const handlePassword = () => {
+    setIsPassword(!isPassword);
+  };
 
-    const [isPassword, setIsPassword] = useState(false);
-
-    const handlePassword = () => {
-        setIsPassword(!isPassword)
-    }
-
-    return (
-        <InputContainer>
-            {
-                showLabel && (
-                    <InputLabel>{label}</InputLabel>
-                )
-            }
-            <InputLabel />
-            <InputFieldWithContainer>
-                <InputField type={isPassword ? "text" : type} placeholder={placeholder} />
-                {
-                    showIcon && (
-                        <IconToggle IconOpen={IconOpen} IconClose={IconClose} onClick={() => {handlePassword()}} />
-                    )
-                }
-            </InputFieldWithContainer>
-        </InputContainer>
-    )
+  return (
+    <InputContainer>
+      {showLabel && <InputLabel>{label}</InputLabel>}
+      <InputLabel />
+      <InputFieldWithContainer>
+        <InputField
+          type={isPassword ? "text" : type}
+          placeholder={placeholder}
+        />
+        {showIcon && (
+          <IconToggle
+            IconOpen={IconOpen}
+            IconClose={IconClose}
+            onClick={() => {
+              handlePassword();
+            }}
+          />
+        )}
+      </InputFieldWithContainer>
+    </InputContainer>
+  );
 }
