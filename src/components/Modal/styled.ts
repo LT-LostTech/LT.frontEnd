@@ -12,7 +12,7 @@ interface ModalPhotoProps {
 export const ModalContainer = styled.div<ModalContainerProps>`
   width: 906px;
   height: 605px;
-  background-color: ${(props) => props.theme.colors.white};
+  background-color: ${theme.colors.white};
   border-radius: 28px;
   display: flex;
   align-items: center;
@@ -35,7 +35,6 @@ export const ModalContainer = styled.div<ModalContainerProps>`
   }
 `;
 export const ModalPhoto = styled.img<ModalPhotoProps>`
-  box-sizing: border-box;
   width: 100%;
   height: 100%;
   object-fit: cover;

@@ -9,7 +9,7 @@ import {
   ModalPhoto,
   ModalTitle,
 } from "./styled";
-import modalPhoto from "../../assets/modal/image.svg";
+import modalPhoto from "../../assets/modal/logo.png";
 import { Input } from "../Input";
 import { Button } from "../Button";
 import { theme } from "../../theme/theme";
