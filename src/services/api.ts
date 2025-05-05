@@ -2,7 +2,7 @@ import { client } from "./prismic";
 
 export const fetchNormalPosts = async () => {
   try {
-    const blogPosts = await client.getAllByType("blog_post");
+    const blogPosts = await client.getSingle("blog_post");
 
     return { blogPosts };
   } catch (error) {
