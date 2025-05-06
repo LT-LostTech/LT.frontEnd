@@ -61,7 +61,7 @@ export interface SideMenuProps {
   handleOpenModal: (type: "sign in" | "sign up" | "forgot password") => void;
 }
 
-export interface BiggerNewsCardProps {
+export interface NewsCardProps {
   altImage: string;
   image: string;
   title: string;

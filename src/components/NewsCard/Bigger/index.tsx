@@ -1,13 +1,11 @@
-import { BiggerNewsCardProps } from "../../../interfaces/interfaces.web";
+import { NewsCardProps } from "../../../interfaces/interfaces.web";
 import * as S from "./styled";
-
-
 
 export default function BiggerNewsCard({
   altImage,
   image,
   title,
-}: BiggerNewsCardProps) {
+}: NewsCardProps) {
   return (
     <S.BiggerNewsCardContainer>
       <S.BiggerNewsCardImage alt={altImage} src={image} />
