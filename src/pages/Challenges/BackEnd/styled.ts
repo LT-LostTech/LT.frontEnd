@@ -57,16 +57,16 @@ export const SubTitle = styled.p`
     font-size: 36px;
     font-weight: 600;
     text-align: center;
-    width: 1163px;
+    max-width: 1163px;
 
     @media (max-width: 884px) {
         font-size: 24.42px;
-        width: 788.88px;
+        max-width: 788.88px;
     }
 
     @media (max-width: 470px) {
         font-size: 20.82px;
-        width: 349.64px;
+        max-width: 349.64px;
     }
 `
 
