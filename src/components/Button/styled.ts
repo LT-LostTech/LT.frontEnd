@@ -9,6 +9,12 @@ interface ButtonProps {
   border: string;
   hoverBg?:string;
   hoverColor?:string;
+  widthTablet?:string;
+  widthMobile?:string;
+  heightTablet?:string;
+  heightMobile?:string;
+  fontTablet?:string;
+  fontMobile?:string;
 }
 
 export const ButtonContainer = styled.button<ButtonProps>`
@@ -22,6 +28,18 @@ export const ButtonContainer = styled.button<ButtonProps>`
   border: ${(props) => props.border};
   cursor: pointer;
   transition: scale 0.3s ease-out, background-color 0.3s ease-out;
+
+  @media (max-width: 884px) {
+    width: ${(props) => props.widthTablet};
+    height: ${(props) => props.heightTablet};
+    font-size: ${(props) => props.fontTablet};
+  }
+
+  @media (max-width: 470px) {
+    width: ${(props) => props.widthMobile};
+    height: ${(props) => props.heightMobile};
+    font-size: ${(props) => props.fontMobile};
+  }
   
   &:hover {
     transform: scale(1.05);

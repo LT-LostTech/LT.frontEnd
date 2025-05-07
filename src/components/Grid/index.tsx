@@ -9,55 +9,63 @@ export interface GridProps {
   columns: number;
   gap: string;
   children: ReactNode;
+  childMaxWidth?: string;
+  childType?: string;
+  //passa um index especifico para os meus objetos para n ter conflitos de informações e diz que vai disparar algo se for clicado
+  navigate?: (index: number) => void;
 }
 
-export function Grid({ columns, gap, children }: GridProps) {
+export function Grid({ columns, gap, children,navigate,childMaxWidth,childType}: GridProps) {
   const childrenArray = React.Children.toArray(children);
 
+  const [isMobile,setIsMobile] = useState(window.innerWidth <= 500)
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
-  const [visibleItems, setVisibleItems] = useState<number>(6);
-  const [closeDropDown, setCloseDropdown] = useState(false);
+  const [visibleItems, setVisibleItems] = useState<number>(6); 
+  const [closeDropDown,setCloseDropdown] = useState(false)
 
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 500);
 
-useEffect(() => {
-  const handleResize = () => {
-    setIsMobile(window.innerWidth <= 500);
-  };
 
-  window.addEventListener("resize", handleResize);
-
-  return () => window.removeEventListener("resize", handleResize);
-}, []);
+  useEffect(()=>{
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 500)
+    }
+    addEventListener('resize',handleResize)
+    
+  return () => removeEventListener('resize',handleResize)
+  }
+  ,[])
 
   const showMoreItems = () => {
-    setVisibleItems((prev) => prev + 3);
-    setCloseDropdown(true);
+    const totalItens = childrenArray.length - 6
+    setVisibleItems((prev) => prev + totalItens); 
+    setCloseDropdown(true)
   };
+
 
   useEffect(() => {
-    if (isMobile) {
-      setIsDropdownVisible(visibleItems < childrenArray.length);
-    } else {
+    if (isMobile && visibleItems < childrenArray.length) {
+      setIsDropdownVisible(true);
+    } else{
       setIsDropdownVisible(false);
-      if (visibleItems < childrenArray.length) {
-        setVisibleItems(childrenArray.length);
-      }
     }
-  }, [isMobile, visibleItems, childrenArray.length]);
+    if(!isMobile){
+        setVisibleItems(childrenArray.length)
+    }
+  }, [visibleItems, isMobile,childrenArray.length]);
 
- 
+
 
   const returnStateDropdown = () => {
-    setVisibleItems((close) => close - 3);
+    setVisibleItems((prev) => prev - 3);
     setCloseDropdown(false);
   };
+    
 
   return (
     <GridDropdown>
-      <GridContainer columns={columns} gap={gap}>
+      <GridContainer columns={columns} gap={gap} >
         {childrenArray.slice(0, visibleItems).map((childrenArray, index) => (
-            <ButtonsStyledRoadmaps key={index}>
+            <ButtonsStyledRoadmaps key={index} childMaxWidth={childMaxWidth} childType={childType}>
           <Button
             width={`365px`}
             height={`81px`}
@@ -68,11 +76,15 @@ useEffect(() => {
             border={`1px solid ${theme.colors.white}`}
             hoverBg={`${theme.colors.white}`}
             hoverColor={`${theme.colors.black}`}
+            //?. para acessar objetos de forma segura
+            // navigate?.(index)
+            // Aqui só chama a função navigate se ela estiver definida.
+            onClick ={() => navigate?.(index)}
           />
           </ButtonsStyledRoadmaps>
         ))}
       </GridContainer>
-      {isDropdownVisible && (
+      {isDropdownVisible && !closeDropDown &&  (
         <DropdownButtonStyled>
           <Button
             width={`365px`}
