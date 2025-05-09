@@ -15,8 +15,6 @@ export const fetchFeaturedPosts = async () => {
   try {
     const homepage = await client.getSingle("homepage");
 
-    
-
     return homepage;
   } catch (error) {
     console.error("Error fetching posts:", error);
