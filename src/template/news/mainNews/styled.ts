@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 export const MainNewsContainer = styled.section`
    display: flex;
-   padding: 64px 32px 32px 32px;
-   height: 650px;
+   padding: 90px;
+   height: auto;
    width: 100%;
    justify-content: space-between;
+   gap: 80px;
 `
 
 export const MainNewsSideNews = styled.div`
@@ -13,4 +14,5 @@ export const MainNewsSideNews = styled.div`
     gap: 20px;
     flex-direction: column;
     width: 100%;
+    width: 650px;
 `

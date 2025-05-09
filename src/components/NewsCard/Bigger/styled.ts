@@ -4,7 +4,7 @@ export const BiggerNewsCardContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
+  height: 650px;
   background-color: #fff;
   border-radius: 32px;
 
