@@ -19,7 +19,7 @@ export const BiggerNewsCardContainer = styled.div`
 
 export const BiggerNewsCardImage = styled.img`
   width: 100%;
-  height: 67%;
+  height: 75%;
   border-radius: 32px 32px 0 0;
   object-fit: cover;
 `;
@@ -28,7 +28,7 @@ export const BiggerNewsCardTextContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 12px;
-  height: 33%;
+  height: 25%;
   background-color: #fff;
   border-radius: 0 0 32px 32px;
 
