@@ -87,20 +87,31 @@ export interface TypeCodeProps {
 }
 
 export interface SignInProps {
-    onHighlightClick: () => void;
-    onInformationExtraClick: () => void;
-    onComplete: () => void;
-    displayChangeOption: string;
-    position: string;
-    textChangeOption: string;
-    textChangeOptionHighlight: string;
-    displayPhoto: string;
+  onHighlightClick: () => void;
+  onInformationExtraClick: () => void;
+  onComplete: () => void;
+  displayChangeOption: string;
+  position: string;
+  textChangeOption: string;
+  textChangeOptionHighlight: string;
+  displayPhoto: string;
 }
 
 export interface SignUpProps {
-    onHighlightClick: () => void;
-    onInformationExtraClick: () => void;
-    onComplete: () => void;
-    displayPhoto: string;
-  }
-  
+  onHighlightClick: () => void;
+  onInformationExtraClick: () => void;
+  onComplete: () => void;
+  displayPhoto: string;
+}
+
+export interface BiggerNewsProps {
+  title: string;
+  imageUrl: string;
+  altImage: string;
+}
+
+export interface SmallerNewsProps {
+  title: string;
+  imageUrl: string;
+  altImage: string;
+}
