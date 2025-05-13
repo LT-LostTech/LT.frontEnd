@@ -6,32 +6,38 @@ import { fetchFeaturedPosts } from "../../../services/api";
 import { getRecentMainPost } from "../../../utils/MainRecentPost/index.";
 import SmallerNewsCard from "../../../components/NewsCard/Smaller";
 import { getRecentSidePost } from "../../../utils/SideRecentPost";
+import { BiggerNewsProps, SmallerNewsProps } from "../../../interfaces/interfaces.web";
 
 export default function MainNewsSection() {
   const { data: posts, loading, error } = useFetch(() => fetchFeaturedPosts());
-  const [mainImage, setMainImage] = useState<string | null>(null);
-  const [mainTitle, setMainTitle] = useState<string | null>(null);
-  const [sideTitleOne, setSideTitleOne] = useState<string | null>(null);
-  const [sideImageOne, setSideImageOne] = useState<string | null>(null);
-  const [sideTitleTwo, setSideTitleTwo] = useState<string | null>(null);
-  const [sideImageTwo, setSideImageTwo] = useState<string | null>(null);
+  const [biggerNews, setBiggerNews] = useState<BiggerNewsProps | null>(null);
+  const [SmallerNews, setSmallerNews] = useState<SmallerNewsProps | null>(null);
 
-  console.log("posts", posts);
+  console.log(posts)
 
   useEffect(() => {
-    const mostRecentMainPost = getRecentMainPost(posts);
-    const mostrecentSidePost = getRecentSidePost(posts)
+    const mainNews = getRecentMainPost(posts) as BiggerNewsProps | null;
+    const sideNews = getRecentSidePost(posts) as SmallerNewsProps | null;
 
-    if (mostRecentMainPost) {
-      setMainImage(mostRecentMainPost.image);
-      setMainTitle(mostRecentMainPost.title);
+    if (mainNews) {
+      setBiggerNews({
+        title: mainNews.title,
+        imageUrl: mainNews?.imageUrl,
+        altImage: mainNews.altImage
+      });
     }
     
-    if (mostrecentSidePost) {
-      setSideImageOne(mostrecentSidePost.sideImageOne);
-      setSideTitleOne(mostrecentSidePost.sideTitleOne);
-      setSideImageTwo(mostrecentSidePost.sideImageTwo);
-      setSideTitleTwo(mostrecentSidePost.sideTitleTwo);
+    if (sideNews) {
+      setSmallerNews(
+        {
+          titleOne: sideNews.titleOne,
+          imageUrlOne: sideNews.imageUrlOne,
+          altImageOne: sideNews.altImageOne, 
+          titleTwo: sideNews.titleTwo,
+          imageUrlTwo: sideNews.imageUrlTwo,
+          altImageTwo: sideNews.altImageTwo
+        }
+      )
     }
 
   }, [posts]);
@@ -39,13 +45,13 @@ export default function MainNewsSection() {
   return (
     <S.MainNewsContainer>
       <BiggerNewsCard
-        title={mainTitle || ""}
-        image={mainImage || ""}
-        altImage="Notícia principal mais recente"
+        title={biggerNews?.title || ""}
+        image={biggerNews?.imageUrl || ""}
+        altImage={biggerNews?.altImage || "Notícia principal"}
       />
       <S.MainNewsSideNews>
-        <SmallerNewsCard image={sideImageOne || ''} title={sideTitleOne || ''} altImage='Primeira Notícia do site side'/>
-        <SmallerNewsCard image={sideImageTwo || ''} title={sideTitleTwo || ''} altImage='Segunda Notícia do site side'/>
+        <SmallerNewsCard image={SmallerNews?.imageUrlOne || ''} title={SmallerNews?.titleOne || ""} altImage={SmallerNews?.altImageTwo || ""}/>
+        <SmallerNewsCard image={SmallerNews?.imageUrlTwo || ""} title={SmallerNews?.titleTwo || ""} altImage={SmallerNews?.altImageTwo || ""}/>
       </S.MainNewsSideNews>
     </S.MainNewsContainer>
   );

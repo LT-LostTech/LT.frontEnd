@@ -1,4 +1,7 @@
-export function getRecentMainPost(postData: any) {
+import { PrismicDocument } from "@prismicio/client";
+import { BiggerNewsProps } from "../../interfaces/interfaces.web";
+
+export function getRecentMainPost(postData: PrismicDocument | null): BiggerNewsProps | null {
         if (!postData || !Array.isArray(postData?.data?.body)) return null;
       
         const slices = postData.data.body;
@@ -25,7 +28,8 @@ export function getRecentMainPost(postData: any) {
         ) {
           return {
             title: recentPost.primary.display_main_title[0].text,
-            image: recentPost.primary.display_main_image.url,
+            imageUrl: recentPost.primary.display_main_image.url,
+            altImage: recentPost.primary.display_main_image.alt || "Notícia principal mais recente",
           };
         }
       

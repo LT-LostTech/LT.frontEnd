@@ -1,4 +1,6 @@
-export function getRecentSidePost(postData: any) {
+import { SmallerNewsProps } from "../../interfaces/interfaces.web";
+
+export function getRecentSidePost(postData: any): SmallerNewsProps | null {
   if (!postData || !Array.isArray(postData?.data?.body)) return null;
 
   const slices = postData.data.body;
@@ -27,10 +29,12 @@ export function getRecentSidePost(postData: any) {
     recentPost.primary.side_image_2.url
   ) {
     return {
-      sideTitleOne: recentPost.primary.side_title_1[0].text,
-      sideImageOne: recentPost.primary.side_image_1.url,
-      sideTitleTwo: recentPost.primary.side_title_2[0].text,
-      sideImageTwo: recentPost.primary.side_image_2.url,
+      titleOne: recentPost.primary.side_title_1[0].text,
+      imageUrlOne: recentPost.primary.side_image_1.url,
+      altImageOne: recentPost.primary.side_image_1.alt || "Notícia lateral mais recente",
+      titleTwo: recentPost.primary.side_title_2[0].text,
+      imageUrlTwo: recentPost.primary.side_image_2.url,
+      altImageTwo: recentPost.primary.side_image_2.alt || "Notícia lateral mais recente",
     };
   }
 

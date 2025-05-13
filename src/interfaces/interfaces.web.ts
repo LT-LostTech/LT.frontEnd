@@ -111,7 +111,10 @@ export interface BiggerNewsProps {
 }
 
 export interface SmallerNewsProps {
-  title: string;
-  imageUrl: string;
-  altImage: string;
+  titleOne: string;
+  imageUrlOne: string;
+  altImageOne: string;
+  titleTwo: string;
+  imageUrlTwo: string;
+  altImageTwo: string;
 }
