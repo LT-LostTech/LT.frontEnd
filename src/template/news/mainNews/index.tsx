@@ -13,8 +13,6 @@ export default function MainNewsSection() {
   const [biggerNews, setBiggerNews] = useState<BiggerNewsProps | null>(null);
   const [SmallerNews, setSmallerNews] = useState<SmallerNewsProps | null>(null);
 
-  console.log(posts)
-
   useEffect(() => {
     const mainNews = getRecentMainPost(posts) as BiggerNewsProps | null;
     const sideNews = getRecentSidePost(posts) as SmallerNewsProps | null;

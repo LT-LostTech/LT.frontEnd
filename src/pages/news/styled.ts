@@ -4,7 +4,6 @@ import backgroundImage from "../../assets/backgrounds/sectionsWithIllustration.p
 export const NewsContainer = styled.main`
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   width: 100%;
   height: 100%;
@@ -12,4 +11,5 @@ export const NewsContainer = styled.main`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  padding: 140px 32px 0 32px;
 `;

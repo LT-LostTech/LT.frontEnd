@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 export const MainNewsContainer = styled.section`
    display: flex;
-   padding: 90px;
    height: auto;
    width: 100%;
    justify-content: space-between;
    gap: 80px;
+   margin-top: 64px;
 `
 
 export const MainNewsSideNews = styled.div`

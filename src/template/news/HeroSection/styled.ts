@@ -9,7 +9,6 @@ export const HeroSectionContainer = styled.section`
   justify-content: center;
   width: 100%;
   height: 100%; 
-  padding: 140px 32px 0 32px;
   background-image: ${backgroundImage};
   gap: 96px;
 `;

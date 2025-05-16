@@ -118,3 +118,15 @@ export interface SmallerNewsProps {
   imageUrlTwo: string;
   altImageTwo: string;
 }
+
+export interface LastNewsProps {
+  titleOne: string;
+  imageUrlOne: string;
+  altImageOne: string;
+  titleTwo: string;
+  imageUrlTwo: string;
+  altImageTwo: string;
+  titleThree: string;
+  imageUrlThree: string;
+  altImageThree: string;
+}
