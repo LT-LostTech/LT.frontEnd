@@ -16,6 +16,12 @@ export interface ButtonProps {
   hoverBg?: string;
   hoverColor?: string;
   onClick?: () => void;
+  widthTablet?: string;
+  widthMobile?: string;
+  heightTablet?: string;
+  heightMobile?: string;
+  fontTablet?: string;
+  fontMobile?: string;
 }
 
 export interface FormProps {
@@ -24,11 +30,6 @@ export interface FormProps {
   buttons: ButtonProps[];
 }
 
-export interface GridProps {
-  columns: number;
-  gap: string;
-  children: ReactNode;
-}
 
 export interface InputProps {
   placeholder: string;
@@ -129,4 +130,13 @@ export interface LastNewsProps {
   titleThree: string;
   imageUrlThree: string;
   altImageThree: string;
+}
+
+export interface GridProps {
+  columns: number;
+  gap: string;
+  children: ReactNode;
+  childMaxWidth?: string;
+  childType?: string;
+  navigate?: (index: number) => void;
 }

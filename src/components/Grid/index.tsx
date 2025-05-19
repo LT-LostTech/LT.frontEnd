@@ -1,89 +1,93 @@
-import { useEffect, useState } from "react";
-import { ButtonsStyledRoadmaps, DropdownButtonStyled, GridContainer, GridDropdown } from "./styled";
+import { useEffect, useState, ReactNode } from "react";
+import {
+  ButtonsStyledRoadmaps,
+  DropdownButtonStyled,
+  GridContainer,
+  GridDropdown
+} from "./styled";
 import { Button } from "../Button";
 import { theme } from "../../theme/theme";
-import close from "../../assets/Roadmaps/arrowUp.svg"
-import arrowDown from "../../assets/Roadmaps/arrowDown.svg"
+import close from "../../assets/Roadmaps/arrowUp.svg";
+import arrowDown from "../../assets/Roadmaps/arrowDown.svg";
 import { GridProps } from "../../interfaces/interfaces.web";
-import React from "react";
 
-
-export function Grid({ columns, gap, children }: GridProps) {
-  const childrenArray = React.Children.toArray(children);
-
+export function Grid({
+  columns,
+  gap,
+  children,
+  navigate,
+  childMaxWidth,
+  childType
+}: GridProps) {
+  const childrenArray = Array.isArray(children) ? children : [children];
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 500);
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const [visibleItems, setVisibleItems] = useState<number>(6);
   const [closeDropDown, setCloseDropdown] = useState(false);
 
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 500);
-
-useEffect(() => {
-  const handleResize = () => {
-    setIsMobile(window.innerWidth <= 500);
-  };
-
-  window.addEventListener("resize", handleResize);
-
-  return () => window.removeEventListener("resize", handleResize);
-}, []);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 500);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const showMoreItems = () => {
-    setVisibleItems((prev) => prev + 3);
+    const totalItens = childrenArray.length - 6;
+    setVisibleItems((prev) => prev + totalItens);
     setCloseDropdown(true);
   };
 
   useEffect(() => {
-    if (isMobile) {
-      setIsDropdownVisible(visibleItems < childrenArray.length);
+    if (isMobile && visibleItems < childrenArray.length) {
+      setIsDropdownVisible(true);
     } else {
       setIsDropdownVisible(false);
-      if (visibleItems < childrenArray.length) {
-        setVisibleItems(childrenArray.length);
-      }
     }
-  }, [isMobile, visibleItems, childrenArray.length]);
-
- 
+    if (!isMobile) {
+      setVisibleItems(childrenArray.length);
+    }
+  }, [visibleItems, isMobile, childrenArray.length]);
 
   const returnStateDropdown = () => {
-    setVisibleItems((close) => close - 3);
+    setVisibleItems(6);
     setCloseDropdown(false);
   };
 
   return (
     <GridDropdown>
       <GridContainer columns={columns} gap={gap}>
-        {childrenArray.slice(0, visibleItems).map((childrenArray, index) => (
-            <ButtonsStyledRoadmaps key={index}>
-          <Button
-            width={`365px`}
-            height={`81px`}
-            colorText={`${theme.colors.white}`}
-            bgColor={"transparent"}
-            fontWeight={"600"}
-            text={childrenArray}
-            border={`1px solid ${theme.colors.white}`}
-            hoverBg={`${theme.colors.white}`}
-            hoverColor={`${theme.colors.black}`}
-          />
+        {childrenArray.slice(0, visibleItems).map((child, index) => (
+          <ButtonsStyledRoadmaps
+            key={index}
+          >
+            <Button
+              width={"365px"}
+              height={"81px"}
+              colorText={theme.colors.white}
+              bgColor={"transparent"}
+              fontWeight={"600"}
+              text={child}
+              border={`1px solid ${theme.colors.white}`}
+              hoverBg={theme.colors.white}
+              hoverColor={theme.colors.black}
+              onClick={() => navigate?.(index)}
+            />
           </ButtonsStyledRoadmaps>
         ))}
       </GridContainer>
-      {isDropdownVisible && (
+
+      {isDropdownVisible && !closeDropDown && (
         <DropdownButtonStyled>
           <Button
-            width={`365px`}
-            height={`81px`}
-            colorText={`${theme.colors.white}`}
+            width={"365px"}
+            height={"81px"}
+            colorText={theme.colors.white}
             bgColor={"transparent"}
             fontWeight={"600"}
-            text={
-              <img
-                src={arrowDown}
-                alt="botao de dropdown,assim que for clicado mostra os itens restantes"
-              />
-            }
-            border={`none`}
+            text={<img src={arrowDown} alt="Mostrar mais" />}
+            border={"none"}
             onClick={showMoreItems}
           />
         </DropdownButtonStyled>
@@ -92,18 +96,13 @@ useEffect(() => {
       {closeDropDown && (
         <DropdownButtonStyled>
           <Button
-            width={`365px`}
-            height={`81px`}
-            colorText={`${theme.colors.white}`}
+            width={"365px"}
+            height={"81px"}
+            colorText={theme.colors.white}
             bgColor={"transparent"}
             fontWeight={"600"}
-            text={
-              <img
-                src={close}
-                alt="botao de dropdown,assim que for clicado mostra os itens restantes"
-              />
-            }
-            border={`none`}
+            text={<img src={close} alt="Mostrar menos" />}
+            border={"none"}
             onClick={returnStateDropdown}
           />
         </DropdownButtonStyled>
