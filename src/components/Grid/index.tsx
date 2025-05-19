@@ -104,7 +104,7 @@ export function Grid({
             border={"none"}
             onClick={returnStateDropdown}
           />
-        </DropdownButtonStyled>
+        </DropdownButtonStyled> 
       )}
     </GridDropdown>
   );
