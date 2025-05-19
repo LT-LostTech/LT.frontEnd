@@ -40,4 +40,5 @@ export const HeroDescription = styled.p`
     width: 100%;
     height: 100%;
     color: ${theme.colors.white};
+    height: auto;
 `

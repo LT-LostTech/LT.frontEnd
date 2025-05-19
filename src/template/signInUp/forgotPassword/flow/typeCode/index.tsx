@@ -1,12 +1,7 @@
 import { Modal } from "../../../../../components/Modal";
 import EyeOpen from "../../../../../assets/icons/eyeOpen.svg";
 import EyeClose from "../../../../../assets/icons/eyeClosed.svg";
-
-interface TypeCodeProps {
-    onClick: () => void;
-    position: string;
-    displayPhoto: string;
-}
+import { TypeCodeProps } from "../../../../../interfaces/interfaces.web";
 
 export function TypeCode({ displayPhoto, onClick, position }: TypeCodeProps) {
     return (

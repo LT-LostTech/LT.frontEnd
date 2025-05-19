@@ -1,11 +1,9 @@
 import { navItemsMobile } from "../Header/data";
 import { CloseIcon, MenuItem, MenuItems, SideMenuContainer } from "./styled";
 import CloseIconImage from "../../assets/icons/close.svg";
+import { SideMenuProps } from "../../interfaces/interfaces.web";
 
-interface SideMenuProps {
-  handleCloseMenu: () => void;
-  handleOpenModal: (type: "sign in" | "sign up" | "forgot password") => void;
-}
+
 
 export function SideMenu({ handleCloseMenu, handleOpenModal }: SideMenuProps) {
 

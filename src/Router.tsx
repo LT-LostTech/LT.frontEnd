@@ -14,6 +14,8 @@ import { NotFound } from "./pages/notFound";
 import { Roadmaps } from "./pages/Roadmaps";
 import {ChallengesBackEnd } from "./pages/Challenges/BackEnd";
 import { RoadmapPages } from "./pages/Roadmaps/RoadmapsPages";
+import News from "./pages/news";
+
 import { Challenges } from "./pages/Challenges";
 
 export function Router() {
@@ -21,6 +23,9 @@ export function Router() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Landpage />} />
+        <Route path="/roadmaps" element={<Roadmaps/>} />
+        <Route path="/roadmaps/pages" element ={<RoadmapPages/>}/>
+        <Route path="/noticias" element ={<News />} />
         <Route path="roadmaps" element={<Roadmaps/>} />
         <Route path="roadmaps/back-end" element ={<RoadmapPages/>}/>
 
