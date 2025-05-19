@@ -1,4 +1,4 @@
-import { useEffect, useState, ReactNode } from "react";
+import { useEffect, useState } from "react";
 import {
   ButtonsStyledRoadmaps,
   DropdownButtonStyled,
@@ -11,13 +11,12 @@ import close from "../../assets/Roadmaps/arrowUp.svg";
 import arrowDown from "../../assets/Roadmaps/arrowDown.svg";
 import { GridProps } from "../../interfaces/interfaces.web";
 
+
 export function Grid({
   columns,
   gap,
   children,
   navigate,
-  childMaxWidth,
-  childType
 }: GridProps) {
   const childrenArray = Array.isArray(children) ? children : [children];
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 500);
