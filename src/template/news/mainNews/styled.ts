@@ -22,10 +22,10 @@ export const MainNewsSideNews = styled.div`
   gap: 20px;
   flex-direction: column;
   width: 100%;
-  width: 650px;
 
     @media (max-width: 1024px) {
         flex-direction: row;
         justify-content: space-between;
+        align-items: center;
     }
 `;
