@@ -6,6 +6,9 @@ export const LastNewsSection = styled.section`
     text-align: left;
     gap: 32px;
     margin-top: 32px;
+    margin-bottom: 64px;
+
+    
 `
 
 export const LastNewsTitle = styled.h2`
@@ -22,4 +25,8 @@ export const LastNewsContainer = styled.div`
     display: flex;
     gap: 20px;
     width: 100%;
+
+    @media (max-width: 440px) {
+        flex-direction: column;
+    }
 `
