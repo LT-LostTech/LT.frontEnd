@@ -13,8 +13,7 @@ export function RoadmapPages() {
             <TitleOfSection>
             Linguagens de programação
             </TitleOfSection>
-            <Grid columns={3} gap={"2rem"} children={Linguages}>
-            </Grid>
+            <Grid columns={3} gap={"2rem"} children={Linguages} />
         </SectionPage>
     </>
   );

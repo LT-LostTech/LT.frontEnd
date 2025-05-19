@@ -12,11 +12,24 @@ export const ButtonContainer = styled.button<ButtonProps>`
   border: ${(props) => props.border};
   cursor: pointer;
   transition: transform 0.3s ease-out, background-color 0.3s ease-out;
+  transition: scale 0.3s ease-out, background-color 0.3s ease-out;
 
   @media (max-width: 884px) {
     width: ${(props) => props.widthTablet};
     height: ${(props) => props.heightTablet};
     font-size: ${(props) => props.fontTablet};
+  }
+
+  @media (max-width: 470px) {
+    width: ${(props) => props.widthMobile};
+    height: ${(props) => props.heightMobile};
+    font-size: ${(props) => props.fontMobile};
+  }
+  
+  &:hover {
+    transform: scale(1.05);
+    background-color: ${props => props.hoverBg};
+    color: ${props => props.hoverColor};
   }
 
   @media (max-width: 470px) {

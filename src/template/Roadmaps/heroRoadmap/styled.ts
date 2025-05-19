@@ -27,4 +27,5 @@ export const HeroTitleRoadmaps = styled.h2`
 
 export const StrongTitle = styled.strong`
     color: ${theme.colors.blue400};
+    font-weight: 700;
 `

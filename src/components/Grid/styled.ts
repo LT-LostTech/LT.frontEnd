@@ -6,6 +6,10 @@ interface GridProps {
   columns: number;
 }
 
+interface ButtonWrapperProps {
+  childMaxWidth?: string;
+  childType?: string;
+}
 export const GridContainer = styled.section<GridProps>`
   display: grid;
   grid-template-columns: repeat(${(props) => props.columns}, 1fr);
@@ -13,34 +17,33 @@ export const GridContainer = styled.section<GridProps>`
   justify-content: center;
   align-items: center;
   width: 100%;
+  max-width: 1235px;
   padding: 86px 102.5px;
   gap: ${(props) => props.gap};
-  border-bottom: 1px solid ${theme.colors.white};
 
   @media (max-width: 1084px) {
     grid-template-columns: repeat(2, 1fr);
     padding: 86px 59px;
   }
 
-  @media (max-width: 780px) {
+  @media (max-width: 470px) {
     grid-template-columns: 1fr;
     padding: 86px 30px 32px 30px;
     border-bottom: none;
   }
 `
 
-export const ButtonsStyledRoadmaps = styled.div`
-  @media (max-width: 884px) {
+export const ButtonsStyledRoadmaps = styled.div<ButtonWrapperProps>`
+  @media (${(props) => props.childMaxWidth || 'max-width: 884px'}) {
     display: flex;
     justify-self: center;
     align-items: center;
     text-align: center;
-
-    
-
-    &:nth-child(9) {
+    &:${(props) => props.childType || 'nth-child(9)'} {
       grid-column: 1 / -1;
     }
+
+
   }
 `
 
@@ -59,3 +62,5 @@ export const DropdownButtonStyled = styled.div`
     border-bottom: 1px solid ${theme.colors.white};
   }
 `
+
+

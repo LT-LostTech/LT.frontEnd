@@ -3,22 +3,18 @@ import {
   ButtonsStyledRoadmaps,
   DropdownButtonStyled,
   GridContainer,
-  GridDropdown
+  GridDropdown,
 } from "./styled";
 import { Button } from "../Button";
 import { theme } from "../../theme/theme";
 import close from "../../assets/Roadmaps/arrowUp.svg";
 import arrowDown from "../../assets/Roadmaps/arrowDown.svg";
 import { GridProps } from "../../interfaces/interfaces.web";
+import React from "react";
 
+export function Grid({ columns, gap, children, navigate }: GridProps) {
+  const childrenArray = React.Children.toArray(children);
 
-export function Grid({
-  columns,
-  gap,
-  children,
-  navigate,
-}: GridProps) {
-  const childrenArray = Array.isArray(children) ? children : [children];
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 500);
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const [visibleItems, setVisibleItems] = useState<number>(6);
@@ -58,9 +54,7 @@ export function Grid({
     <GridDropdown>
       <GridContainer columns={columns} gap={gap}>
         {childrenArray.slice(0, visibleItems).map((child, index) => (
-          <ButtonsStyledRoadmaps
-            key={index}
-          >
+          <ButtonsStyledRoadmaps key={index}>
             <Button
               width={"365px"}
               height={"81px"}
@@ -104,7 +98,7 @@ export function Grid({
             border={"none"}
             onClick={returnStateDropdown}
           />
-        </DropdownButtonStyled> 
+        </DropdownButtonStyled>
       )}
     </GridDropdown>
   );

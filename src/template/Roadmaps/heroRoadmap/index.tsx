@@ -1,7 +1,7 @@
 import { HeroTitleRoadmaps, StrongTitle } from "./styled";
 import { Grid } from "../../../components/Grid";
 import { useNavigate } from "react-router-dom";
-import { buttons } from "../GridButton/data";
+import { buttonsRoadmaps } from "../GridButton/data";
 
 export function HeroRoadmaps() {
   const navigate = useNavigate();
@@ -15,9 +15,10 @@ export function HeroRoadmaps() {
       <Grid
         columns={3}
         gap={"32px"}
-        children={buttons.map((button) => button)}
-        navigate={(index) => navigate(buttons[index])}
-      />
+        navigate={(index) => navigate(buttonsRoadmaps[index].path)}
+      >
+        {buttonsRoadmaps.map((button) => button.name)}
+      </Grid>
     </>
   );
 }
