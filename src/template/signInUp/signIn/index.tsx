@@ -4,6 +4,7 @@ import EyeClose from "../../../assets/icons/eyeClosed.svg";
 import { SignInProps } from "../../../interfaces/interfaces.web";
 import {LoginAdmin} from "../../../services/admin/api"
 import { useState } from "react";
+import axios from "axios";
 
 export function SignIn({
   displayPhoto,
@@ -26,16 +27,24 @@ export function SignIn({
 const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value)
 }
+
    
-const handleValidationApi = async () => {
+const handleValidationEmail = async () => {
   try {
+    
     const result = await LoginAdmin(email,password)
     console.log(result)
     onComplete()
 
     
   } catch (error){
-    console.error("Erro ao fazer login:", error);
+      if(axios.isAxiosError(error) && error.response){
+        console.log("status: ", error.response.status)
+        alert(`mensagem: ${error.response.data}`)
+      }else{
+        console.log("erro inesperado")
+      }
+
   }
 }
  
@@ -81,7 +90,7 @@ const handleValidationApi = async () => {
         onInformationExtraClick();
       }}
       displayChangeOption={displayChangeOption}
-      onClick={handleValidationApi}
+      onClick={handleValidationEmail}
     />
   );
 }
