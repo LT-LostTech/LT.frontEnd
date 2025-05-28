@@ -16,6 +16,8 @@ export function Input({
   showLabel,
   IconOpen,
   IconClose,
+  onChange,
+  value,
 }: InputProps) {
   const [isPassword, setIsPassword] = useState(false);
 
@@ -31,6 +33,8 @@ export function Input({
         <InputField
           type={isPassword ? "text" : type}
           placeholder={placeholder}
+          onChange={onChange}
+          value={value}
         />
         {showIcon && (
           <IconToggle

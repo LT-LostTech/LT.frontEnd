@@ -4,7 +4,6 @@ import { SignIn } from "../../../template/signInUp/signIn";
 
 export function BackOfficeLogin() {
   const navigate = useNavigate();
-
   return (
     <LoginContainer>
       <SignIn

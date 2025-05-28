@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import BiggerNewsCard from "../../../components/NewsCard/Bigger";
 import * as S from "./styled";
 import { useFetch } from "../../../hooks/useFetch";
-import { fetchFeaturedPosts } from "../../../services/api";
+import { fetchFeaturedPosts } from "../../../services/prismic/api";
 import { getRecentMainPost } from "../../../utils/MainRecentPost/index.";
 import SmallerNewsCard from "../../../components/NewsCard/Smaller";
 import { getRecentSidePost } from "../../../utils/SideRecentPost";

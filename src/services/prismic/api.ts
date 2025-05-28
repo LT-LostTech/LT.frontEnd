@@ -1,4 +1,4 @@
-import { client } from "./prismic";
+import { client } from "../prismic/prismic";
 
 export const fetchNormalPosts = async () => {
   try {

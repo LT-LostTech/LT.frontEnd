@@ -8,8 +8,8 @@ import {
 } from "./styled";
 
 import WaitingImage from "../../assets/Roadmaps/waiting.svg";
-
 export function Roadmaps() {
+  
   return (
     <RoadmapsContainer>
       <HeroRoadmaps />
@@ -28,6 +28,7 @@ export function Roadmaps() {
           alt="Desenho de uma pessoa sentada olhando para o relogio, relacionado ao tema desta seção"
         />
       </WaitingSection>
+
     </RoadmapsContainer>
   );
 }

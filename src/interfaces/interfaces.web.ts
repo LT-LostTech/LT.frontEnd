@@ -39,6 +39,8 @@ export interface InputProps {
   IconOpen: string;
   IconClose: string;
   type?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value?: string;
 }
 
 export interface ModalProps {

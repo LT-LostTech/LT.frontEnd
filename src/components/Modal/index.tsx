@@ -37,7 +37,7 @@ export function Modal({
         <ModalTitle>{title}</ModalTitle>
         <ModalForm>
           {inputs.map((input, key) => (
-            <Input {...input} key={key} />
+            <Input {...input} key={key} onChange={input.onChange}/>
           ))}
         </ModalForm>
         <ModalForgotPassword
