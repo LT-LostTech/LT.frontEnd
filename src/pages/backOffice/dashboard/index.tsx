@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Children, useEffect, useState } from "react";
 import { Aside } from "../../../components/Aside";
 import { Button } from "../../../components/Button";
 import { theme } from "../../../theme/theme";
@@ -16,7 +16,7 @@ import {
   DashboardTableBodyCell,
 } from "./styled";
 import { Overlay } from "../../../utils/Overlay/styled";
-import { Outlet, useLocation } from "react-router-dom";
+import { Navigate, Outlet, useLocation, useNavigate } from "react-router-dom";
 
 
 interface DashboardProps {
@@ -48,6 +48,11 @@ const tableData = [
 ];
 
 export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentFormEdit }: DashboardProps) {
+  const token = localStorage.getItem('token')
+  
+  if(!token){
+    return<Navigate to={'/backoffice'}/>
+  }
   const [modalType, setModalType] = useState<"create" | "edit" | null>(
     "create"
   );
