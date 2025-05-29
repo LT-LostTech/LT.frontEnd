@@ -32,10 +32,8 @@ const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 const handleValidationEmail = async () => {
   try {
     
-    const result = await LoginAdmin(email,password)
-    console.log(result)
+    await LoginAdmin(email,password)
     onComplete()
-
     
   } catch (error){
       if(axios.isAxiosError(error) && error.response){
