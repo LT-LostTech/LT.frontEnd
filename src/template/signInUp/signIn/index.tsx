@@ -5,6 +5,7 @@ import { SignInProps } from "../../../interfaces/interfaces.web";
 import {LoginAdmin} from "../../../services/admin/api"
 import { use, useEffect, useState } from "react";
 import axios from "axios";
+import { LoginUser } from "../../../services/users/singIn/api";
 
 export function SignIn({
   displayPhoto,
@@ -15,6 +16,7 @@ export function SignIn({
   position,
   textChangeOption,
   textChangeOptionHighlight,
+  onCompleteUser,
 }: SignInProps){
 
   const [email,setEmail] = useState("");
@@ -30,22 +32,30 @@ const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 }
 
    
-const handleValidationEmail = async () => {
+const handleValidationEmail = async (email:string,password:string,isAdmin:boolean,onComplete: () => void, onCompleteUser: () => void) => {
+
   try {
-    
+
+   if(isAdmin){
     await LoginAdmin(email,password)
     onComplete()
-    
+
+   }else{
+
+    await LoginUser(email,password)
+    onCompleteUser()
+   }
+        
   } catch (error){
       if(axios.isAxiosError(error) && error.response){
         console.log("status: ", error.response.status)
         alert(`mensagem: ${error.response.data}`)
       }else{
-        console.log("erro inesperado")
-      }
-
+        console.log("erro inesperado",error)
+    }
   }
 }
+
 
 useEffect(() => {
   const token = localStorage.getItem('token')
@@ -98,7 +108,7 @@ useEffect(() => {
         onInformationExtraClick();
       }}
       displayChangeOption={displayChangeOption}
-      onClick={handleValidationEmail}
+      onClick={() =>  handleValidationEmail(email, password, false, onComplete, onCompleteUser)}
     />
   );
 }

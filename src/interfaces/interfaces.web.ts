@@ -98,6 +98,7 @@ export interface SignInProps {
   textChangeOption: string;
   textChangeOptionHighlight: string;
   displayPhoto: string;
+  onCompleteUser: () => void;
 }
 
 export interface SignUpProps {
