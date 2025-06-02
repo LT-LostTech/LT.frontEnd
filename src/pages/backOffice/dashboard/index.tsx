@@ -17,6 +17,7 @@ import {
 } from "./styled";
 import { Overlay } from "../../../utils/Overlay/styled";
 import { Navigate, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { GetRole } from "../../../services/role";
 
 
 interface DashboardProps {
@@ -48,16 +49,22 @@ const tableData = [
 ];
 
 export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentFormEdit }: DashboardProps) {
-  const token = localStorage.getItem('token')
-  
-  if(!token){
-    return<Navigate to={'/backoffice'}/>
-  }
+
   const [modalType, setModalType] = useState<"create" | "edit" | null>(
     "create"
   );
   const [isOpenModal, setIsOpenModal] = useState(false);
   const location = useLocation()
+
+  const role =GetRole()
+  const token = localStorage.getItem('token')
+  
+  if(!token){
+    return<Navigate to={'/backoffice'}/>
+  }
+  if(role?.toLocaleLowerCase() !=="admin"){
+    return<Navigate to={'/'}/>
+  }
 
   const handleOpenModal = (type: "create" | "edit") => {
     setModalType(type);

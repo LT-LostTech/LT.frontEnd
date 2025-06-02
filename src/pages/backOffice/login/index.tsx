@@ -21,9 +21,7 @@ export function BackOfficeLogin() {
         onComplete={() => {
           navigate("/backoffice/dashboard/roadmaps");
         }}
-        onCompleteUser={() => {
-          navigate("/")
-        }}
+       
       />
     </LoginContainer>
   );

@@ -18,6 +18,7 @@ import { SignIn } from "../../template/signInUp/signIn";
 import { SignUp } from "../../template/signInUp/signUp";
 import { PasswordFlow } from "../../template/signInUp/forgotPassword";
 import { Aside } from "../Aside";
+import { Exit } from "../../template/signInUp/exit";
 
 interface HeaderProps {
   display: string;
@@ -45,7 +46,7 @@ export function Header({
     "sign in" | "sign up" | "forgot password" | null
   >("sign in");
 
-  const handleOpenModal = (type: "sign in" | "sign up" | "forgot password") => {
+  const handleOpenModal = (type: "sign in" | "sign up" | "forgot password" ) => {
     setModalType(type);
     setIsOpenModal(!isOpenModal);
     setIsOpen(false);
@@ -62,7 +63,14 @@ export function Header({
   const handleCloseAside = () => {
     setIsOpen(false);
   };
+  const token = localStorage.getItem('token')
 
+   const handleLogout= () => {
+    navigate("/");
+    const remove = localStorage.removeItem('token')
+    console.log('certinho', remove)
+    handleCloseAside();
+  };
   return (
     <HeaderContainer
       borderRadius={borderRadius}
@@ -87,6 +95,7 @@ export function Header({
           </Link>
         ))}
       </HeaderNav>
+      {!token && (
       <HeaderButtons display={display}>
         <Button
           width="163px"
@@ -109,6 +118,24 @@ export function Header({
           onClick={() => handleOpenModal("sign up")}
         />
       </HeaderButtons>
+      )
+    }
+
+    {token && (
+      <HeaderButtons display={display}>
+        <Button
+          width="163px"
+          height="62px"
+          text="Sair"
+          colorText={theme.colors.gray800}
+          bgColor={theme.colors.lightGray}
+          fontWeight="bold"
+          border="none"
+          onClick={handleLogout}
+        />
+        </HeaderButtons>
+      )
+    }
 
       <MenuButton onClick={handleOpenMenu} displayMenu={displayMenu} displayMenuTablet={displayMenuTablet}>
         <img src={MenuIconImage} alt="Ao clicar você abre um menu de opções" />
@@ -139,8 +166,7 @@ export function Header({
             textChangeOptionHighlight="Cadastre"
             onHighlightClick={() => setModalType("sign up")}
             onInformationExtraClick={() => setModalType("forgot password")}
-            onComplete={() => setIsOpenModal(false)}
-          />
+            onComplete={() => setIsOpenModal(false)}           />
         </>
       )}
 

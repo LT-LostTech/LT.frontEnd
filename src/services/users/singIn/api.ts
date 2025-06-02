@@ -5,9 +5,23 @@ export async function LoginUser (email:string,password:string){
     const url = `${Api_base}/login/user`
 
     const user = axios.post(url,{email,password})
-    console.log(password)
-    console.log(email)
+    console.log("teste:",password)
+    console.log("teste:",email)
     console.log((await user).statusText)
+    const token = (await user).data;
+    localStorage.setItem("token", token);
 
+  const api = axios.create({
+    baseURL: `${Api_base}/login/user`,
+  });
+
+  //api.interceptors.request = intercepta cada requisição para colocar o token automaticamente
+  api.interceptors.request.use((config) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  });
     
 }

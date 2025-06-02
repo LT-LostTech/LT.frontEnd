@@ -98,7 +98,6 @@ export interface SignInProps {
   textChangeOption: string;
   textChangeOptionHighlight: string;
   displayPhoto: string;
-  onCompleteUser: () => void;
 }
 
 export interface SignUpProps {
@@ -106,6 +105,7 @@ export interface SignUpProps {
   onInformationExtraClick: () => void;
   onComplete: () => void;
   displayPhoto: string;
+  onCompleteUser: () => void;
 }
 
 export interface BiggerNewsProps {
