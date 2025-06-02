@@ -2,9 +2,10 @@ import { Modal } from "../../../components/Modal";
 import EyeOpen from "../../../assets/icons/eyeOpen.svg";
 import EyeClose from "../../../assets/icons/eyeClosed.svg";
 import { SignUpProps } from "../../../interfaces/interfaces.web";
-import { RegisterUser } from "../../../services/users/SingUp/api";
-import { useState } from "react";
+import { RegisterUser } from "../../../services/users/singUp/api";
 import axios from "axios";
+import { LoginUser } from "../../../services/users/singIn/api";
+import { useAuth } from "../../../hooks/useAuth";
 
 
 export function SignUp({
@@ -14,19 +15,20 @@ export function SignUp({
   onComplete,
 }: SignUpProps) {
 
-  const [username,setUsername] = useState("")
-  const [email,setEmail] = useState("")
-  const [password,setPassword] = useState("")
+  const {user,handleInputChange,} = useAuth()
+
   
 
-  const handleValidationRegister = async (username:string,email:string,password:string) => {
+  const handleValidationRegister = async () => {
     try{
-      RegisterUser(username,email,password)
+      await RegisterUser(user.username,user.email,user.password)
+      await LoginUser(user.email,user.password)
        onComplete();
     }catch (error){
      if(axios.isAxiosError(error) && error.response){
         console.log("status: ", error.status)
-        console.log(`mensagem: ${error.response.data}`)
+        alert(`mensagem: ${error.response.data}
+        `)
       }
   }
   }
@@ -44,8 +46,8 @@ export function SignUp({
           showLabel: true,
           IconOpen: "",
           IconClose: "",
-          onChange:(e) => setUsername(e.target.value),
-          value:username
+          onChange:handleInputChange,
+          value:user.username
         },
         {
           placeholder: "Digite o seu e-mail",
@@ -55,8 +57,8 @@ export function SignUp({
           showLabel: true,
           IconOpen: "",
           IconClose: "",
-          onChange:(e) => setEmail(e.target.value),
-          value:email
+          onChange:handleInputChange,
+          value:user.email
         },
         {
           placeholder: "Digite a sua senha",
@@ -66,8 +68,8 @@ export function SignUp({
           showLabel: true,
           IconOpen: EyeOpen,
           IconClose: EyeClose,
-          onChange:(e) => setPassword(e.target.value),
-          value:password
+          onChange:handleInputChange,
+          value:user.password
         },
       ]}
       textButton="Confirmar"
@@ -82,7 +84,7 @@ export function SignUp({
       }}
       displayChangeOption="flex"
       onClick={() => {
-       handleValidationRegister(username, email, password)
+       handleValidationRegister
       }}
     />
   );

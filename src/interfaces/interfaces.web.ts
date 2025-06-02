@@ -100,6 +100,12 @@ export interface SignInProps {
   displayPhoto: string;
 }
 
+export interface UserProps{
+  username?: string;
+  email:string;
+  password:string;
+}
+
 export interface SignUpProps {
   onHighlightClick: () => void;
   onInformationExtraClick: () => void;
