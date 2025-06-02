@@ -18,7 +18,6 @@ import { SignIn } from "../../template/signInUp/signIn";
 import { SignUp } from "../../template/signInUp/signUp";
 import { PasswordFlow } from "../../template/signInUp/forgotPassword";
 import { Aside } from "../Aside";
-import { Exit } from "../../template/signInUp/exit";
 
 interface HeaderProps {
   display: string;
@@ -177,8 +176,7 @@ export function Header({
             displayPhoto="block"
             onHighlightClick={() => setModalType("sign in")}
             onInformationExtraClick={() => setModalType("forgot password")}
-            onComplete={() => setIsOpenModal(false)}
-          />
+            onComplete={() => setIsOpenModal(false)}           />
         </>
       )}
 

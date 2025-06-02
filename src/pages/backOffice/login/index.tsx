@@ -1,9 +1,18 @@
 import { LoginContainer } from "./styled";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { SignIn } from "../../../template/signInUp/signIn";
+import { GetRole } from "../../../services/role";
 
 export function BackOfficeLogin() {
   const navigate = useNavigate();
+  const role = GetRole()
+  const token = localStorage.getItem('token')
+  if(token){
+    if(role?.toLocaleLowerCase() !== "admin"){
+    return<Navigate to={'/'}/>
+  }
+  }
+  
   return (
     <LoginContainer>
       <SignIn

@@ -3,7 +3,7 @@ import EyeOpen from "../../../assets/icons/eyeOpen.svg";
 import EyeClose from "../../../assets/icons/eyeClosed.svg";
 import { SignInProps } from "../../../interfaces/interfaces.web";
 import {LoginAdmin} from "../../../services/admin/api"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { LoginUser } from "../../../services/users/singIn/api";
 import { GetRole } from "../../../services/role";
@@ -21,7 +21,6 @@ export function SignIn({
 
   const [email,setEmail] = useState("");
   const [password,setPassword] = useState("");
-  const [isAuth,setIsAuth] = useState<boolean | null>(false)
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value)
@@ -64,14 +63,7 @@ const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 }
 
 
-useEffect(() => {
-  const token = localStorage.getItem('token')
-  if(token){
-    setIsAuth(true)
-   onComplete()
-  }
-},[])
- 
+
 
 
   return (

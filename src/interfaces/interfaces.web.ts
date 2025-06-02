@@ -105,7 +105,6 @@ export interface SignUpProps {
   onInformationExtraClick: () => void;
   onComplete: () => void;
   displayPhoto: string;
-  onCompleteUser: () => void;
 }
 
 export interface BiggerNewsProps {
