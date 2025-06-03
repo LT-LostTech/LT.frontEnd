@@ -2,7 +2,7 @@ import { Modal } from "../../../components/Modal";
 import EyeOpen from "../../../assets/icons/eyeOpen.svg";
 import EyeClose from "../../../assets/icons/eyeClosed.svg";
 import { SignUpProps } from "../../../interfaces/interfaces.web";
-import { RegisterUser } from "../../../services/users/singUp/api";
+import { RegisterUser } from "../../../services/users/SingUp/api";
 import axios from "axios";
 import { LoginUser } from "../../../services/users/singIn/api";
 import { useAuth } from "../../../hooks/useAuth";
@@ -15,16 +15,23 @@ export function SignUp({
   onComplete,
 }: SignUpProps) {
 
-  const {user,handleInputChange,} = useAuth()
-
+  const {user,handleInputChange, authStatus, setAuthStatus} = useAuth()
+//cursor not allowed
   
 
   const handleValidationRegister = async () => {
+    setAuthStatus({loading:true,error:null,success:false}) 
     try{
       await RegisterUser(user.username,user.email,user.password)
       await LoginUser(user.email,user.password)
-       onComplete();
+      setTimeout(() => {
+        setAuthStatus({loading:false,error:null,success:true}) 
+        onComplete();
+      },500)
+      
+      
     }catch (error){
+      setAuthStatus({loading:false,error:null,success:true}) 
      if(axios.isAxiosError(error) && error.response){
         console.log("status: ", error.status)
         alert(`mensagem: ${error.response.data}
@@ -39,6 +46,7 @@ export function SignUp({
       title="Cadastro"
       inputs={[
         {
+          name:"username",
           placeholder: "Digite o seu nome",
           label: "Nome",
           type: "text",
@@ -50,6 +58,7 @@ export function SignUp({
           value:user.username
         },
         {
+          name:"email",
           placeholder: "Digite o seu e-mail",
           label: "E-mail",
           type: "email",
@@ -61,6 +70,7 @@ export function SignUp({
           value:user.email
         },
         {
+          name:"password",
           placeholder: "Digite a sua senha",
           label: "Senha",
           type: "password",
@@ -72,7 +82,7 @@ export function SignUp({
           value:user.password
         },
       ]}
-      textButton="Confirmar"
+      textButton={authStatus.loading ? "Cadastrando..." : "Confirmar"}
       textChangeOption="Já tem uma conta? Faça "
       textChangeOptionHighlight="Login"
       displayInformationExtra="none"
@@ -84,8 +94,9 @@ export function SignUp({
       }}
       displayChangeOption="flex"
       onClick={() => {
-       handleValidationRegister
+       handleValidationRegister()
       }}
+      disabled={authStatus.loading}
     />
   );
 }

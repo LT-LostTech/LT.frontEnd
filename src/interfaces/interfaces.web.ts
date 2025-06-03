@@ -22,6 +22,7 @@ export interface ButtonProps {
   heightMobile?: string;
   fontTablet?: string;
   fontMobile?: string;
+  disabled?: boolean
 }
 
 export interface FormProps {
@@ -41,6 +42,7 @@ export interface InputProps {
   type?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   value?: string;
+  name?:string;
 }
 
 export interface ModalProps {
@@ -57,6 +59,7 @@ export interface ModalProps {
   onClick?: () => void;
   position: string;
   display: string;
+  disabled?: boolean
 }
 
 export interface SideMenuProps {
