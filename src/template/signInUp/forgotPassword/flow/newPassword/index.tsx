@@ -17,20 +17,22 @@ const {user,handleInputChange,authStatus,setAuthStatus} = useAuth()
 const handleNewPassword = async () => {
 setAuthStatus({ loading: true, error: null, success: false });
 try{
-  if(user.password === user.newPassword){
+  if(user.password !== user.newPassword)
     await NewPasswordApi(user.email,user.newPassword)
     setTimeout(() => {
       setAuthStatus({ loading: false, error: null, success: true });
       onClick();
     },500)
-}
+
 }catch(error){
   setAuthStatus({ loading: false, error: null, success: false });
   if (axios.isAxiosError(error) && error.response) {
     console.log("status: ", error.response.status);
-    alert(`mensagem: ${error.response.data}`);
+    alert(`mensagem: ${error.response.statusText}`);
   }
+  console.log(error)
 }
+
 }
 
   
@@ -65,7 +67,7 @@ try{
 
         },
         {
-          name: "confirmPassword",
+          name: "newPassword",
           placeholder: "Digite a senha novamente",
           label: "Senha",
           showIcon: true,

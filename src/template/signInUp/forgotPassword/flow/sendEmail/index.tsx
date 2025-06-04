@@ -11,7 +11,7 @@ export function SendEmail({ displayPhoto, onHighlightClick, onClick, position }:
     const handleSendEmail = async () => {
         setAuthStatus({ loading: true, error: null, success: false });
         try{
-            await  ForgotPasswordApi(user.email)
+            await ForgotPasswordApi(user.email)
             setTimeout(() => {
                 setAuthStatus({ loading: false, error: null, success: true });
                 onClick();
