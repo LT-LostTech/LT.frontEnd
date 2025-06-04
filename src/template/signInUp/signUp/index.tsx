@@ -2,7 +2,7 @@ import { Modal } from "../../../components/Modal";
 import EyeOpen from "../../../assets/icons/eyeOpen.svg";
 import EyeClose from "../../../assets/icons/eyeClosed.svg";
 import { SignUpProps } from "../../../interfaces/interfaces.web";
-import { RegisterUser } from "../../../services/users/singUp/api";
+import { RegisterUser } from "../../../services/users/SingUp/api";
 import axios from "axios";
 import { LoginUser } from "../../../services/users/singIn/api";
 import { useAuth } from "../../../hooks/useAuth";
@@ -39,6 +39,7 @@ export function SignUp({
       title="Cadastro"
       inputs={[
         {
+          name:"username",
           placeholder: "Digite o seu nome",
           label: "Nome",
           type: "text",
@@ -50,6 +51,7 @@ export function SignUp({
           value:user.username
         },
         {
+          name:"email",
           placeholder: "Digite o seu e-mail",
           label: "E-mail",
           type: "email",
@@ -61,6 +63,7 @@ export function SignUp({
           value:user.email
         },
         {
+          name:"password",
           placeholder: "Digite a sua senha",
           label: "Senha",
           type: "password",
@@ -84,7 +87,7 @@ export function SignUp({
       }}
       displayChangeOption="flex"
       onClick={() => {
-       handleValidationRegister
+       handleValidationRegister()
       }}
     />
   );
