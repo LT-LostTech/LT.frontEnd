@@ -29,6 +29,7 @@ export function Modal({
   onInformationExtraClick,
   position,
   display,
+  disabled
 }: ModalProps) {
   return (
     <ModalContainer position={position}>
@@ -37,7 +38,7 @@ export function Modal({
         <ModalTitle>{title}</ModalTitle>
         <ModalForm>
           {inputs.map((input, key) => (
-            <Input {...input} key={key} onChange={input.onChange}/>
+            <Input name={input.name} {...input} key={key} onChange={input.onChange}/>
           ))}
         </ModalForm>
         <ModalForgotPassword
@@ -55,6 +56,7 @@ export function Modal({
           border="transparent"
           fontWeight="600"
           text={textButton}
+          disabled={disabled}
         />
         <ModalChangeOption display={displayChangeOption}>
           <ModalChangeLine />

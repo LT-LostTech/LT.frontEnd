@@ -12,6 +12,7 @@ export function Input({
   placeholder,
   label,
   type = "text",
+  name,
   showIcon,
   showLabel,
   IconOpen,
@@ -32,6 +33,7 @@ export function Input({
       <InputFieldWithContainer>
         <InputField
           type={isPassword ? "text" : type}
+          name={name}
           placeholder={placeholder}
           onChange={onChange}
           value={value}

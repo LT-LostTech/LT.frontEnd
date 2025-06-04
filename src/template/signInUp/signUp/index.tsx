@@ -15,16 +15,23 @@ export function SignUp({
   onComplete,
 }: SignUpProps) {
 
-  const {user,handleInputChange,} = useAuth()
-
+  const {user,handleInputChange, authStatus, setAuthStatus} = useAuth()
+//cursor not allowed
   
 
   const handleValidationRegister = async () => {
+    setAuthStatus({loading:true,error:null,success:false}) 
     try{
       await RegisterUser(user.username,user.email,user.password)
       await LoginUser(user.email,user.password)
-       onComplete();
+      setTimeout(() => {
+        setAuthStatus({loading:false,error:null,success:true}) 
+        onComplete();
+      },500)
+      
+      
     }catch (error){
+      setAuthStatus({loading:false,error:null,success:true}) 
      if(axios.isAxiosError(error) && error.response){
         console.log("status: ", error.status)
         alert(`mensagem: ${error.response.data}
@@ -75,7 +82,7 @@ export function SignUp({
           value:user.password
         },
       ]}
-      textButton="Confirmar"
+      textButton={authStatus.loading ? "Cadastrando..." : "Confirmar"}
       textChangeOption="Já tem uma conta? Faça "
       textChangeOptionHighlight="Login"
       displayInformationExtra="none"
@@ -89,6 +96,7 @@ export function SignUp({
       onClick={() => {
        handleValidationRegister()
       }}
+      disabled={authStatus.loading}
     />
   );
 }
