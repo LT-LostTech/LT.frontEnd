@@ -11,4 +11,8 @@ export async function CodeVerificationApi(email: string, code: string | undefine
     await axios.post(url, { email,code });
 }
 
-export
+export async function NewPasswordApi(email:string, newPassword: string | undefined){
+    const url = `${Api_base}/login/reset-password`;
+    await axios.post(url, { email,newPassword });
+
+}

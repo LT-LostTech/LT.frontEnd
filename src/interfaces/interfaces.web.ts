@@ -108,6 +108,7 @@ export interface UserProps{
   email:string;
   password?:string;
   code?: string;
+  newPassword?: string;
 }
 
 export interface SignUpProps {
