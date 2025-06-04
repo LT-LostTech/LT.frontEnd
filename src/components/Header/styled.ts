@@ -27,7 +27,7 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
   position: ${(props) => props.position};
   border-radius: ${(props) => props.borderRadius};
   z-index: 1000;
-  margin-top: 20px;
+ 
   justify-content: space-around;
 
   @media (max-width: 1024px) {

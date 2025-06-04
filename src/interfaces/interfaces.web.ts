@@ -106,7 +106,8 @@ export interface SignInProps {
 export interface UserProps{
   username?: string;
   email:string;
-  password:string;
+  password?:string;
+  code?: string;
 }
 
 export interface SignUpProps {

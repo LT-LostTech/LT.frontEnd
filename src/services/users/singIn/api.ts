@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Api_base } from "../../api_base";
 
-export async function LoginUser (email:string,password:string){
+export async function LoginUser (email:string,password:string| undefined) {
     const url = `${Api_base}/login/user`
 
     const user = axios.post(url,{email,password})
