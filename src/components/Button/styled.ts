@@ -44,3 +44,11 @@ export const ButtonContainer = styled.button<ButtonProps>`
     color: ${(props) => props.hoverColor};
   }
 `;
+
+export const StyledLoading = styled.button<{disabled:boolean}>`
+  opacity: ${props => props.disabled ? 0.8 : 1};
+  cursor: ${props => props.disabled ? 'not-allowed' : 'pointer'};
+  width: 100%;
+  height: 100%;
+
+`

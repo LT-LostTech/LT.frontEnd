@@ -1,15 +1,15 @@
 import axios from "axios";
 import { Api_base } from "../../api_base";
 
-export async function LoginUser (email:string,password:string| undefined) {
-    const url = `${Api_base}/login/user`
+export async function LoginUser(email: string, password: string | undefined) {
+  const url = `${Api_base}/login/user`;
 
-    const user = axios.post(url,{email,password})
-    console.log("teste:",password)
-    console.log("teste:",email)
-    console.log((await user).statusText)
-    const token = (await user).data;
-    localStorage.setItem("token", token);
+  const user = axios.post(url, { email, password });
+  console.log("teste:", password);
+  console.log("teste:", email);
+  console.log((await user).statusText);
+  const token = (await user).data;
+  localStorage.setItem("token", token);
 
   const api = axios.create({
     baseURL: `${Api_base}/login/user`,
@@ -23,5 +23,4 @@ export async function LoginUser (email:string,password:string| undefined) {
     }
     return config;
   });
-    
 }

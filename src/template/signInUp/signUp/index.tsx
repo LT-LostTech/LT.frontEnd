@@ -2,10 +2,11 @@ import { Modal } from "../../../components/Modal";
 import EyeOpen from "../../../assets/icons/eyeOpen.svg";
 import EyeClose from "../../../assets/icons/eyeClosed.svg";
 import { SignUpProps } from "../../../interfaces/interfaces.web";
-import { RegisterUser } from "../../../services/users/singUp/api";
+import { RegisterUser } from "../../../services/users/SingUp/api";
 import axios from "axios";
 import { LoginUser } from "../../../services/users/singIn/api";
 import { useAuth } from "../../../hooks/useAuth";
+import { toast } from "react-toastify";
 
 export function SignUp({
   displayPhoto,
@@ -19,19 +20,20 @@ export function SignUp({
   const handleValidationRegister = async () => {
     setAuthStatus({ loading: true, error: null, success: false });
     try {
-       await RegisterUser(user.username, user.email, user.password);
-       await LoginUser(user.email, user.password);
+      await RegisterUser(user.username, user.email, user.password);
+      await LoginUser(user.email, user.password);
       setTimeout(() => {
         setAuthStatus({ loading: false, error: null, success: true });
+        toast.success("Cadastro realizado com sucesso!");
         onComplete();
       }, 500);
     } catch (error) {
       setAuthStatus({ loading: false, error: null, success: true });
       if (axios.isAxiosError(error) && error.response) {
         console.log("status: ", error.status);
-        console.log(error)
-        alert(`mensagem: ${error.response.data}
-          `);
+        console.log(error);
+        toast.error(error.response.data);
+
         console.log(`erro inesperado: ${error}`);
       }
     }
