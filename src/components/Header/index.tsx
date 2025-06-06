@@ -18,6 +18,8 @@ import { SignIn } from "../../template/signInUp/signIn";
 import { SignUp } from "../../template/signInUp/signUp";
 import { PasswordFlow } from "../../template/signInUp/forgotPassword";
 import { Aside } from "../Aside";
+import { User } from "phosphor-react";
+import { SideBar } from "../SideBar";
 
 interface HeaderProps {
   display: string;
@@ -122,16 +124,7 @@ export function Header({
 
     {token && (
       <HeaderButtons display={display}>
-        <Button
-          width="163px"
-          height="62px"
-          text="Sair"
-          colorText={theme.colors.gray800}
-          bgColor={theme.colors.lightGray}
-          fontWeight="bold"
-          border="none"
-          onClick={handleLogout}
-        />
+        <SideBar/>
         </HeaderButtons>
       )
     }
