@@ -4,7 +4,7 @@ import background from '../../assets/backgrounds/sectionsWithIllustration.png'
 
 export const ContainerLinksSideBar = styled.div`
     position: fixed;
-    top: 5%;
+    top: 10%;
     right: 0;
     background-image:url(${background});
     background-position: center;
@@ -12,7 +12,7 @@ export const ContainerLinksSideBar = styled.div`
     background-size: cover;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-    z-index: 100;
+    z-index: 1005;
 `
 
 export const Group = styled.div`
@@ -21,8 +21,16 @@ export const Group = styled.div`
     align-items: start;
     width: 100%;
     height: 100%;
-    padding: 25px 25px 25px 10px;
-    gap: 25px;
+    padding: 10px 50px 25px 10px;
+    gap: 40px;
+`
+
+export const PositionButton = styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: end;
+    position: absolute;
+    left: 20%;
 `
 
 export const GroupTexts = styled.div`

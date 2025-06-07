@@ -7,11 +7,11 @@ type JWTUser = {
 export function GetUsername() {
     const token = localStorage.getItem('token')
 
-    console.log(token, 'oi')
     if(!token) return null
     
         try{
-          const payload = jwtDecode<JWTUser>('token');
+          const payload = jwtDecode<JWTUser>(token);
+          console.log("payload", payload)
           return payload.sub
           }catch (error){
               console.log("erro token user errado", error)

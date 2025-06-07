@@ -10,7 +10,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "../Button";
 import { theme } from "../../theme/theme";
 import MenuIconImage from "../../assets/icons/menu-hamburguer.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SideMenu } from "../SideMenu";
 import { navItems } from "./data";
 import { Overlay } from "../../utils/Overlay/styled";
@@ -18,7 +18,6 @@ import { SignIn } from "../../template/signInUp/signIn";
 import { SignUp } from "../../template/signInUp/signUp";
 import { PasswordFlow } from "../../template/signInUp/forgotPassword";
 import { Aside } from "../Aside";
-import { User } from "phosphor-react";
 import { SideBar } from "../SideBar";
 
 interface HeaderProps {
@@ -64,14 +63,13 @@ export function Header({
   const handleCloseAside = () => {
     setIsOpen(false);
   };
-  const token = localStorage.getItem('token')
+  
+  const [token, setTokenUser] = useState<string | null>(null);
 
-   const handleLogout= () => {
-    navigate("/");
-    const remove = localStorage.removeItem('token')
-    console.log('certinho', remove)
-    handleCloseAside();
-  };
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setTokenUser(token);
+  }, []);
   return (
     <HeaderContainer
       borderRadius={borderRadius}

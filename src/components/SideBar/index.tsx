@@ -2,16 +2,15 @@ import { User, X } from "phosphor-react";
 import { Button } from "../Button";
 import { theme } from "../../theme/theme";
 import { useState } from "react";
-import { ContainerLinksSideBar,GroupTexts, Group } from "./styled";
-import { useNavigate } from "react-router-dom";
+import { ContainerLinksSideBar,GroupTexts, Group, PositionButton } from "./styled";
 import { GetUsername } from "../../services/username";
+import { Overlay } from "../../utils/Overlay/styled";
 
 
 export function SideBar() {
 
   const [isOpen, setIsOpen] = useState(false);
   const [isClose,setIsClose] = useState(false)
-  const navigate = useNavigate();
 
 const handleCloseSideBar =() => {
     setIsClose(false)
@@ -25,14 +24,13 @@ const handleCloseSideBar =() => {
   };
 
   const handleLogout = () => {
-    navigate("/backoffice");
     const token = localStorage.removeItem('token')
     console.log('certinho', token)
     handleCloseSideBar()
-    
   };
  
   const user = GetUsername()
+  console.log("user", user)
 
 
   return (
@@ -49,11 +47,23 @@ const handleCloseSideBar =() => {
         />
 
       {isOpen && (
+        <>
+        <Overlay onClick={handleCloseSideBar}/>
        <ContainerLinksSideBar >
-        <Group>
+         <PositionButton>          
+          <Button
 
+              onClick={handleCloseSideBar}
+              text={<X size={20} weight="bold" color={theme.colors.white} style={{ cursor: 'pointer' }} />}
+              colorText={theme.colors.white}
+              bgColor={"transparent"}
+              fontWeight={""}
+              border={"none"} width={""} height={""}               
+                />
+           </PositionButton>
+        <Group>
             <GroupTexts>
-               {user}	 
+               {user?.toLocaleLowerCase()}	 
               </GroupTexts>
 
             <GroupTexts>
@@ -75,6 +85,7 @@ const handleCloseSideBar =() => {
             
            </Group>
         </ContainerLinksSideBar>
+        </>
       )}
     </>
   );
