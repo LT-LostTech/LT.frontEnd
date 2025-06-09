@@ -25,7 +25,7 @@ interface HeaderProps {
   displayMenu: string;
   position: string;
   borderRadius: string;
-  displayMenuTablet: string
+  displayMenuTablet: string;
 }
 
 export function Header({
@@ -33,20 +33,19 @@ export function Header({
   position,
   borderRadius,
   displayMenu,
-  displayMenuTablet
+  displayMenuTablet,
 }: HeaderProps) {
   const location = useLocation();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const isDashBoard = location.pathname.startsWith("/backoffice/dashboard");
   const isSignInUp = location.pathname === "/";
-
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [modalType, setModalType] = useState<
     "sign in" | "sign up" | "forgot password" | null
   >("sign in");
 
-  const handleOpenModal = (type: "sign in" | "sign up" | "forgot password" ) => {
+  const handleOpenModal = (type: "sign in" | "sign up" | "forgot password") => {
     setModalType(type);
     setIsOpenModal(!isOpenModal);
     setIsOpen(false);
@@ -63,13 +62,19 @@ export function Header({
   const handleCloseAside = () => {
     setIsOpen(false);
   };
-  
+
   const [token, setTokenUser] = useState<string | null>(null);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    setTokenUser(token);
-  }, []);
+     const handleStorageChange = () => {
+    const updatedToken = localStorage.getItem("token");
+    setTokenUser(updatedToken);
+  };
+
+  return () => {
+    window.removeEventListener("storage", handleStorageChange);
+  }}, []);
+
   return (
     <HeaderContainer
       borderRadius={borderRadius}
@@ -89,45 +94,53 @@ export function Header({
       />
       <HeaderNav display={display}>
         {navItems.map((item, key) => (
-          <Link key={key} to={`/${item.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`}>
+          <Link
+            key={key}
+            to={`/${item
+              .toLowerCase()
+              .normalize("NFD")
+              .replace(/[\u0300-\u036f]/g, "")}`}
+          >
             {item}
           </Link>
         ))}
       </HeaderNav>
       {!token && (
-      <HeaderButtons display={display}>
-        <Button
-          width="163px"
-          height="62px"
-          text="Entrar"
-          colorText={theme.colors.gray800}
-          bgColor={theme.colors.lightGray}
-          fontWeight="bold"
-          border="none"
-          onClick={() => handleOpenModal("sign in")}
-        />
-        <Button
-          width="163px"
-          height="62px"
-          text="Cadastrar"
-          colorText="white"
-          bgColor="transparent"
-          fontWeight="bold"
-          border="1px solid white"
-          onClick={() => handleOpenModal("sign up")}
-        />
-      </HeaderButtons>
-      )
-    }
-
-    {token && (
-      <HeaderButtons display={display}>
-        <SideBar/>
+        <HeaderButtons display={display}>
+          <Button
+            width="163px"
+            height="62px"
+            text="Entrar"
+            colorText={theme.colors.gray800}
+            bgColor={theme.colors.lightGray}
+            fontWeight="bold"
+            border="none"
+            onClick={() => handleOpenModal("sign in")}
+          />
+          <Button
+            width="163px"
+            height="62px"
+            text="Cadastrar"
+            colorText="white"
+            bgColor="transparent"
+            fontWeight="bold"
+            border="1px solid white"
+            onClick={() => handleOpenModal("sign up")}
+          />
         </HeaderButtons>
-      )
-    }
+      )}
 
-      <MenuButton onClick={handleOpenMenu} displayMenu={displayMenu} displayMenuTablet={displayMenuTablet}>
+      {token && (
+        <HeaderButtons display={display}>
+          <SideBar onlogout={() => setTokenUser(null) } />
+        </HeaderButtons>
+      )}
+
+      <MenuButton
+        onClick={handleOpenMenu}
+        displayMenu={displayMenu}
+        displayMenuTablet={displayMenuTablet}
+      >
         <img src={MenuIconImage} alt="Ao clicar você abre um menu de opções" />
       </MenuButton>
 
@@ -135,7 +148,10 @@ export function Header({
         <>
           <Overlay onClick={handleCloseMenu} />
           {isDashBoard ? (
-            <Aside className={isOpen ? "open" : ""} handleCloseAside={handleCloseAside || ''} />
+            <Aside
+              className={isOpen ? "open" : ""}
+              handleCloseAside={handleCloseAside || ""}
+            />
           ) : (
             <SideMenu
               handleCloseMenu={handleCloseMenu}
@@ -156,7 +172,11 @@ export function Header({
             textChangeOptionHighlight="Cadastre"
             onHighlightClick={() => setModalType("sign up")}
             onInformationExtraClick={() => setModalType("forgot password")}
-            onComplete={() => setIsOpenModal(false)}           />
+            onComplete={() => {
+              setIsOpenModal(false);
+              setTokenUser(localStorage.getItem("token"));
+            }}
+          />
         </>
       )}
 
@@ -167,7 +187,11 @@ export function Header({
             displayPhoto="block"
             onHighlightClick={() => setModalType("sign in")}
             onInformationExtraClick={() => setModalType("forgot password")}
-            onComplete={() => setIsOpenModal(false)}           />
+            onComplete={() => {
+              setIsOpenModal(false);
+              setTokenUser(localStorage.getItem("token"));
+            }}
+          />
         </>
       )}
 

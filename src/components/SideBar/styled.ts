@@ -4,8 +4,8 @@ import background from '../../assets/backgrounds/sectionsWithIllustration.png'
 
 export const ContainerLinksSideBar = styled.div`
     position: fixed;
-    top: 10%;
-    right: 0;
+    top: 14.3%;
+    right: 10%;
     background-image:url(${background});
     background-position: center;
     background-repeat:no-repeat ;

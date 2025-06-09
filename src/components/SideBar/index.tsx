@@ -6,8 +6,11 @@ import { ContainerLinksSideBar,GroupTexts, Group, PositionButton } from "./style
 import { GetUsername } from "../../services/username";
 import { Overlay } from "../../utils/Overlay/styled";
 
+interface SideBarProps {
+  onlogout: () => void;
+}
 
-export function SideBar() {
+export function SideBar({onlogout}:SideBarProps) {
 
   const [isOpen, setIsOpen] = useState(false);
   const [isClose,setIsClose] = useState(false)
@@ -25,7 +28,7 @@ const handleCloseSideBar =() => {
 
   const handleLogout = () => {
     const token = localStorage.removeItem('token')
-    console.log('certinho', token)
+    onlogout()
     handleCloseSideBar()
   };
  
@@ -48,7 +51,6 @@ const handleCloseSideBar =() => {
 
       {isOpen && (
         <>
-        <Overlay onClick={handleCloseSideBar}/>
        <ContainerLinksSideBar >
          <PositionButton>          
           <Button
