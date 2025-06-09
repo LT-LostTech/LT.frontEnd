@@ -43,7 +43,7 @@ export interface InputProps {
   IconClose: string;
   type?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  value?: string;
+  value?: string | number;
   name?:string;
 }
 
@@ -111,6 +111,13 @@ export interface UserProps{
   password?:string;
   code?: string;
   newPassword?: string;
+}
+
+export interface RoadmapsProps{
+  category?: string |undefined,
+  estimatedHours?: number |undefined,
+  label?: string | undefined,
+  levels?: number | undefined
 }
 
 export interface SignUpProps {
