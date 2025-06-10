@@ -1,11 +1,27 @@
 import { ChangeEvent, useState } from "react";
-import { UserProps } from "../interfaces/interfaces.web";
+import { RoadmapsProps, UserProps } from "../interfaces/interfaces.web";
 
 export function useAuth() {
  const [user, setUser] = useState<UserProps>({
     username:"",
     email:"",
     password:""})
+
+     const [roadmap, setRoadmap] = useState<RoadmapsProps>({
+    NomeRoadmap:"",
+    categoryRoadmap:"",
+    levelRoadmap:"",
+    progressRoadmaps:0,
+    estimatedHours:0
+})
+
+    function handleInputChangeRoadmaps(e: ChangeEvent<HTMLInputElement>){
+        const {name,value} = e.target
+        setRoadmap(prev => ({
+            ...prev,
+            [name]:value
+        })) 
+    }
     
     function handleInputChange(e: ChangeEvent<HTMLInputElement>){
         const {name,value} = e.target
@@ -22,7 +38,7 @@ export function useAuth() {
 
 
 
-    return  {user,handleInputChange,authStatus,setAuthStatus}
+    return  {user,handleInputChange,handleInputChangeRoadmaps,roadmap,authStatus,setAuthStatus}
 
 
 }

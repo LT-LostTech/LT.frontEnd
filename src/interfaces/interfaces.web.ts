@@ -113,6 +113,14 @@ export interface UserProps{
   newPassword?: string;
 }
 
+export interface RoadmapsProps {
+  NomeRoadmap?:string;
+  categoryRoadmap?: string;
+  progressRoadmaps?:number;
+  levelRoadmap?: string;
+  estimatedHours?: number;
+}
+
 export interface SignUpProps {
   onHighlightClick: () => void;
   onInformationExtraClick: () => void;
