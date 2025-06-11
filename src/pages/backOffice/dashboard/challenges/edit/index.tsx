@@ -25,9 +25,9 @@ export function EditFormChallenges() {
                     IconClose: "",
                 },
                 {
-                    label: "Linguagem de programação",
+                    label: "horas estimadas",
                     type: "text",
-                    placeholder: "Digite a linguagem de programação",
+                    placeholder: "horas estimadas",
                     showIcon: false,
                     showLabel: true,
                     IconOpen: "",

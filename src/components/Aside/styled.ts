@@ -3,7 +3,7 @@ import { theme } from "../../theme/theme";
 
 export const AsideContainer = styled.aside`
   width: 338px;
-  height: 100vh;
+  height: 100%;
   background-color: ${theme.colors.gray800};
   padding: 89px 47px;
   display: flex;

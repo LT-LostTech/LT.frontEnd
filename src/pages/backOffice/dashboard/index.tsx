@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import { Aside } from "../../../components/Aside";
 import { Button } from "../../../components/Button";
 import { theme } from "../../../theme/theme";
@@ -16,8 +16,17 @@ import {
   DashboardTableBodyCell,
 } from "./styled";
 import { Overlay } from "../../../utils/Overlay/styled";
-import { Outlet, useLocation } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { GetRole } from "../../../services/role";
+import { ListingRoadmapsApi } from "../../../services/roadmap/listing/api";
 
+interface Roadmap {
+    id: string | number;
+    category: string;
+    label: string;
+    estimatedHours: number;
+    // add other properties if needed
+  }
 
 interface DashboardProps {
   title: string;
@@ -26,42 +35,52 @@ interface DashboardProps {
   ComponentFormEdit: React.ComponentType;
 }
 
-const tableData = [
-  {
-    name: "teste",
-    description: "teste",
-    status: "teste",
-    actions: "teste",
-  },
-  {
-    name: "teste",
-    description: "teste",
-    status: "teste",
-    actions: "teste",
-  },
-  {
-    name: "teste",
-    description: "teste",
-    status: "teste",
-    actions: "teste",
-  },
-];
+
 
 export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentFormEdit }: DashboardProps) {
+
+
+  const [roadmaps, setRoadmaps] = useState<Roadmap[]>([]);
+  
+
+useEffect(() => {
+    async function fetchRoadmap() {
+    try {
+      const data = await ListingRoadmapsApi();
+      console.log(data)
+      setRoadmaps(data);
+    } catch (error) {
+      console.error("Error fetching roadmaps:", error);
+    }
+  }
+  fetchRoadmap();
+  },[])
+
   const [modalType, setModalType] = useState<"create" | "edit" | null>(
     "create"
   );
   const [isOpenModal, setIsOpenModal] = useState(false);
   const location = useLocation()
 
+  const role =GetRole()
+  const token = localStorage.getItem('token')
+
+  useEffect(() => {
+    setIsOpenModal(false)
+  },[location.pathname])
+
+  if(!token){
+    return<Navigate to={'/backoffice'}/>
+  }
+  if(role?.toLocaleLowerCase() !=="admin"){
+    return<Navigate to={'/'}/>
+  }
+
   const handleOpenModal = (type: "create" | "edit") => {
     setModalType(type);
     setIsOpenModal(!isOpenModal);
   };  
 
-  useEffect(() => {
-    setIsOpenModal(false)
-  },[location.pathname])
 
   return (
     <DashboardPage>
@@ -95,16 +114,16 @@ export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentF
             </DashboardTableHeaderRow>
           </DashboardTableHeader>
           <DashboardTableBody>
-            {tableData.map((data, key) => (
-              <DashboardTableBodyRow key={key}>
-                <DashboardTableBodyCell key={key} scope="row">
-                  {data.name}
+            {roadmaps.map((data) => (
+              <DashboardTableBodyRow key={data.id}>
+                <DashboardTableBodyCell key={data.id} scope="row">
+                  {data.category}
                 </DashboardTableBodyCell>
-                <DashboardTableBodyCell key={key} scope="row">
-                  {data.description}
+                <DashboardTableBodyCell key={data.id} scope="row">
+                  {data.label}
                 </DashboardTableBodyCell>
-                <DashboardTableBodyCell key={key} scope="row">
-                  {data.status}
+                <DashboardTableBodyCell key={data.id} scope="row">
+                  {data.estimatedHours}
                 </DashboardTableBodyCell>
                 <DashboardTableBodyCell>
                   <Button

@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import SmallerNewsCard from "../../../components/NewsCard/Smaller";
 import * as S from "./styled";
 import { useFetch } from "../../../hooks/useFetch";
-import { fetchFeaturedPosts } from "../../../services/api";
 import { getLastNews } from "../../../utils/LastNewsPosts";
 import { LastNewsProps } from "../../../interfaces/interfaces.web";
+import { fetchFeaturedPosts } from "../../../services/prismic/api";
 
 export default function LastNews() {
-  const { data: posts, error, loading } = useFetch(() => fetchFeaturedPosts());
+  const { data: posts} = useFetch(() => fetchFeaturedPosts());
   const [lastNews, setLastNews] = useState<LastNewsProps | null>(null);
 
   console.log(lastNews);

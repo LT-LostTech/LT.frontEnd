@@ -5,6 +5,8 @@ export interface asideProps {
   className?: string;
 }
 
+
+
 export interface ButtonProps {
   width: string;
   height: string;
@@ -22,6 +24,8 @@ export interface ButtonProps {
   heightMobile?: string;
   fontTablet?: string;
   fontMobile?: string;
+  disabled?: boolean
+  type?: "button" | "submit" | "reset";
 }
 
 export interface FormProps {
@@ -39,6 +43,9 @@ export interface InputProps {
   IconOpen: string;
   IconClose: string;
   type?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value?: string | number;
+  name?:string;
 }
 
 export interface ModalProps {
@@ -55,6 +62,7 @@ export interface ModalProps {
   onClick?: () => void;
   position: string;
   display: string;
+  disabled?: boolean
 }
 
 export interface SideMenuProps {
@@ -96,6 +104,22 @@ export interface SignInProps {
   textChangeOption: string;
   textChangeOptionHighlight: string;
   displayPhoto: string;
+}
+
+export interface UserProps{
+  username?: string;
+  email:string;
+  password?:string;
+  code?: string;
+  newPassword?: string;
+}
+
+export interface RoadmapsProps{
+  category?: string |undefined,
+  estimatedHours?: number |undefined,
+  progress?: number |undefined,
+  label?: string | undefined,
+  levels?: number | undefined
 }
 
 export interface SignUpProps {

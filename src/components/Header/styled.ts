@@ -22,12 +22,13 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
   background-color: ${theme.colors.gray800};
   display: flex;
   align-items: center;
-  padding: 12px 0;
+  padding: 12px 0px;
   justify-content: space-between;
   position: ${(props) => props.position};
   border-radius: ${(props) => props.borderRadius};
   z-index: 1000;
-  margin-top: 20px;
+  margin-top: 24px;
+ 
   justify-content: space-around;
 
   @media (max-width: 1024px) {
