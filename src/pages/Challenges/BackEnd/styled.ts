@@ -137,7 +137,7 @@ export const SectionNivel = styled.section`
 export const ModalBackEnd = styled.div`
   width: 1000px;
   height: 360px;
-  background-color: ${(props) => props.theme.colors.white};
+  background-color: ${theme.colors.white};
   border-radius: 50px;
   display: flex;
   flex-direction: column;

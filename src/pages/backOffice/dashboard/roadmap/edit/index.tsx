@@ -84,7 +84,7 @@ export function EditFormRoadmap() {
                 fontWeight: "500",
                 border: "none",
                 onClick() {
-                    handleDeleteRoadmap(id)
+                    handleDeleteRoadmap(1)
                 },
             }
         ]}
