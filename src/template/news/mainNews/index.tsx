@@ -9,7 +9,7 @@ import { getRecentSidePost } from "../../../utils/SideRecentPost";
 import { BiggerNewsProps, SmallerNewsProps } from "../../../interfaces/interfaces.web";
 
 export default function MainNewsSection() {
-  const { data: posts, loading, error } = useFetch(() => fetchFeaturedPosts());
+  const { data: posts } = useFetch(() => fetchFeaturedPosts());
   const [biggerNews, setBiggerNews] = useState<BiggerNewsProps | null>(null);
   const [SmallerNews, setSmallerNews] = useState<SmallerNewsProps | null>(null);
 

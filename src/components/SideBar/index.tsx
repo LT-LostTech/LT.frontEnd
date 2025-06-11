@@ -4,7 +4,7 @@ import { theme } from "../../theme/theme";
 import { useState } from "react";
 import { ContainerLinksSideBar,GroupTexts, Group, PositionButton } from "./styled";
 import { GetUsername } from "../../services/username";
-import { Overlay } from "../../utils/Overlay/styled";
+
 
 interface SideBarProps {
   onlogout: () => void;
@@ -27,7 +27,7 @@ const handleCloseSideBar =() => {
   };
 
   const handleLogout = () => {
-    const token = localStorage.removeItem('token')
+    localStorage.removeItem('token')
     onlogout()
     handleCloseSideBar()
   };

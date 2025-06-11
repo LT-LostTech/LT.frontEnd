@@ -7,7 +7,7 @@ import { LastNewsProps } from "../../../interfaces/interfaces.web";
 import { fetchFeaturedPosts } from "../../../services/prismic/api";
 
 export default function LastNews() {
-  const { data: posts, error, loading } = useFetch(() => fetchFeaturedPosts());
+  const { data: posts} = useFetch(() => fetchFeaturedPosts());
   const [lastNews, setLastNews] = useState<LastNewsProps | null>(null);
 
   console.log(lastNews);

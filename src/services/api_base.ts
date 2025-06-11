@@ -1,1 +1,1 @@
-export const Api_base = "https://lt-backend-7wga.onrender.com"
+export const Api_base = import.meta.env.VITE_API_BASE;

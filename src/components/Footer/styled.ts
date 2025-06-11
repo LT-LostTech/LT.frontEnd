@@ -6,7 +6,7 @@ export const FooterContainer = styled.footer`
     justify-content: space-between;
     padding: 85px 135px;
     width: 100%;
-    background-color: ${props => props.theme.colors.gray800};
+    background-color: ${theme.colors.gray800};
     
     @media (max-width: 835px) {
         padding: 32px 24px;
@@ -37,14 +37,14 @@ export const FooterTitle = styled.h3`
     font-size: 48px;
     font-weight: 700;
     text-decoration: underline;
-    color: ${props => props.theme.colors.lightGray};
+    color: ${theme.colors.lightGray};
 `
 
 export const FooterItem = styled.ol`
     font-size: 24px;
     font-weight: 500;
     text-decoration: underline;
-    color: ${props => props.theme.colors.lightGray};
+    color: ${theme.colors.lightGray};
 `
 
 export const FooterNewsletter = styled.div`
