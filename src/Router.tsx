@@ -47,7 +47,7 @@ export function Router() {
               tableHeaders={[
                 "Nome do roadmap",
                 "Categoria",
-                "Linguagem de programação",
+                "horas estimadas",
                 "Ações",
               ]}
               ComponentFormCreate={CreateFormRoadmap}

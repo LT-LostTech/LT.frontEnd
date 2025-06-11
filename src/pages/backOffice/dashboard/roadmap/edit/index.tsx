@@ -1,11 +1,26 @@
-import { useNavigate } from "react-router-dom";
 import { Form } from "../../../../../components/Form";
 import { theme } from "../../../../../theme/theme";
+import { DeleteRoadmapApi } from "../../../../../services/roadmap/delete/api";
+import axios from "axios";
 
 
 
 export function EditFormRoadmap() {
-    const navigate = useNavigate()
+
+
+    const handleDeleteRoadmap = async (id:number) => {
+        try{
+            await DeleteRoadmapApi(id)
+            console.log("Roadmap deleted");
+        }catch (error) {
+            if (axios.isAxiosError(error)) {
+                const errorMessage = error.response?.data || "Erro ao deletar roadmap";
+                console.error(errorMessage);
+            } else {
+                console.error("Unexpected error:", error);
+            }
+        }
+    }
 
     return <Form
         title="Informações do roadmap"
@@ -47,6 +62,9 @@ export function EditFormRoadmap() {
                 bgColor: theme.colors.red400,
                 fontWeight: "500",
                 border: "none",
+                onClick:() =>{
+
+                }
             },
             {
                 text: "Salvar",
@@ -66,7 +84,7 @@ export function EditFormRoadmap() {
                 fontWeight: "500",
                 border: "none",
                 onClick() {
-                    navigate('/backoffice/dashboard/roadmaps/steps')
+                    handleDeleteRoadmap(id)
                 },
             }
         ]}

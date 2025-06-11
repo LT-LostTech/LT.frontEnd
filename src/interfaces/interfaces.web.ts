@@ -25,6 +25,7 @@ export interface ButtonProps {
   fontTablet?: string;
   fontMobile?: string;
   disabled?: boolean
+  type?: "button" | "submit" | "reset";
 }
 
 export interface FormProps {
@@ -43,7 +44,7 @@ export interface InputProps {
   IconClose: string;
   type?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  value?: string;
+  value?: string | number;
   name?:string;
 }
 
@@ -113,12 +114,12 @@ export interface UserProps{
   newPassword?: string;
 }
 
-export interface RoadmapsProps {
-  NomeRoadmap?:string;
-  categoryRoadmap?: string;
-  progressRoadmaps?:number;
-  levelRoadmap?: string;
-  estimatedHours?: number;
+export interface RoadmapsProps{
+  category?: string |undefined,
+  estimatedHours?: number |undefined,
+  progress?: number |undefined,
+  label?: string | undefined,
+  levels?: number | undefined
 }
 
 export interface SignUpProps {

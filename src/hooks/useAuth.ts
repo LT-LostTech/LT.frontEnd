@@ -6,22 +6,6 @@ export function useAuth() {
     username:"",
     email:"",
     password:""})
-
-     const [roadmap, setRoadmap] = useState<RoadmapsProps>({
-    NomeRoadmap:"",
-    categoryRoadmap:"",
-    levelRoadmap:"",
-    progressRoadmaps:0,
-    estimatedHours:0
-})
-
-    function handleInputChangeRoadmaps(e: ChangeEvent<HTMLInputElement>){
-        const {name,value} = e.target
-        setRoadmap(prev => ({
-            ...prev,
-            [name]:value
-        })) 
-    }
     
     function handleInputChange(e: ChangeEvent<HTMLInputElement>){
         const {name,value} = e.target
@@ -30,6 +14,24 @@ export function useAuth() {
             [name]:value
         })) 
     }
+
+
+    const [roadmap, setRoadmap] = useState<RoadmapsProps>({
+        category:"",
+        estimatedHours:0,
+        progress:0,
+        label:"",
+        levels:0})
+
+
+    function handleInputChangeRoadmaps(e: ChangeEvent<HTMLInputElement>){
+        const {name,value} = e.target
+        setRoadmap(prev => ({
+            ...prev,
+            [name]:value
+        })) 
+    }
+
     const [authStatus,setAuthStatus] = useState({
         loading:false,
         error:null as string |null,
