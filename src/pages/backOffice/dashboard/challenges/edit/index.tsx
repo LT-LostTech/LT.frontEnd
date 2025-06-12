@@ -1,7 +1,12 @@
 import { Form } from "../../../../../components/Form";
 import { theme } from "../../../../../theme/theme";
 
-export function EditFormChallenges() {
+
+
+export function EditFormChallenges(p0: { id: number | null; }) {
+
+
+
     return (
         <Form
             title="Editar desafio"
@@ -52,6 +57,7 @@ export function EditFormChallenges() {
                     bgColor: theme.colors.red400,
                     fontWeight: "500",
                     border: "none",
+        
                 },
                 {
                     text: "Salvar",
@@ -66,3 +72,4 @@ export function EditFormChallenges() {
         />
     )
 }
+

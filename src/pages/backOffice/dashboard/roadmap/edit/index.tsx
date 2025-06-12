@@ -2,23 +2,29 @@ import { Form } from "../../../../../components/Form";
 import { theme } from "../../../../../theme/theme";
 import { DeleteRoadmapApi } from "../../../../../services/roadmap/delete/api";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 
+interface EditFormProps {
+    id: number | null;
+}
 
-export function EditFormRoadmap() {
+
+export function EditFormRoadmap({ id }: EditFormProps) {
 
 
-    const handleDeleteRoadmap = async (id:number) => {
-        try{
-            await DeleteRoadmapApi(id)
-            console.log("Roadmap deleted");
-        }catch (error) {
+    const handleDeleteRoadmap = async () => {
+        try {
+            console.log(id)
+            await DeleteRoadmapApi(id);
+            toast.success("Roadmap deletado com sucesso!");
+        } catch (error) {
             if (axios.isAxiosError(error)) {
-                const errorMessage = error.response?.data || "Erro ao deletar roadmap";
-                console.error(errorMessage);
-            } else {
-                console.error("Unexpected error:", error);
+                console.error("Error deleting roadmap:", error.response?.data);
+                toast.error("Erro ao deletar roadmap: " + error.response?.data.message || "Erro desconhecido");
             }
+
+
         }
     }
 
@@ -62,8 +68,8 @@ export function EditFormRoadmap() {
                 bgColor: theme.colors.red400,
                 fontWeight: "500",
                 border: "none",
-                onClick:() =>{
-
+                onClick: () => {
+                    handleDeleteRoadmap()
                 }
             },
             {
@@ -83,9 +89,7 @@ export function EditFormRoadmap() {
                 bgColor: theme.colors.gray800,
                 fontWeight: "500",
                 border: "none",
-                onClick() {
-                    handleDeleteRoadmap(id)
-                },
+
             }
         ]}
     />
