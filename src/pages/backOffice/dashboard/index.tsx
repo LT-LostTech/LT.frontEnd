@@ -16,12 +16,12 @@ import {
   DashboardTableBodyCell,
 } from "./styled";
 import { Overlay } from "../../../utils/Overlay/styled";
-import { Navigate, Outlet, useLocation } from "react-router-dom";
+import {  Navigate, Outlet, useLocation } from "react-router-dom";
 import { GetRole } from "../../../services/role";
 import { ListingRoadmapsApi } from "../../../services/roadmap/listing/api";
 
 interface Roadmap {
-    id: string | number;
+    id: number | null;
     category: string;
     label: string;
     estimatedHours: number;
@@ -41,6 +41,7 @@ export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentF
 
 
   const [roadmaps, setRoadmaps] = useState<Roadmap[]>([]);
+  const [selectId,setSelectId] = useState<number >(Number)
   
 
 useEffect(() => {
@@ -116,13 +117,13 @@ useEffect(() => {
           <DashboardTableBody>
             {roadmaps.map((data) => (
               <DashboardTableBodyRow key={data.id}>
-                <DashboardTableBodyCell key={data.id} scope="row">
+                <DashboardTableBodyCell  scope="row">
                   {data.category}
                 </DashboardTableBodyCell>
-                <DashboardTableBodyCell key={data.id} scope="row">
+                <DashboardTableBodyCell  scope="row">
                   {data.label}
                 </DashboardTableBodyCell>
-                <DashboardTableBodyCell key={data.id} scope="row">
+                <DashboardTableBodyCell scope="row">
                   {data.estimatedHours}
                 </DashboardTableBodyCell>
                 <DashboardTableBodyCell>
@@ -136,6 +137,8 @@ useEffect(() => {
                     border="none"
                     onClick={() => {
                       handleOpenModal("edit");
+                      setSelectId(data.id)
+                      console.log(`ID selecionado: ${selectId}`);
                     }}
                   />
                 </DashboardTableBodyCell>
