@@ -18,22 +18,22 @@ import {
 import { Overlay } from "../../../utils/Overlay/styled";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { GetRole } from "../../../services/role";
+
 import { ListingRoadmapsApi } from "../../../services/roadmap/listing/api";
-import { EditFormChallenges } from "./challenges/edit";
 
 interface Roadmap {
   id: number | null;
   category: string;
   label: string;
   estimatedHours: number;
-  // add other properties if needed
 }
 
 interface DashboardProps {
   title: string;
   tableHeaders: string[];
   ComponentFormCreate: React.ComponentType;
-  ComponentFormEdit:  React.ComponentType;
+  //basicamente to falando que o componente vai receber uma prop id que pode ser um número ou nulo
+  ComponentFormEdit:  React.ComponentType< {id:number | null} & {onUpdate: () => void}>;
 }
 
 
@@ -42,9 +42,11 @@ export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentF
 
 
   const [roadmaps, setRoadmaps] = useState<Roadmap[]>([]);
+  const [deleteRoadmap, setDeleteRoadmap] = useState<number | null>(null);
 
 
-  useEffect(() => {
+
+
     async function fetchRoadmap() {
       try {
         const data = await ListingRoadmapsApi();
@@ -53,8 +55,10 @@ export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentF
         console.error("Error fetching roadmaps:", error);
       }
     }
+
+  useEffect(() => {
     fetchRoadmap();
-  }, [])
+  },[])
 
   const [modalType, setModalType] = useState<"create" | "edit" | null>(
     "create"
@@ -69,6 +73,8 @@ export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentF
     setIsOpenModal(false)
   }, [location.pathname])
 
+
+
   if (!token) {
     return <Navigate to={'/backoffice'} />
   }
@@ -80,6 +86,7 @@ export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentF
     setModalType(type);
     setIsOpenModal(!isOpenModal);
   };
+
 
  
 
@@ -136,9 +143,7 @@ export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentF
                       text="Editar"
                       border="none"
                       onClick={() => {
-
-                        EditFormChallenges({id: data.id})
-                        
+                        setDeleteRoadmap(data.id);
                         handleOpenModal("edit");
                       }}
                     />
@@ -167,7 +172,7 @@ export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentF
                 setIsOpenModal(false);
               }}
             />
-            <ComponentFormEdit/>
+            <ComponentFormEdit id={deleteRoadmap} onUpdate={fetchRoadmap}/>
           </>
         )}
       </DashboardPage>

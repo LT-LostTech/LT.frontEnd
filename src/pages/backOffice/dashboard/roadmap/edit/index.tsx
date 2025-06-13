@@ -7,17 +7,20 @@ import { toast } from "react-toastify";
 
 interface EditFormProps {
     id: number | null;
+    onUpdate: () => void; 
 }
 
 
-export function EditFormRoadmap({ id }: EditFormProps) {
+export function EditFormRoadmap({ id, onUpdate }: EditFormProps,) {
 
-
+    console.log("ID do roadmap:", id);
     const handleDeleteRoadmap = async () => {
         try {
             console.log(id)
             await DeleteRoadmapApi(id);
+            
             toast.success("Roadmap deletado com sucesso!");
+            onUpdate();
         } catch (error) {
             if (axios.isAxiosError(error)) {
                 console.error("Error deleting roadmap:", error.response?.data);
