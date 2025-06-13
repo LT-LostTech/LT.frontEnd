@@ -31,9 +31,14 @@ interface Roadmap {
 interface DashboardProps {
   title: string;
   tableHeaders: string[];
-  ComponentFormCreate: React.ComponentType;
+  ComponentFormCreate: React.ComponentType<{updateRoadmap?: () => void}>;
   //basicamente to falando que o componente vai receber uma prop id que pode ser um número ou nulo
-  ComponentFormEdit:  React.ComponentType< {id:number | null} & {onUpdate: () => void}>;
+  ComponentFormEdit:  React.ComponentType< 
+  {
+    id:number | null; 
+    onUpdate: () => void;
+  } >;
+  
 }
 
 
@@ -43,8 +48,6 @@ export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentF
 
   const [roadmaps, setRoadmaps] = useState<Roadmap[]>([]);
   const [deleteRoadmap, setDeleteRoadmap] = useState<number | null>(null);
-
-
 
 
     async function fetchRoadmap() {
@@ -125,10 +128,10 @@ export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentF
               {roadmaps.map((data) => (
                 <DashboardTableBodyRow key={data.id}>
                   <DashboardTableBodyCell scope="row">
-                    {data.category}
+                    {data.label}
                   </DashboardTableBodyCell>
                   <DashboardTableBodyCell scope="row">
-                    {data.label}
+                    {data.category}
                   </DashboardTableBodyCell>
                   <DashboardTableBodyCell scope="row">
                     {data.estimatedHours}
@@ -162,7 +165,7 @@ export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentF
                 setIsOpenModal(false);
               }}
             />
-            <ComponentFormCreate />
+            <ComponentFormCreate updateRoadmap={fetchRoadmap} />
           </>
         )}
         {isOpenModal && modalType === "edit" && (
