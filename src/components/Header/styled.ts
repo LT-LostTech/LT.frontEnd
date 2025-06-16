@@ -5,6 +5,7 @@ interface HeaderContainerProps {
   position: string;
   display: string;
   borderRadius: string;
+  margin?: string;
 }
 
 interface DisplayProps {
@@ -27,7 +28,7 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
   position: ${(props) => props.position};
   border-radius: ${(props) => props.borderRadius};
   z-index: 1000;
-  margin-top: 24px;
+  margin-top: ${(props) => props.margin || "24px"};
  
   justify-content: space-around;
 

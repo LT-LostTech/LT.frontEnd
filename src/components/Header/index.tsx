@@ -26,6 +26,7 @@ interface HeaderProps {
   position: string;
   borderRadius: string;
   displayMenuTablet: string;
+  margin?:string;
 }
 
 export function Header({
@@ -34,7 +35,8 @@ export function Header({
   borderRadius,
   displayMenu,
   displayMenuTablet,
-}: HeaderProps) {
+  margin,
+}:HeaderProps) {
   const location = useLocation();
   const navigate = useNavigate();
   const isDashBoard = location.pathname.startsWith("/backoffice/dashboard");
@@ -80,6 +82,8 @@ export function Header({
       borderRadius={borderRadius}
       position={position || ""}
       display={display}
+      margin={margin || "24px"}
+    
     >
       <HeaderLogo
         src={Logo}

@@ -24,6 +24,7 @@ export function EditFormRoadmap({ id, onUpdate }: EditFormProps) {
             await UpdateRoadmapApi(id, roadmap.category, roadmap.estimatedHours, roadmap.label, roadmap.levels, token);
             toast.success("Roadmap atualizado com sucesso!");
             setAuthStatus({ loading: false, error: null, success: true });
+            onUpdate()
             
         }catch(error){
             if (axios.isAxiosError(error)) {
