@@ -14,14 +14,14 @@ interface EditFormProps {
 
 
 export function EditFormRoadmap({ id, onUpdate }: EditFormProps) {
-    const {authStatus,handleInputChangeRoadmaps,roadmap,setAuthStatus} = useAuth();
+    const {authStatus,handleInputChangeRoadmaps,backoffice,setAuthStatus} = useAuth();
 
     const token = localStorage.getItem("token");
 
     const handelUpdateRoadmap = async () => {
         setAuthStatus({ loading: true, error: null, success: false });
         try{
-            await UpdateRoadmapApi(id, roadmap.category, roadmap.estimatedHours, roadmap.label, roadmap.levels, token);
+            await UpdateRoadmapApi(id, backoffice.category, backoffice.estimatedHours, backoffice.label, backoffice.levels, token);
             toast.success("Roadmap atualizado com sucesso!");
             setAuthStatus({ loading: false, error: null, success: true });
             onUpdate()
@@ -65,7 +65,7 @@ export function EditFormRoadmap({ id, onUpdate }: EditFormProps) {
                 IconOpen: "",
                 IconClose: "",
                 onChange:handleInputChangeRoadmaps,
-                value: roadmap.label,
+                value: backoffice.label,
             },
             {
                 name: "category",
@@ -77,7 +77,7 @@ export function EditFormRoadmap({ id, onUpdate }: EditFormProps) {
                 IconOpen: "",
                 IconClose: "",
                 onChange:handleInputChangeRoadmaps,
-                value: roadmap.category,
+                value: backoffice.category,
             },
             {
                 name: "estimatedHours",
@@ -89,7 +89,7 @@ export function EditFormRoadmap({ id, onUpdate }: EditFormProps) {
                 IconOpen: "",
                 IconClose: "",
                 onChange:handleInputChangeRoadmaps,
-                value: roadmap.estimatedHours,
+                value: backoffice.estimatedHours,
             },
         ]}
         buttons={[

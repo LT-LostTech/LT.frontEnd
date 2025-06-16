@@ -21,6 +21,7 @@ export function useAuth() {
         estimatedHours:0,
         progress:0,
         label:"",
+        labels:"",
         levels:0,
         title:"",
         description:"",

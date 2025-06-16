@@ -123,6 +123,7 @@ export interface BackOfficeProps{
   title?: string | undefined,
   description?: string | undefined,
   difficulty?: string | undefined,
+  labels?: string | undefined
 }
 
 export interface SignUpProps {

@@ -20,12 +20,23 @@ import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { GetRole } from "../../../services/role";
 
 import { ListingRoadmapsApi } from "../../../services/roadmap/listing/api";
+import { ListingChallengesApi } from "../../../services/challenges/listing/api";
 
 interface Roadmap {
   id: number | null;
   category: string;
   label: string;
   estimatedHours: number;
+}
+
+interface Challenge {
+  id: number | null;
+  category: string;
+  labels: string;
+  estimatedHours: number;
+  title: string;
+  description: string;
+  difficulty: string;
 }
 
 interface DashboardProps {
@@ -47,14 +58,26 @@ export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentF
 
 
   const [roadmaps, setRoadmaps] = useState<Roadmap[]>([]);
-  const [deleteRoadmap, setDeleteRoadmap] = useState<number | null>(null);
+  const [challengs, setChallenges] = useState<Challenge[]>([]);
+  const [deleteBackoffice, setDeleteBackoffice] = useState<number | null>(null);
   const [isChallenges, setIsChallenges] = useState(false);
 
 
     async function fetchRoadmap() {
       try {
         const data = await ListingRoadmapsApi();
+        console.log(data)
         setRoadmaps(data);
+      } catch (error) {
+        console.error("Error fetching roadmaps:", error);
+      }
+    }
+
+    async function fetchChallenges() {
+      try {
+        const challengeData = await ListingChallengesApi() ;
+        console.log(challengeData)
+        setChallenges(challengeData);
       } catch (error) {
         console.error("Error fetching roadmaps:", error);
       }
@@ -62,6 +85,7 @@ export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentF
 
   useEffect(() => {
     fetchRoadmap();
+    fetchChallenges()
   },[])
 
   const [modalType, setModalType] = useState<"create" | "edit" | null>(
@@ -91,16 +115,14 @@ export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentF
     setIsOpenModal(!isOpenModal);
   };
 
-  const handleIsChallenges = () => {
-    if(window.location.pathname === "/backoffice/dashboard/challenges"){
-      setIsChallenges(true);
-    }else{
-      setIsChallenges(false);
+  useEffect(() => {
+    if(location.pathname === "/backoffice/dashboard/challenges"){
+      setIsChallenges(false)
     }
-  }
-
-
- 
+    else{
+      setIsChallenges(true)
+    }
+  }, [location.pathname]);
 
     return (
       <DashboardPage>
@@ -121,7 +143,7 @@ export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentF
               }}
             />
           </DashboardLabelContainer>
-            {}
+            {isChallenges &&(
           <DashboardTable>
             <DashboardTableHeader>
               <DashboardTableHeaderRow>
@@ -155,7 +177,7 @@ export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentF
                       text="Editar"
                       border="none"
                       onClick={() => {
-                        setDeleteRoadmap(data.id);
+                        setDeleteBackoffice(data.id);
                         handleOpenModal("edit");
                       }}
                     />
@@ -164,7 +186,51 @@ export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentF
               ))}
             </DashboardTableBody>
           </DashboardTable>
-
+          )}
+{!isChallenges &&(
+          <DashboardTable>
+            <DashboardTableHeader>
+              <DashboardTableHeaderRow>
+                {tableHeaders.map((header, key) => (
+                  <DashboardTableHeaderCell key={key} scope="col">
+                    {header}
+                  </DashboardTableHeaderCell>
+                ))}
+                <DashboardTableHeaderCell></DashboardTableHeaderCell>
+              </DashboardTableHeaderRow>
+            </DashboardTableHeader>
+            <DashboardTableBody>
+              {challengs.map((challenge) => (
+                <DashboardTableBodyRow key={challenge.id}>
+                  <DashboardTableBodyCell scope="row">
+                    {challenge.title}
+                  </DashboardTableBodyCell>
+                  <DashboardTableBodyCell scope="row">
+                    {challenge.category}
+                  </DashboardTableBodyCell>
+                  <DashboardTableBodyCell scope="row">
+                    {challenge.labels}
+                  </DashboardTableBodyCell>
+                  <DashboardTableBodyCell>
+                    <Button
+                      width="128px"
+                      height="40px"
+                      colorText={theme.colors.white}
+                      bgColor={theme.colors.gray800}
+                      fontWeight="500"
+                      text="Editar"
+                      border="none"
+                      onClick={() => {
+                        setDeleteBackoffice(challenge.id);
+                        handleOpenModal("edit");
+                      }}
+                    />
+                  </DashboardTableBodyCell>
+                </DashboardTableBodyRow>
+              ))}
+            </DashboardTableBody>
+          </DashboardTable>
+)}
           <Outlet />
         </DashboardContainer>
         {isOpenModal && modalType === "create" && (
@@ -184,7 +250,7 @@ export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentF
                 setIsOpenModal(false);
               }}
             />
-            <ComponentFormEdit id={deleteRoadmap} onUpdate={fetchRoadmap}/>
+            <ComponentFormEdit id={deleteBackoffice} onUpdate={fetchRoadmap}/>
           </>
         )}
       </DashboardPage>

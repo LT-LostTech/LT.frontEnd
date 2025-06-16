@@ -14,7 +14,7 @@ export function CreateFormChallenges() {
       await CreateChallengeApi(
         backoffice.category,
         backoffice.estimatedHours,
-        backoffice.label,
+        backoffice.labels,
         backoffice.levels,
         backoffice.title,
         backoffice.description,
@@ -23,6 +23,7 @@ export function CreateFormChallenges() {
       );
       toast.success("Roadmap criado com sucesso!");
       setAuthStatus({ loading: false, error: null, success: true });
+      
 
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -62,7 +63,7 @@ export function CreateFormChallenges() {
                     onChange: handleInputChangeRoadmaps,
                 },
                 {
-                    name: "label",
+                    name: "labels",
                     label: "Linguagem de programação",
                     type: "text",
                     placeholder: "Digite a linguagem de programação",
@@ -70,7 +71,7 @@ export function CreateFormChallenges() {
                     showLabel: true,
                     IconOpen: "",
                     IconClose: "",
-                    value: backoffice.label,
+                    value: backoffice.labels,
                     onChange: handleInputChangeRoadmaps,
                 },
                 {
