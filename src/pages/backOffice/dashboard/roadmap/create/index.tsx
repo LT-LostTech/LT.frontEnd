@@ -10,16 +10,16 @@ interface CreateFormRoadmapProps {
     }
 
 export function CreateFormRoadmap({updateRoadmap}:CreateFormRoadmapProps) {
-  const { authStatus, roadmap, handleInputChangeRoadmaps } = useAuth();
+  const { authStatus, backoffice, handleInputChangeRoadmaps } = useAuth();
     console.log(closed)
   const token = localStorage.getItem("token");
   const handleCreateRoadmap = async () => {
     try {
       await CreateRoadmap(
-        roadmap.category,
-        roadmap.estimatedHours,
-        roadmap.label,
-        roadmap.levels,
+        backoffice.category,
+        backoffice.estimatedHours,
+        backoffice.label,
+        backoffice.levels,
         token
       );
       toast.success("Roadmap criado com sucesso!");
@@ -49,7 +49,7 @@ export function CreateFormRoadmap({updateRoadmap}:CreateFormRoadmapProps) {
           showLabel: true,
           IconOpen: "",
           IconClose: "",
-          value: roadmap.label,
+          value: backoffice.label,
           onChange: handleInputChangeRoadmaps,
         },
         {
@@ -61,7 +61,7 @@ export function CreateFormRoadmap({updateRoadmap}:CreateFormRoadmapProps) {
           showLabel: true,
           IconOpen: "",
           IconClose: "",
-          value: roadmap.category,
+          value: backoffice.category,
           onChange: handleInputChangeRoadmaps,
         },
         {
@@ -73,7 +73,7 @@ export function CreateFormRoadmap({updateRoadmap}:CreateFormRoadmapProps) {
           showLabel: true,
           IconOpen: "",
           IconClose: "",
-          value: roadmap.levels,
+          value: backoffice.levels,
           onChange: handleInputChangeRoadmaps,
         },
         {
@@ -85,13 +85,13 @@ export function CreateFormRoadmap({updateRoadmap}:CreateFormRoadmapProps) {
           showLabel: true,
           IconOpen: "",
           IconClose: "",
-          value: roadmap.estimatedHours,
+          value: backoffice.estimatedHours,
           onChange: handleInputChangeRoadmaps,
         },
       ]}
       buttons={[
         {
-          text: authStatus.loading ? "Cadastrando..." : "Confirmar",
+          text: authStatus.loading ? "Criando..." : "Criar",
           width: "100%",
           height: "48px",
           colorText: theme.colors.white,

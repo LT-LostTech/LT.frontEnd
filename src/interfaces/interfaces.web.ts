@@ -114,12 +114,15 @@ export interface UserProps{
   newPassword?: string;
 }
 
-export interface RoadmapsProps{
+export interface BackOfficeProps{
   category?: string |undefined,
   estimatedHours?: number |undefined,
   progress?: number |undefined,
   label?: string | undefined,
-  levels?: number | undefined
+  levels?: number | undefined,
+  title?: string | undefined,
+  description?: string | undefined,
+  difficulty?: string | undefined,
 }
 
 export interface SignUpProps {

@@ -48,6 +48,7 @@ export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentF
 
   const [roadmaps, setRoadmaps] = useState<Roadmap[]>([]);
   const [deleteRoadmap, setDeleteRoadmap] = useState<number | null>(null);
+  const [isChallenges, setIsChallenges] = useState(false);
 
 
     async function fetchRoadmap() {
@@ -90,6 +91,14 @@ export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentF
     setIsOpenModal(!isOpenModal);
   };
 
+  const handleIsChallenges = () => {
+    if(window.location.pathname === "/backoffice/dashboard/challenges"){
+      setIsChallenges(true);
+    }else{
+      setIsChallenges(false);
+    }
+  }
+
 
  
 
@@ -112,7 +121,7 @@ export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentF
               }}
             />
           </DashboardLabelContainer>
-
+            {}
           <DashboardTable>
             <DashboardTableHeader>
               <DashboardTableHeaderRow>
