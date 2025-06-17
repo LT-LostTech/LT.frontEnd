@@ -42,7 +42,7 @@ interface Challenge {
 interface DashboardProps {
   title: string;
   tableHeaders: string[];
-  ComponentFormCreate: React.ComponentType<{updateRoadmap?: () => void}>;
+  ComponentFormCreate: React.ComponentType<{updateBackoffice?: () => void}>;
   //basicamente to falando que o componente vai receber uma prop id que pode ser um número ou nulo
   ComponentFormEdit:  React.ComponentType< 
   {
@@ -66,7 +66,6 @@ export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentF
     async function fetchRoadmap() {
       try {
         const data = await ListingRoadmapsApi();
-        console.log(data)
         setRoadmaps(data);
       } catch (error) {
         console.error("Error fetching roadmaps:", error);
@@ -76,7 +75,6 @@ export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentF
     async function fetchChallenges() {
       try {
         const challengeData = await ListingChallengesApi() ;
-        console.log(challengeData)
         setChallenges(challengeData);
       } catch (error) {
         console.error("Error fetching roadmaps:", error);
@@ -85,7 +83,7 @@ export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentF
 
   useEffect(() => {
     fetchRoadmap();
-    fetchChallenges()
+    fetchChallenges();
   },[])
 
   const [modalType, setModalType] = useState<"create" | "edit" | null>(
@@ -101,7 +99,14 @@ export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentF
     setIsOpenModal(false)
   }, [location.pathname])
 
-
+  useEffect(() => {
+    if(location.pathname === "/backoffice/dashboard/challenges"){
+      setIsChallenges(false)
+    }
+    else{
+      setIsChallenges(true)
+    }
+  }, [location.pathname]);
 
   if (!token) {
     return <Navigate to={'/backoffice'} />
@@ -114,15 +119,6 @@ export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentF
     setModalType(type);
     setIsOpenModal(!isOpenModal);
   };
-
-  useEffect(() => {
-    if(location.pathname === "/backoffice/dashboard/challenges"){
-      setIsChallenges(false)
-    }
-    else{
-      setIsChallenges(true)
-    }
-  }, [location.pathname]);
 
     return (
       <DashboardPage>
@@ -240,7 +236,7 @@ export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentF
                 setIsOpenModal(false);
               }}
             />
-            <ComponentFormCreate updateRoadmap={fetchRoadmap} />
+            <ComponentFormCreate updateBackoffice={isChallenges? fetchRoadmap : fetchChallenges} />
           </>
         )}
         {isOpenModal && modalType === "edit" && (
@@ -250,7 +246,7 @@ export function Dashboard({ title, tableHeaders, ComponentFormCreate, ComponentF
                 setIsOpenModal(false);
               }}
             />
-            <ComponentFormEdit id={deleteBackoffice} onUpdate={fetchRoadmap}/>
+            <ComponentFormEdit id={deleteBackoffice} onUpdate={isChallenges? fetchRoadmap : fetchChallenges}/>
           </>
         )}
       </DashboardPage>

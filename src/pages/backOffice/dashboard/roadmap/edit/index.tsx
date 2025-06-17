@@ -5,16 +5,22 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { UpdateRoadmapApi } from "../../../../../services/roadmap/update/api";
 import { useAuth } from "../../../../../hooks/useAuth";
+import { useState } from "react";
+
 
 
 interface EditFormProps {
     id: number | null;
     onUpdate: () => void; 
+    ComponentEditEtapas: React.ComponentType<{
+    setIsOpenModal: (isOpen: boolean) => void;
+    }>;
 }
 
 
-export function EditFormRoadmap({ id, onUpdate }: EditFormProps) {
+export function EditFormRoadmap({ id, onUpdate, ComponentEditEtapas }: EditFormProps) {
     const {authStatus,handleInputChangeRoadmaps,backoffice,setAuthStatus} = useAuth();
+    const [isOpenModal, setIsOpenModal] = useState(false);
 
     const token = localStorage.getItem("token");
 
@@ -52,7 +58,8 @@ export function EditFormRoadmap({ id, onUpdate }: EditFormProps) {
         }
     }
 
-    return <Form
+    return(
+    <> <Form
         title="Informações do roadmap"
         InputProps={[
             {
@@ -127,8 +134,19 @@ export function EditFormRoadmap({ id, onUpdate }: EditFormProps) {
                 bgColor: theme.colors.gray800,
                 fontWeight: "500",
                 border: "none",
+                onClick: () => {
+                    setIsOpenModal(true);
+                }
 
             }
         ]}
     />
+    {isOpenModal && 
+          <>
+                <ComponentEditEtapas setIsOpenModal={setIsOpenModal}/>
+              </>
+    }
+    
+    </>
+    )
 }

@@ -6,14 +6,14 @@ import { theme } from "../../../../../theme/theme";
 import { toast } from "react-toastify";
 
 interface CreateFormRoadmapProps {
-    updateRoadmap?: () => void;
+    updateBackoffice?: () => void;
     }
 
-export function CreateFormRoadmap({updateRoadmap}:CreateFormRoadmapProps) {
-  const { authStatus, backoffice, handleInputChangeRoadmaps } = useAuth();
-    console.log(closed)
+export function CreateFormRoadmap({updateBackoffice}:CreateFormRoadmapProps) {
+  const { authStatus, backoffice, handleInputChangeRoadmaps,setAuthStatus, } = useAuth();
   const token = localStorage.getItem("token");
   const handleCreateRoadmap = async () => {
+    setAuthStatus({ loading: true, error: null, success: false });
     try {
       await CreateRoadmap(
         backoffice.category,
@@ -23,8 +23,9 @@ export function CreateFormRoadmap({updateRoadmap}:CreateFormRoadmapProps) {
         token
       );
       toast.success("Roadmap criado com sucesso!");
+       setAuthStatus({ loading: false, error: null, success: true });
       //como ele é opcional tenho que colocar o ? depois do nome da função
-      updateRoadmap?.()
+      updateBackoffice?.()
  
     } catch (error) {
       if (axios.isAxiosError(error)) {

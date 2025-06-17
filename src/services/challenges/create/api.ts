@@ -5,7 +5,6 @@ export const CreateChallengeApi = async (
   category: string| undefined,
   estimatedHours: number | undefined,
   labels: string | undefined,
-  levels: number | undefined,
   title: string | undefined,
   description: string | undefined,
   difficulty: string | undefined,
@@ -16,19 +15,20 @@ export const CreateChallengeApi = async (
 
   const headers = token ? { Authorization: `Bearer ${token}` } : {};
 
-   await axios.post(
+  await axios.post(
     url,
     {
       category,
       estimatedHours,
       progress: 0,
       labels,
-      levels,
       title,
       description,
-      difficulty,
-      link:"losttech.com.br"
+      link:"losttech.com.br",
+      difficulty
     },
     { headers }
   );
+
+  
 }

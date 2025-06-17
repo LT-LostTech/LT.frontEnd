@@ -51,7 +51,12 @@ export function Router() {
                 "Ações",
               ]}
               ComponentFormCreate={CreateFormRoadmap}
-              ComponentFormEdit={EditFormRoadmap}
+              ComponentFormEdit={(props) => (
+                <EditFormRoadmap
+                  {...props}
+                  ComponentEditEtapas={Steps}
+                />
+              )}
             />
           }
         >

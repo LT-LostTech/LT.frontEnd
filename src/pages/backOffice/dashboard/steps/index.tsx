@@ -3,11 +3,16 @@ import { Form } from "../../../../components/Form";
 import { theme } from "../../../../theme/theme";
 import { Overlay } from "../../../../utils/Overlay/styled";
 
-export function Steps() {
+interface StepsProps {
+    setIsOpenModal: (value: boolean) => void;
+}
+
+export function Steps({setIsOpenModal}:StepsProps) {
     const navigate = useNavigate()
     return (
         <>
-            <Overlay />
+            <Overlay onClick={() => 
+                setIsOpenModal(false)} />
             <Form
                 title="Etapa 1"
                 InputProps={[
@@ -40,6 +45,7 @@ export function Steps() {
                         fontWeight: "600",
                         border: "none",
                         onClick() {
+                            setIsOpenModal(false);
                             navigate('/backoffice/dashboard/roadmaps')
                         },
                     },

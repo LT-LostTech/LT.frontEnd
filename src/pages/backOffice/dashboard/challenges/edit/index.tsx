@@ -2,8 +2,9 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { Form } from "../../../../../components/Form";
 import { useAuth } from "../../../../../hooks/useAuth";
-import { DeleteRoadmapApi } from "../../../../../services/roadmap/delete/api";
 import { theme } from "../../../../../theme/theme";
+import { UpdateChallengesApi } from "../../../../../services/challenges/update/api";
+import { DeleteChallengepApi } from "../../../../../services/challenges/delete/api";
 
 interface EditFormProps {
   id: number | null;
@@ -19,22 +20,24 @@ export function EditFormChallenges({ id, onUpdate }: EditFormProps) {
   const handelUpdateChallenges = async () => {
     setAuthStatus({ loading: true, error: null, success: false });
     try {
-      await UpdateChalleges(
+      await UpdateChallengesApi(
         id,
         backoffice.category,
         backoffice.estimatedHours,
-        backoffice.label,
-        backoffice.levels,
+        backoffice.labels,
+        backoffice.title,
+        backoffice.description,
+        backoffice.difficulty,
         token
       );
-      toast.success("Roadmap atualizado com sucesso!");
+      toast.success("Desafio atualizado com sucesso!");
       setAuthStatus({ loading: false, error: null, success: true });
       onUpdate();
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        console.error("Error updating roadmap:", error.response?.data);
+        console.error("Error updating challenges:", error.response?.data);
         toast.error(
-          "Erro ao atualizar roadmap: " + error.response?.data.message ||
+          "Erro ao atualizar desafio: " + error.response?.data.message ||
             "Erro desconhecido"
         );
       }
@@ -44,16 +47,16 @@ export function EditFormChallenges({ id, onUpdate }: EditFormProps) {
   const handleDeleteChallenges = async () => {
     setAuthStatus({ loading: true, error: null, success: false });
     try {
-      await DeleteRoadmapApi(id);
+      await DeleteChallengepApi(id);
 
-      toast.success("Roadmap deletado com sucesso!");
+      toast.success("Desafio deletado com sucesso!");
       setAuthStatus({ loading: false, error: null, success: true });
       onUpdate();
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        console.error("Error deleting roadmap:", error.response?.data);
+        console.error("Error deleting challenges:", error.response?.data);
         toast.error(
-          "Erro ao deletar roadmap: " + error.response?.data.message ||
+          "Erro ao deletar desafio: " + error.response?.data.message ||
             "Erro desconhecido"
         );
       }
@@ -64,54 +67,78 @@ export function EditFormChallenges({ id, onUpdate }: EditFormProps) {
     <Form
       title="Editar desafio"
       InputProps={[
-        {
-          name:"title",
-          label: "Nome do desafio",
-          type: "text",
-          placeholder: "Digite o nome do desafio",
-          showIcon: false,
-          showLabel: true,
-          IconOpen: "",
-          IconClose: "",
-          onChange: handleInputChangeRoadmaps,
-          value: backoffice.title,
-        },
-        {
-            name: "category",
-          label: "Categoria",
-          type: "text",
-          placeholder: "Digite a categoria do desafio",
-          showIcon: false,
-          showLabel: true,
-          IconOpen: "",
-          IconClose: "",
-          onChange: handleInputChangeRoadmaps,
-          value: backoffice.category,
-        },
-        {
-          name: "estimatedHours",
-          label: "horas estimadas",
-          type: "text",
-          placeholder: "horas estimadas",
-          showIcon: false,
-          showLabel: true,
-          IconOpen: "",
-          IconClose: "",
-          onChange: handleInputChangeRoadmaps,
-          value: backoffice.estimatedHours,
-        },
-        {
-          name: "description",
-          label: "Descrição do desafio",
-          type: "text",
-          placeholder: "Digite a descrição do desafio",
-          showIcon: false,
-          showLabel: true,
-          IconOpen: "",
-          IconClose: "",
-          onChange: handleInputChangeRoadmaps,
-          value: backoffice.description
-        },
+                {   name: "title",
+                    label: "Nome do desafio",
+                    type: "text",
+                    placeholder: "Digite o nome do desafio",
+                    showIcon: false,
+                    showLabel: true,
+                    IconOpen: "",
+                    IconClose: "",
+                    value: backoffice.title,
+                    onChange: handleInputChangeRoadmaps,
+                    
+                },
+                {
+                    name: "category",
+                    label: "Categoria",
+                    type: "text",
+                    placeholder: "Digite a categoria do desafio",
+                    showIcon: false,
+                    showLabel: true,
+                    IconOpen: "",
+                    IconClose: "",
+                    value: backoffice.category,
+                    onChange: handleInputChangeRoadmaps,
+                },
+                {
+                    name: "labels",
+                    label: "Linguagem de programação",
+                    type: "text",
+                    placeholder: "Digite a linguagem de programação",
+                    showIcon: false,
+                    showLabel: true,
+                    IconOpen: "",
+                    IconClose: "",
+                    value: backoffice.labels,
+                    onChange: handleInputChangeRoadmaps,
+                },
+                {
+                    name: "difficulty",
+                    label: "dificuldade",
+                    type: "text",
+                    placeholder: "Digite a dificuldade do desafio",
+                    showIcon: false,
+                    showLabel: true,
+                    IconOpen: "",
+                    IconClose: "",
+                    value: backoffice.difficulty,
+                    onChange: handleInputChangeRoadmaps,
+                },
+               {
+                    name: "description",
+                    label: "descrição",
+                    type: "text",
+                    placeholder: "Digite a descrição do desafio",
+                    showIcon: false,
+                    showLabel: true,
+                    IconOpen: "",
+                    IconClose: "",
+                    value: backoffice.description,
+                    onChange: handleInputChangeRoadmaps,
+                },
+                {
+                    name: "estimatedHours",
+                    label: "duração estimada",
+                    type: "number",
+                    placeholder: "Digite a duração",
+                    showIcon: false,
+                    showLabel: true,
+                    IconOpen: "",
+                    IconClose: "",
+                    value: backoffice.estimatedHours,
+                    onChange: handleInputChangeRoadmaps,
+                },
       ]}
       buttons={[
         {
@@ -122,6 +149,7 @@ export function EditFormChallenges({ id, onUpdate }: EditFormProps) {
           bgColor: theme.colors.red400,
           fontWeight: "500",
           border: "none",
+          disabled: authStatus.loading,
           onClick: () => {
             handleDeleteChallenges();
           },
@@ -134,6 +162,10 @@ export function EditFormChallenges({ id, onUpdate }: EditFormProps) {
           bgColor: theme.colors.gray800,
           fontWeight: "500",
           border: "none",
+          disabled: authStatus.loading,
+          onClick: () => {
+            handelUpdateChallenges()
+          }
         },
       ]}
     />
