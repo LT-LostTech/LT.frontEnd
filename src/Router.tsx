@@ -36,7 +36,7 @@ export function Router() {
       </Route>
       
       <Route path="/backoffice" element={<BackOfficeLayout />}>
-        <Route path="/backoffice" element={<BackOfficeLogin />} />
+        <Route index element={<BackOfficeLogin />} />
         <Route
           path="/backoffice/forgot-password"
           element={<ForgotPassword />}

@@ -2,10 +2,13 @@ import { navItemsMobile } from "../Header/data";
 import { CloseIcon, MenuItem, MenuItems, SideMenuContainer } from "./styled";
 import CloseIconImage from "../../assets/icons/close.svg";
 import { SideMenuProps } from "../../interfaces/interfaces.web";
+import { useNavigate } from "react-router-dom";
 
 
 
 export function SideMenu({ handleCloseMenu, handleOpenModal }: SideMenuProps) {
+
+  const navigate = useNavigate()
 
   return (
     <SideMenuContainer>
@@ -29,6 +32,21 @@ export function SideMenu({ handleCloseMenu, handleOpenModal }: SideMenuProps) {
               }}>
                 {item}
               </a>
+            ) : (item === "Roadmaps") ? (
+              <a onClick={() => {
+                handleCloseMenu();
+                navigate("/roadmaps");
+              }}>{item}</a>
+            ) : (item === "Desafios") ? (
+              <a onClick={() => {
+                handleCloseMenu();
+                navigate("/desafios");
+              }}>{item}</a>
+            ) : (item === "Notícias") ? (
+              <a onClick={() => {
+                handleCloseMenu();
+                navigate("/noticias");
+              }}>{item}</a>
             ) : (
               item
             )}
