@@ -8,7 +8,7 @@ import { ListingRoadmapsApi } from "../../../services/roadmap/listing/api";
 interface Roadmap {
    id: number | null;
    category: string;
- 
+   label: string;
  }
 
 export function HeroRoadmaps() {
@@ -29,16 +29,15 @@ useEffect(() => {
   fetchRoadmap()
 })
 
-  const handleNavigateBackend = () => {
-    roadmaps.map((roadmap) => {
-    if(roadmap.category.toLocaleLowerCase() === "back-end" || roadmap.category.toLocaleLowerCase() === "backend") {
+  const handleNavigateBackend = (index: number) => {
+    const roadmap = roadmaps[index];
+    if (!roadmap) return;
+    const categoria = roadmap.category.toLowerCase();
+    if (categoria === "back-end" || categoria === "backend") {
       navigate("/roadmaps/back-end");
-    }else{
-      navigate("/roadmaps")
     }
-    return roadmap.category;
-  })
-}
+  }
+
 
   return (
     <>
@@ -50,10 +49,12 @@ useEffect(() => {
         columns={3}
         gap={"32px"}
         navigate={handleNavigateBackend}
+        childType="nth-child(10)"
+        childMediaWidth="min-width: 1080px"
         
       >
         
-        {roadmaps.map((roadmap) =>roadmap.category)}
+        {roadmaps.map((roadmap) =>roadmap.label)}
         
       
       </Grid>

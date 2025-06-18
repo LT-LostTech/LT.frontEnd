@@ -3,18 +3,18 @@ import { theme } from "../../../theme/theme";
 
 export const DashboardPage = styled.div`
   width: 100%;
-  height: 100%;
+  height: 200%;
   display: flex;
 `;
 
 export const DashboardContainer = styled.main`
   width: 100%;
-  height: auto;
   background-color: ${theme.colors.white};
   padding: 49px;
   gap: 32px;
   display: flex;
   flex-direction: column;
+  height: auto;
 
 
   @media (max-width: 430px) {

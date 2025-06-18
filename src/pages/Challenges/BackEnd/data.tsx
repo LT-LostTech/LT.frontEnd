@@ -10,9 +10,9 @@ export const Linguages = [
 ]
 
 export const Level = [
-    {name:'Básico'},
+    {name:'fácil'},
     {name:'Intermediário'},
-    {name:'Avançado'},
+    {name:'Difícil'},
 ]
 
 export const LevelChallenges = [

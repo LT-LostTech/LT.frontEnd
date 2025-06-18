@@ -164,7 +164,7 @@ export interface GridProps {
   columns: number;
   gap: string;
   children: ReactNode;
-  childMaxWidth?: string;
   childType?: string;
   navigate?: (index: number) => void;
+  childMediaWidth?: string;
 }

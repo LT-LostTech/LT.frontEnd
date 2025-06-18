@@ -12,11 +12,13 @@ import { EditFormChallenges } from "./pages/backOffice/dashboard/challenges/edit
 import { Steps } from "./pages/backOffice/dashboard/steps";
 import { NotFound } from "./pages/notFound";
 import { Roadmaps } from "./pages/Roadmaps";
-import {ChallengesBackEnd } from "./pages/Challenges/BackEnd";
 import { RoadmapPages } from "./pages/Roadmaps/RoadmapsPages";
 import News from "./pages/news";
-
 import { Challenges } from "./pages/Challenges";
+import { ChallengesCategory } from "./pages/Challenges/BackEnd";
+
+
+
 
 export function Router() {
   return (
@@ -30,7 +32,7 @@ export function Router() {
         <Route path="roadmaps/back-end" element ={<RoadmapPages/>}/>
 
         <Route path="/Desafios" element = {<Challenges/>}/>
-        <Route path="Desafios/back-end" element={<ChallengesBackEnd/>}/>   
+        <Route path="/Desafios/categoria" element={<ChallengesCategory />} />   
       </Route>
       
       <Route path="/backoffice" element={<BackOfficeLayout />}>
@@ -62,7 +64,7 @@ export function Router() {
         >
           <Route
             path="/backoffice/dashboard/roadmaps/steps"
-            element={<Steps />}
+            element={<Steps setIsOpenModal={() => {}} />}
           />
         </Route>
         <Route
