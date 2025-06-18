@@ -10,8 +10,7 @@ export function Aside({ className, handleCloseAside }: asideProps) {
 
   const handleLogout = () => {
     navigate("/backoffice");
-    const token = localStorage.removeItem('token')
-    console.log('certinho', token)
+    localStorage.removeItem('token')
     handleCloseAside();
   };
 

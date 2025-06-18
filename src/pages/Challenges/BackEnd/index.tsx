@@ -57,7 +57,7 @@ export function ChallengesCategory() {
    const handleChallengesSelect = (index:number) => {
     setChallengesSelect(filteredChallenges[index].title);
     setChallengesDescription(filteredChallenges[index].description);
-    console.log(filteredChallenges[index].title);
+
 
   }
 
@@ -69,9 +69,7 @@ export function ChallengesCategory() {
       setChallenges(data);
          const filteredLabels: string[] = [];
     data.forEach((item: Challenges) => {
-      console.log(item.category.toLocaleLowerCase(), categoria.toLowerCase(), item.category.toLocaleLowerCase() == categoria.toLocaleLowerCase())
       if (item.category === categoria) {
-        console.log(item);
       const labels = Array.isArray(item.labels)
         ? item.labels
         : item.labels.split(/[\s,()]/)
@@ -91,7 +89,6 @@ export function ChallengesCategory() {
     fetchRoadmap();
   },[] );
 
-  console.log(challenges.map((challenge) => ({ category: challenge.category ===categoria, difficulty: challenge.difficulty === selectedDifficulty, labels: challenge.labels })));
 
 function normalizeText(text: string): string {
   return text
@@ -122,7 +119,6 @@ return (
 );
 });
 
-console.log("Filtered Challenges:", filteredChallenges);
 
 
 
