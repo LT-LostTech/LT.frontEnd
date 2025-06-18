@@ -11,8 +11,7 @@ export const ButtonContainer = styled.button<ButtonProps>`
   color: ${(props) => props.colorText};
   border: ${(props) => props.border};
   cursor: pointer;
-  transition: transform 0.3s ease-out, background-color 0.3s ease-out;
-  transition: scale 0.3s ease-out, background-color 0.3s ease-out;
+  transition: all 0.3s ease-out;
 
   @media (max-width: 884px) {
     width: ${(props) => props.widthTablet};

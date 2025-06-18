@@ -8,6 +8,7 @@ import {
   SectionIllustrationImage,
   SectionIllustrationTitle,
 } from "./styled";
+import { useNavigate } from "react-router-dom";
 
 interface SectionIllustrationProps {
   layout: "left" | "right";
@@ -16,7 +17,7 @@ interface SectionIllustrationProps {
   image: string;
   textButton: string;
   colorButton: string;
-
+  route: string;
   backgroundImage: "black" | "white";
 }
 
@@ -28,7 +29,10 @@ export function SectionIllustration({
   textButton,
   colorButton,
   backgroundImage,
+  route
 }: SectionIllustrationProps) {
+   const navigator = useNavigate();
+
   return (
     <SectionIllustrationContainer layout={layout} backgroundImage={backgroundImage}>
       <SectionIllustrationContent>
@@ -44,6 +48,7 @@ export function SectionIllustration({
           bgColor={colorButton === "white" ? theme.colors.white : theme.colors.black && backgroundImage === "white" ? theme.colors.black : theme.colors.white}
           fontWeight="bold"
           border="none"
+          onClick={() => navigator(`/${route}`)}
         />
       </SectionIllustrationContent>
       <SectionIllustrationImage
