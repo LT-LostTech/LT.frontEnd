@@ -91,19 +91,35 @@ export function ChallengesCategory() {
     fetchRoadmap();
   },[] );
 
+  console.log(challenges.map((challenge) => ({ category: challenge.category ===categoria, difficulty: challenge.difficulty === selectedDifficulty, labels: challenge.labels })));
+
+function normalizeText(text: string): string {
+  return text
+    .toLowerCase()               
+    .normalize("NFD")            
+    .replace(/[\u0300-\u036f]/g, "") 
+    .trim()                     
+    .replace(/\s+/g, " ");      
+}
+
 const filteredChallenges = challenges.filter((challenge) => {
-  const labels = Array.isArray(challenge.labels)
-    ? challenge.labels.map((l) => l.toLowerCase())
-    : challenge.labels
-        .split(/[ \s,()]/)
-        .map((l) => l.trim().toLowerCase())
-        .filter((l) => l && l !== "ou" && l !== "," && l !== "+");
+const normalizedCategory = normalizeText(challenge.category || "");
+const normalizedDifficulty = normalizeText(challenge.difficulty || "");
+const normalizedSelectedDifficulty = normalizeText(selectedDifficulty || "");
+const normalizedSelectedLabel = normalizeText(selectedLabel || "");
 
-  const categoryMatch = challenge.category.trim().toLowerCase() === categoria.trim().toLowerCase();
-  const labelMatch = selectedLabel ? labels.includes(selectedLabel.trim().toLowerCase()) : false;
-  const difficultyMatch = challenge.difficulty.trim().toLowerCase() === selectedDifficulty.trim().toLowerCase();
+const normalizedLabels = Array.isArray(challenge.labels)
+  ? challenge.labels.map((label) => normalizeText(label))
+  : challenge.labels
+      .split(/[,\s()]/)
+      .map((label) => normalizeText(label))
+      .filter((label) => label && label !== "ou" && label !== "+" && label !== ",");
 
-  return categoryMatch && labelMatch && difficultyMatch;
+return (
+  normalizedCategory === normalizeText(categoria) &&
+  normalizedDifficulty === normalizedSelectedDifficulty &&
+  (normalizedSelectedLabel === "" || normalizedLabels.includes(normalizedSelectedLabel))
+);
 });
 
 console.log("Filtered Challenges:", filteredChallenges);
@@ -159,9 +175,9 @@ console.log("Filtered Challenges:", filteredChallenges);
                   onClick={() => setSelectedDifficulty(level.name.toLowerCase())}
                   widthTablet ="163.63px"
                   heightTablet="35.72px"
-                  widthMobile ="64.07px"
-                  heightMobile="14.06px"
-                  fontMobile="4.16px"
+                  widthMobile ="94.07px"
+                  heightMobile="24.06px"
+                  fontMobile="10.16px"
                   fontTablet="10.64px"
                 />
               ))}

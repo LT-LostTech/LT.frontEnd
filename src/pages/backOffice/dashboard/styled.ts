@@ -3,7 +3,7 @@ import { theme } from "../../../theme/theme";
 
 export const DashboardPage = styled.div`
   width: 100%;
-  height: 200%;
+  height: 400%;
   display: flex;
 `;
 

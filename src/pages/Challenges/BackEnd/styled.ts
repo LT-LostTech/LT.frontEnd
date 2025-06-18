@@ -157,8 +157,8 @@ export const ModalBackEnd = styled.div`
     }
     
     @media (max-width: 470px) {
-        width: 250px;
-        height: 80px;
+        width: 350px;
+        height: 150px;
     }
   
 `
@@ -177,8 +177,8 @@ export const ModalChallengesTitle = styled.h2`
 
     @media (max-width: 470px) {
         padding-top: 6.25px;
-        padding-bottom: 5px;
-        font-size: 11.1px;
+        padding-bottom: 10px;
+        font-size: 16.1px;
     }
   
 `
@@ -192,7 +192,7 @@ export const SubTitleModal = styled.p`
     }
 
     @media (max-width: 470px) {
-        font-size: 6.25px;
+        font-size: 12.25px;
     }
     
     &:first-of-type{
@@ -206,7 +206,7 @@ export const SubTitleModal = styled.p`
         padding-bottom: 22.85px;
 
         @media (max-width: 470px) {
-        padding-bottom:5px;
+        padding-bottom:15px;
     }
     }
 `
@@ -218,9 +218,7 @@ export const Categorys = styled.div`
         gap: 14.19px;
     }
 
-    @media (max-width: 470px) {
-       gap:5.55px ;
-    }
+
 `
 
 export const SectionChallenges =styled.section`
