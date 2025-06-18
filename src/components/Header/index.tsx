@@ -26,7 +26,7 @@ interface HeaderProps {
   position: string;
   borderRadius: string;
   displayMenuTablet: string;
-  margin?:string;
+  marginTop?:string;
 }
 
 export function Header({
@@ -35,7 +35,7 @@ export function Header({
   borderRadius,
   displayMenu,
   displayMenuTablet,
-  margin,
+  marginTop,
 }:HeaderProps) {
   const location = useLocation();
   const navigate = useNavigate();
@@ -82,7 +82,7 @@ export function Header({
       borderRadius={borderRadius}
       position={position || ""}
       display={display}
-      margin={margin || "24px"}
+      marginTop={marginTop}
     
     >
       <HeaderLogo
