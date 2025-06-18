@@ -18,6 +18,7 @@ export function Landpage() {
             textButton={section.textButton}
             backgroundImage={section.backgroundImage as "black" | "white"}
             colorButton={section.colorButton}
+            route={section.route}
           />
         ))}
       </SectionWithIllustrationContainer>

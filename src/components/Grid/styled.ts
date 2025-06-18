@@ -7,8 +7,9 @@ interface GridProps {
 }
 
 interface ButtonWrapperProps {
-  childMaxWidth?: string;
+  childMediaWidth?: string;
   childType?: string;
+
 }
 export const GridContainer = styled.section<GridProps>`
   display: grid;
@@ -26,7 +27,7 @@ export const GridContainer = styled.section<GridProps>`
     padding: 86px 59px;
   }
 
-  @media (max-width: 470px) {
+  @media (max-width: 780px) {
     grid-template-columns: 1fr;
     padding: 86px 30px 32px 30px;
     border-bottom: none;
@@ -34,16 +35,16 @@ export const GridContainer = styled.section<GridProps>`
 `
 
 export const ButtonsStyledRoadmaps = styled.div<ButtonWrapperProps>`
-  @media (${(props) => props.childMaxWidth || 'max-width: 884px'}) {
+  @media (${(props) => props.childMediaWidth || 'max-width: 884px'}) {
     display: flex;
     justify-self: center;
     align-items: center;
     text-align: center;
     &:${(props) => props.childType || 'nth-child(9)'} {
       grid-column: 1 / -1;
+      justify-self: center;
+
     }
-
-
   }
 `
 

@@ -4,7 +4,7 @@ import { Api_base } from "../api_base";
 export async function LoginAdmin(email: string, password: string | undefined) {
   const url = `${Api_base}/login/admin`;
   const response = axios.post(url, { email, password });
-  console.log((await response).statusText);
+
   const token = (await response).data;
   localStorage.setItem("token", token);
 

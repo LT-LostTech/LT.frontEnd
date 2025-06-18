@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Grid } from "../../../components/Grid";
 import { StrongTitle } from "../../../template/Roadmaps/heroRoadmap/styled";
-import { Level, LevelChallenges, Linguages } from "./data";
+import { Level} from "./data";
 import {
   BackEndContainer,
   BackEndTitle,
@@ -19,41 +19,127 @@ import {
 import { Button } from "../../../components/Button";
 import { theme } from "../../../theme/theme";
 import { Overlay } from "../../../utils/Overlay/styled";
+import { useLocation } from "react-router-dom";
+import { ListingChallengesApi } from "../../../services/challenges/listing/api";
 
-export function ChallengesBackEnd() {
+interface Challenges {
+  title: string;
+  description: string;
+  category: string;
+  labels:string;
+  difficulty: string;
+}
+
+
+
+export function ChallengesCategory() {
+  
   const [openModal, setOpenModal] = useState(false);
-  const [levelTitle, setLevelTitle] = useState<string>('básico');
+  
+  const [selectedDifficulty, setSelectedDifficulty] = useState<string>('fácil');
   //o estado pode ser uma string ex: "JavaScript" ou null (quando nada foi selecionado ainda).
-  const [selectedLevel, setSelectedLevel] = useState<string | null>(null);
-  const [challengesSelect, setChallengesSelect] = useState<string | undefined>("Titulo do desafio")
+  const [selectedLabel, setSelectedLabel] = useState<string | null>(null); // linguagem/ferramenta
+  const [languages, setLanguages] = useState<string[]>([]);
+  const [ challengesSelect, setChallengesSelect] = useState<string | undefined>("Titulo do desafio")
+  const [challengesDescription, setChallengesDescription] = useState<string | undefined>("Descrição do desafio");
+  const [challenges, setChallenges] = useState<Challenges[]>([]);
+
+  const location = useLocation();
+  const categoria = location.state.categoria ?? "Categoria não informada";
+
 
   const handleModal = (index:number) => {
     //passo um index para cada objeto
-    setSelectedLevel(Linguages[index].name)
+    setSelectedLabel(languages[index])
     setOpenModal(!openModal);
   };
 
-  const handleChallengesSelect = (index:number) => {
-    const teste = () => LevelChallenges.find((levels) => levels.title?.toLowerCase() === levelTitle?.toLocaleLowerCase())?.challenges[index].name
-    setChallengesSelect(teste)
+   const handleChallengesSelect = (index:number) => {
+    setChallengesSelect(filteredChallenges[index].title);
+    setChallengesDescription(filteredChallenges[index].description);
+
+
   }
+
+
+ 
+  async function fetchRoadmap() {
+    try {
+      const data = await ListingChallengesApi();
+      setChallenges(data);
+         const filteredLabels: string[] = [];
+    data.forEach((item: Challenges) => {
+      if (item.category === categoria) {
+      const labels = Array.isArray(item.labels)
+        ? item.labels
+        : item.labels.split(/[\s,()]/)
+        .map((label) => label.trim()).filter((label) => label !== "" && label !== "+" && label !== " " && label !== "," && label !== "ou" );
+        
+
+      filteredLabels.push(...labels);
+    }})
+    const uniqueLabels = [...new Set(filteredLabels)];
+  setLanguages(uniqueLabels);
+    } catch (error) {
+      console.error("Error fetching roadmaps:", error);
+    }
+  }
+
+  useEffect(() => {
+    fetchRoadmap();
+  },[] );
+
+
+function normalizeText(text: string): string {
+  return text
+    .toLowerCase()               
+    .normalize("NFD")            
+    .replace(/[\u0300-\u036f]/g, "") 
+    .trim()                     
+    .replace(/\s+/g, " ");      
+}
+
+const filteredChallenges = challenges.filter((challenge) => {
+const normalizedCategory = normalizeText(challenge.category || "");
+const normalizedDifficulty = normalizeText(challenge.difficulty || "");
+const normalizedSelectedDifficulty = normalizeText(selectedDifficulty || "");
+const normalizedSelectedLabel = normalizeText(selectedLabel || "");
+
+const normalizedLabels = Array.isArray(challenge.labels)
+  ? challenge.labels.map((label) => normalizeText(label))
+  : challenge.labels
+      .split(/[,\s()]/)
+      .map((label) => normalizeText(label))
+      .filter((label) => label && label !== "ou" && label !== "+" && label !== ",");
+
+return (
+  normalizedCategory === normalizeText(categoria) &&
+  normalizedDifficulty === normalizedSelectedDifficulty &&
+  (normalizedSelectedLabel === "" || normalizedLabels.includes(normalizedSelectedLabel))
+);
+});
+
+
+
+
+  
   return (
     <BackEndContainer>
       <SectionHero>
-        <BackEndTitle>BACK-END</BackEndTitle>
+        <BackEndTitle>{categoria}</BackEndTitle>
         <SubTitle>
           Prepare-se para Superar os Desafios Mais Empolgantes e Avançar na Sua
           Jornada na Programação!
         </SubTitle>
       </SectionHero>
       <SectionLinguages>
-        <LanguagesTitle>Linguagens de programação</LanguagesTitle>
+        <LanguagesTitle>Ferramentas utilizadas</LanguagesTitle>
         <Grid
           columns={3}
           gap={"32px"}
-          children={Linguages.map((button) => button.name)}
+          children={languages?.map((languages) => languages)}
           navigate={handleModal}
-          childMaxWidth ={'0'}
+          childMediaWidth=""
           childType = {'last-child'}
         />
         {openModal && (
@@ -61,7 +147,7 @@ export function ChallengesBackEnd() {
         <Overlay onClick={() => setOpenModal(false)}/>
           <ModalBackEnd>
             <ModalChallengesTitle>
-              Você escolheu os desafios <StrongTitle>{selectedLevel}</StrongTitle>
+              Você escolheu os desafios <StrongTitle>{selectedLabel}</StrongTitle>
             </ModalChallengesTitle>
             <SubTitleModal>
               Coloque em prática tudo que estudou até aqui!
@@ -82,12 +168,12 @@ export function ChallengesBackEnd() {
                   border={`0.71px solid ${theme.colors.white}`}
                   hoverBg={`${theme.colors.white}`}
                   hoverColor={`${theme.colors.black}`}
-                  onClick={() => setLevelTitle(level.name.toLowerCase())}
+                  onClick={() => setSelectedDifficulty(level.name.toLowerCase())}
                   widthTablet ="163.63px"
                   heightTablet="35.72px"
-                  widthMobile ="64.07px"
-                  heightMobile="14.06px"
-                  fontMobile="4.16px"
+                  widthMobile ="94.07px"
+                  heightMobile="24.06px"
+                  fontMobile="10.16px"
                   fontTablet="10.64px"
                 />
               ))}
@@ -98,21 +184,22 @@ export function ChallengesBackEnd() {
       </SectionLinguages>
       <SectionNivel>
         <BackEndTitle>
-          Nível <StrongTitle>{levelTitle}</StrongTitle>
+          Nível <StrongTitle>{selectedDifficulty}</StrongTitle>
         </BackEndTitle>
         {/* find procura o objeto que tenha o title igual ao level title */}
         <Grid columns={3} gap={"32px"} children={
-          LevelChallenges.find((levels) => levels.title?.toLowerCase() === levelTitle?.toLocaleLowerCase())?.challenges.map(challenge => challenge.name)
+          filteredChallenges.map((challenge) => challenge.title)
           }
           navigate={handleChallengesSelect}
-          childMaxWidth ={'min-width: 1180px'}
+          childMediaWidth ={'min-width: 1180px'}
           childType = {'last-child'}/>
       </SectionNivel>
 
       <SectionChallenges>
           <BackEndTitle>{challengesSelect}</BackEndTitle>
-          <SubTitle>Enunciado descrevendo o passo a passo de como o desafio deve ser cumprido e com os dados caso seja necessário.</SubTitle>
+          <SubTitle>{challengesDescription}</SubTitle>
       </SectionChallenges>
     </BackEndContainer>
   );
 }
+

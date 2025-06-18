@@ -16,6 +16,7 @@ export const sections = [
       textButton: "Roadmaps",
       backgroundImage: "black",
       colorButton: "white",
+      route: "roadmaps"
     },
     {
       layout: "right",
@@ -30,6 +31,7 @@ export const sections = [
       textButton: "Notícias",
       backgroundImage: "white",
       colorButton: "white",
+      route: "noticias"
     },
     {
       layout: "left",
@@ -44,5 +46,6 @@ export const sections = [
       textButton: "Desafios",
       backgroundImage: "black",
       colorButton: "white",
+      route: "desafios"
     },
   ];

@@ -114,12 +114,16 @@ export interface UserProps{
   newPassword?: string;
 }
 
-export interface RoadmapsProps{
+export interface BackOfficeProps{
   category?: string |undefined,
   estimatedHours?: number |undefined,
   progress?: number |undefined,
   label?: string | undefined,
-  levels?: number | undefined
+  levels?: number | undefined,
+  title?: string | undefined,
+  description?: string | undefined,
+  difficulty?: string | undefined,
+  labels?: string | undefined
 }
 
 export interface SignUpProps {
@@ -160,7 +164,7 @@ export interface GridProps {
   columns: number;
   gap: string;
   children: ReactNode;
-  childMaxWidth?: string;
   childType?: string;
   navigate?: (index: number) => void;
+  childMediaWidth?: string;
 }

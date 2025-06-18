@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from "react";
-import { RoadmapsProps, UserProps } from "../interfaces/interfaces.web";
+import { BackOfficeProps, UserProps } from "../interfaces/interfaces.web";
 
 export function useAuth() {
  const [user, setUser] = useState<UserProps>({
@@ -16,17 +16,23 @@ export function useAuth() {
     }
 
 
-    const [roadmap, setRoadmap] = useState<RoadmapsProps>({
+    const [backoffice, setBackoffice] = useState<BackOfficeProps>({
         category:"",
         estimatedHours:0,
         progress:0,
         label:"",
-        levels:0})
+        labels:"",
+        levels:0,
+        title:"",
+        description:"",
+        difficulty:""
+
+    })
 
 
     function handleInputChangeRoadmaps(e: ChangeEvent<HTMLInputElement>){
         const {name,value} = e.target
-        setRoadmap(prev => ({
+        setBackoffice(prev => ({
             ...prev,
             [name]:value
         })) 
@@ -40,7 +46,7 @@ export function useAuth() {
 
 
 
-    return  {user,handleInputChange,handleInputChangeRoadmaps,roadmap,authStatus,setAuthStatus}
+    return  {user,handleInputChange,handleInputChangeRoadmaps,backoffice,authStatus,setAuthStatus}
 
 
 }

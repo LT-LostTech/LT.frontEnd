@@ -12,7 +12,15 @@ import arrowDown from "../../assets/Roadmaps/arrowDown.svg";
 import { GridProps } from "../../interfaces/interfaces.web";
 import React from "react";
 
-export function Grid({ columns, gap, children, navigate }: GridProps) {
+export function Grid({
+  columns,
+  gap,
+  children,
+  navigate,
+  childType,
+  childMediaWidth,
+
+}: GridProps) {
   const childrenArray = React.Children.toArray(children);
 
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 500);
@@ -54,7 +62,11 @@ export function Grid({ columns, gap, children, navigate }: GridProps) {
     <GridDropdown>
       <GridContainer columns={columns} gap={gap}>
         {childrenArray.slice(0, visibleItems).map((child, index) => (
-          <ButtonsStyledRoadmaps key={index}>
+          <ButtonsStyledRoadmaps
+            key={index}
+            childMediaWidth={childMediaWidth}
+            childType={childType}
+          >
             <Button
               width={"365px"}
               height={"81px"}
