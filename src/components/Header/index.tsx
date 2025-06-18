@@ -26,7 +26,7 @@ interface HeaderProps {
   position: string;
   borderRadius: string;
   displayMenuTablet: string;
-  marginTop?:string;
+  marginTop?: string;
 }
 
 export function Header({
