@@ -8,6 +8,7 @@ import { LoginUser } from "../../../services/users/singIn/api";
 import { useAuth } from "../../../hooks/useAuth";
 import { toast } from "react-toastify";
 
+
 export function SignUp({
   displayPhoto,
   onHighlightClick,
@@ -31,9 +32,9 @@ export function SignUp({
       setAuthStatus({ loading: false, error: null, success: true });
       if (axios.isAxiosError(error) && error.response) {
         console.log("status: ", error.status);
-        console.log(error);
-        toast.error(error.response.data);
-
+        console.log(error.response.data[0].message);
+        toast.error(error.response.data[0].message);
+      }else{
         console.log(`erro inesperado: ${error}`);
       }
     }
